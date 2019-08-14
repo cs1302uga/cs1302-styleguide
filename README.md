@@ -21,6 +21,11 @@
 
 Empty `catch` blocks are not allowed. 
 
+**Rationale:** The purpose of a `catch` block is to handle an exception.
+If it is not appropriate for you to handle the exception in a method
+directly, then explore the posibility of propagating the exception up
+using `throws` in the method signature.
+
 ### FileTabCharacter
 
 No tab characters (`\t`) are allowed in the whitespace of the source code.
