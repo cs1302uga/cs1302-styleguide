@@ -82,6 +82,14 @@ the time your outer type will be declared as `public`.
 
 ### Setup Checkstyle
 
+1. **Add `/usr/local/checkstyle` to your `PATH`.** You can do this by adding the 
+   following to your `~/.bash_profile`, then logging out and back in:
+
+   ```
+   # setup checkstyle
+   export PATH=/usr/local/checkstyle:$PATH
+   ```
+
 ### Run Checkstyle
 
 <hr/>
