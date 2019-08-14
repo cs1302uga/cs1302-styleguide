@@ -4,6 +4,9 @@
 # CS1302 Code Style Guide
 
 1. [Guidelines](#guidelines)
+   1. FileTabCharacter
+   1. LineLength
+   1. OuterTypeFilename
 1. [Recommended Emacs Configuration](#recommended-emacs-configuration)
 1. [How to Check](#how-to-check)
    1. [Setup Checkstyle](#setup-checkstyle)
