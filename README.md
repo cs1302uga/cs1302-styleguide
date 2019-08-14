@@ -6,6 +6,7 @@
 1. [Guidelines](#guidelines)
    1. EmptyCatchBlock
    1. FileTabCharacter
+   1. LeftCurly
    1. LineLength
    1. NeedBraces
    1. OneTopLevelClass
@@ -41,6 +42,16 @@ Use of tabs instead of spaces may result in different text editors displaying
 same file in different ways, depending on the tab width configured for the
 given editor. Developers should not need to configure the tab width of their 
 text editors in order to be able to read source code.
+
+### LeftCurly
+
+Left curly braces (`{`) for code blocks must always be on the end of the line. 
+For example:
+
+```java
+if (condition) {
+    ...
+```        
 
 ### LineLength
 
