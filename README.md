@@ -4,8 +4,11 @@
 # CS1302 Code Style Guide
 
 1. [Guidelines](#guidelines)
+   1. EmptyCatchBlock
    1. FileTabCharacter
    1. LineLength
+   1. NeedBraces
+   1. OneTopLevelClass
    1. OuterTypeFilename
 1. [Recommended Emacs Configuration](#recommended-emacs-configuration)
 1. [How to Check](#how-to-check)
@@ -13,6 +16,10 @@
    1. [Run Checkstyle](#run-checkstyle)
 
 ## Guidelines
+
+### EmptyCatchBlock
+
+Empty `catch` blocks are not allowed. 
 
 ### FileTabCharacter
 
@@ -44,6 +51,20 @@ column limit include:
 **Rationale:** Long lines are hard to read in printouts or if developers have 
 limited screen space for the source code, e.g. if the editor displays additional 
 information like line numbers, multiple files, project tree, class hierarchy, etc.
+
+### NeedBraces
+
+Braces are always used where technically optional. Braces should be used with 
+`if`, `else`, `for`, `do`, and `while` statements, even when the body is empty 
+or contains only a single statement.
+
+### OneTopLevelClass
+
+Each top-level class, interface or enum resides in a source file of its own. 
+Official description of a 'top-level' term: 
+[7.6. Top Level Type Declarations](https://docs.oracle.com/javase/specs/jls/se8/html/jls-7.html#jls-7.6). 
+If the file does not contain a `public` class, enum or interface, then the top-level
+type is the first type in file.
 
 ### OuterTypeFilename
 
