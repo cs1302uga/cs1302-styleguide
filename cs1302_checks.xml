@@ -25,26 +25,12 @@
   <!-- Checks for whitespace                               -->
   <!-- See http://checkstyle.sf.net/config_whitespace.html -->
   <module name="FileTabCharacter">
-    <property name="eachLine" value="true"/>
-    <property name="severity" value="error"/>    
+    <property name="eachLine" value="true"/>   
   </module>
 
   <module name="TreeWalker">
 
     <module name="OuterTypeFilename"/>
-
-    <module name="IllegalTokenText">
-      <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
-      <property name="format"
-                value="\\u00(09|0(a|A)|0(c|C)|0(d|D)|22|27|5(C|c))|\\(0(10|11|12|14|15|42|47)|134)"/>
-      <property name="message"
-                value="Consider using special escape sequence instead of octal value or Unicode escaped value."/>
-    </module>
-    <module name="AvoidEscapedUnicodeCharacters">
-      <property name="allowEscapesForControlCharacters" value="true"/>
-      <property name="allowByTailComment" value="true"/>
-      <property name="allowNonPrintableEscapes" value="true"/>
-    </module>
 
     <module name="LineLength">
       <property name="max" value="100"/>
@@ -53,20 +39,26 @@
     </module>
 
     <module name="OneTopLevelClass"/>
-    <module name="NoLineWrap"/>
+ 
+    <module name="EmptyCatchBlock">
+            
     <module name="EmptyBlock">
       <property name="option" value="TEXT"/>
       <property name="tokens"
                 value="LITERAL_TRY, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE, LITERAL_SWITCH"/>
     </module>
+              
     <module name="NeedBraces"/>
+    
     <module name="LeftCurly"/>
+              
     <module name="RightCurly">
       <property name="id" value="RightCurlySame"/>
       <property name="tokens"
                 value="LITERAL_TRY, LITERAL_CATCH, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE,
                        LITERAL_DO"/>
     </module>
+              
     <module name="RightCurly">
       <property name="id" value="RightCurlyAlone"/>
       <property name="option" value="alone"/>
@@ -74,6 +66,7 @@
                 value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT,
                        INSTANCE_INIT"/>
     </module>
+              
     <module name="WhitespaceAround">
       <property name="allowEmptyConstructors" value="true"/>
       <property name="allowEmptyLambdas" value="true"/>
