@@ -11,6 +11,7 @@
    1. NeedBraces
    1. OneTopLevelClass
    1. OuterTypeFilename
+   1. RightCurly
 1. [Recommended Emacs Configuration](#recommended-emacs-configuration)
 1. [How to Check](#how-to-check)
    1. [Setup Checkstyle](#setup-checkstyle)
@@ -91,6 +92,33 @@ For example, the class `Foo` must be in a file named `Foo.java`.
 Specification when the outer type is declared with `public` visibility, we
 stick to this convention for other visibilities as well. In any case, most of
 the time your outer type will be declared as `public`. 
+
+### RightCurly
+
+Right curly braces (`}`) for single-part blocks must be on their own line.
+Right curly braces for multi-part blocks must be on the same line as the 
+next part of a multi-block statement. For example:
+
+```java
+if (a > 0) {
+    ...
+} // this is okay
+```
+
+```java
+if (a > 0) {
+    ...
+} else { // this is okay
+    ...
+```
+
+```java
+if (a > 0) {
+    ...
+} // this is not okay
+else { 
+    ...
+```
 
 ## Recommended Emacs Configuration
 
