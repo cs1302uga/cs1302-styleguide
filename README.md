@@ -6,6 +6,7 @@
 1. [Guidelines](#guidelines)
    1. ArrayTypeStyle
    1. EmptyCatchBlock
+   1. EmptyLineSeparator
    1. FileTabCharacter
    1. LeftCurly
    1. LineLength
@@ -43,6 +44,14 @@ Empty `catch` blocks are not allowed.
 If it is not appropriate for you to handle the exception in a method
 directly, then explore the posibility of propagating the exception up
 using `throws` in the method signature.
+
+### EmptyLineSeparator
+
+You should ensure that empty line separators after header, package, all 
+import declarations, fields, constructors, methods, nested classes, 
+static initializers and instance initializers. An exception to this
+policy is made to allow no empty lines between fields (e.g., between
+instance variables in a class).
 
 ### FileTabCharacter
 
