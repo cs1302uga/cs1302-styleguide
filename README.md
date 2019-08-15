@@ -87,8 +87,8 @@ information like line numbers, multiple files, project tree, class hierarchy, et
 
 ### ModifierOrder
 
-You should ensure that order of your modifiers conforms to the suggestions 
-in the Java Language specification, sections 
+When using modifier keywords, you should ensure that their order conforms to 
+the suggestions in the Java Language specification, sections 
 [8.1.1, 8.3.1, 8.4.4](https://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html), and 
 [9.4](https://docs.oracle.com/javase/specs/jls/se8/html/jls-9.html). 
 
