@@ -12,6 +12,7 @@
    1. OneTopLevelClass
    1. OuterTypeFilename
    1. RightCurly
+   1. WhitespaceAround
 1. [Recommended Emacs Configuration](#recommended-emacs-configuration)
 1. [How to Check](#how-to-check)
    1. [Setup Checkstyle](#setup-checkstyle)
@@ -119,6 +120,10 @@ if (a > 0) {
 else { 
     ...
 ```
+
+### WhitespaceAround
+
+
 
 ## Recommended Emacs Configuration
 
