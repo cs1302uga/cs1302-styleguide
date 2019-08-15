@@ -76,6 +76,20 @@ Braces are always used where technically optional. Braces should be used with
 `if`, `else`, `for`, `do`, and `while` statements, even when the body is empty 
 or contains only a single statement.
 
+### OneStatementPerLine
+
+In general, you only have one statement per line. The policy specifically checks 
+the following types of statements: variable declaration statements, empty statements, 
+import statements, assignment statements, expression statements, increment statements, 
+object creation statements, for loop statements, break statements, 
+continue statements, and return statements.
+
+**Rationale:**
+It's very difficult to read multiple statements on one line.
+In the Java programming language, statements are the fundamental unit of execution. 
+All statements except blocks are terminated by a semicolon. 
+Blocks are denoted by open and close curly braces.
+
 ### OneTopLevelClass
 
 Each top-level class, interface or enum resides in a source file of its own. 
@@ -123,7 +137,23 @@ else {
 
 ### WhitespaceAround
 
+You need to ensure that code tokens are surrounded by whitespace. Empty constructor, 
+method, class, enum, interface, loop bodies (blocks), lambdas of the forms
+presented below are exempt:
 
+```java
+public MyClass() {}      // empty constructor
+public void func() {}    // empty method
+public interface Foo {} // empty interface
+public class Foo {} // empty class
+public enum Foo {} // empty enum
+MyClass c = new MyClass() {}; // empty anonymous class
+while (i == 1) {} // empty while loop
+for (int i = 1; i > 1; i++) {} // empty for loop
+do {} while (i == 1); // empty do-while loop
+Runnable noop = () -> {}; // empty lambda
+public @interface Beta {} // empty annotation type
+```
 
 ## Recommended Emacs Configuration
 
