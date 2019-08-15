@@ -4,11 +4,14 @@
 # CS1302 Code Style Guide
 
 1. [Guidelines](#guidelines)
+   1. ArrayTypeStyle
    1. EmptyCatchBlock
    1. FileTabCharacter
    1. LeftCurly
    1. LineLength
+   1. ModifierOrder
    1. NeedBraces
+   1. OneStatementPerLine
    1. OneTopLevelClass
    1. OuterTypeFilename
    1. RightCurly
@@ -19,6 +22,18 @@
    1. [Run Checkstyle](#run-checkstyle)
 
 ## Guidelines
+
+### ArrayTypeStyle
+
+You should use the Java style for array type declarations and not the C style. 
+
+```java
+public static void main(String[] args) { // Java style; valid style
+```
+
+```java
+public static void main(String args[]) { // C style; invalid style
+```
 
 ### EmptyCatchBlock
 
@@ -69,6 +84,30 @@ column limit include:
 **Rationale:** Long lines are hard to read in printouts or if developers have 
 limited screen space for the source code, e.g. if the editor displays additional 
 information like line numbers, multiple files, project tree, class hierarchy, etc.
+
+### ModifierOrder
+
+You should ensure that order of your modifiers conforms to the suggestions 
+in the Java Language specification, sections 
+[8.1.1, 8.3.1, 8.4.4](https://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html), and 
+[9.4](https://docs.oracle.com/javase/specs/jls/se8/html/jls-9.html). 
+
+The correct order is:
+
+```
+public
+protected
+private
+abstract
+default
+static
+final
+transient
+volatile
+synchronized
+native
+strictfp
+```
 
 ### NeedBraces
 
