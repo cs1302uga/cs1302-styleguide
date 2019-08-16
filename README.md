@@ -3,6 +3,14 @@
 
 # CS1302 Code Style Guide
 
+This document serves as the complete definition of CSCI 1302's coding standards 
+for Java source code. For the purposes of this course, a Java source file is 
+described as being in _valid style_ if and only if it adheres to the rules herein.
+
+This document not only contains the specific guidelines that must be followed,
+but also includes editor configuration reccomendations as well information
+about how to use the `checkstyle` tool for compliance.
+
 1. [Specific Guidelines](#specific-guidelines)
    1. [ArrayTypeStyle](#arraytypestyle)
    1. [ConstantName](#constantname)
