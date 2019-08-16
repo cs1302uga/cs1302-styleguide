@@ -11,6 +11,8 @@ This document not only contains the specific guidelines that must be followed,
 but also includes editor configuration reccomendations as well information
 about how to use the `checkstyle` tool for compliance.
 
+## Table of Contents
+
 1. [Specific Guidelines](#specific-guidelines)
    1. [ArrayTypeStyle](#arraytypestyle)
    1. [ConstantName](#constantname)
