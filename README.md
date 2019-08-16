@@ -414,6 +414,15 @@ if (n == 0) { // valid
     ...
 ```
 
+```java
+while(n == 0) { // invalid
+    ...
+```
+```java
+while (n == 0) { // valid
+    ...
+```
+
 Empty constructor, method, class, enum, interface, loop bodies (blocks), 
 lambdas of the forms presented below are exempt:
 
