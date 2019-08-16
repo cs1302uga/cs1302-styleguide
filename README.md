@@ -482,6 +482,10 @@ settings there. You can create the `~/.vimrc` file if it does not exist.
 set number " enable line numbers
 ```
 
+```
+set expandtab " no tab characters in whitespace
+```
+
 ## How to Check
 
 ## Setup Checkstyle
