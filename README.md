@@ -144,7 +144,11 @@ For example:
 ```java
 if (condition) {
     ...
-```        
+```
+
+**Rationale:**
+This convention for curly braces is pervasive among Java programmers and 
+is even the same convention used by companies like Google.
 
 ## LineLength
 
@@ -200,10 +204,28 @@ are open at the same time on a single screen.
 
 All methods, except the `main` method, must have Javadoc documentation.
 
+**Rationale:**
+Providing sufficiently detailed documention helps make code maintenance and bug
+identification much easier. Additionally, it's critical for code that others will
+use but not necessarily see the actual implementation (e.g., when you use a `String`
+method). 
+
+**Instructor Note:**
+Well documented code is just as important as correctly working code.
+
 ## MissingJavadocType
 
 All class, enum, interface, and annotation interface definitions must have Javadoc
 documentation.
+
+**Rationale:**
+Just like methods, type documentation is also important. Oftentimes class and interface
+documentation provide important high-level details about implementation, naming 
+conventions, etc. In some cases, even code examples are provided directly in the
+documentation to make things easier for programmers who wish to use the code.
+
+**Instructor Note:**
+Well documented code is just as important as correctly working code.
 
 ## ModifierOrder
 
@@ -229,11 +251,29 @@ native
 strictfp
 ```
 
+**Rationale:**
+This ordering convention for methods is pervasive among Java programmers and 
+is even the same convention used by Oracle and Google.
+
 ## NeedBraces
 
-Braces are always used where technically optional. Braces should be used with 
+Curly braces are always used where technically optional. Braces should be used with 
 `if`, `else`, `for`, `do`, and `while` statements, even when the body is empty 
 or contains only a single statement.
+
+**Rationale:**
+Consider `if` statements without curly braces. In Java, only the first statement
+following such `if` statements is executed when the conditional's expression
+evaluates to `true`. Potential bugs can be avoided by using curly braces to
+clearly indicating what statement or statements are to execute when the 
+conditional's expression evaluates to `true`.
+
+**Instructor Note:**
+One common bug that we've seen over the years is students adding statements
+to a brace-less `if` statement with the intent that those statements only
+execute when the conditional's expression evaluates to `true`. That is,
+they forgot to add the curly braces. This guideline helps protect you
+against that scenario and improves readability. 
 
 ## OneStatementPerLine
 
@@ -294,6 +334,10 @@ else {
     ...
 ```
 
+**Rationale:**
+This convention for curly braces is pervasive among Java programmers and 
+is even the same convention used by companies like Google.
+
 ## SummaryJavadoc
 
 In Javadoc comments, the
@@ -302,6 +346,11 @@ should always be present and correctly punctuated.
 The only exception to this rule is when the first statement in the comment
 is `{@inheritDoc}`.
 
+**Rationale:**
+The first sentence of a Javadoc comment is the text that appears in the
+summary lists of a generated Javadoc website. Failure to either include a summary
+or correctly punctuate the summary can result in poor output.  
+
 ## TypeName
 
 Type names for classes, interfaces, enums, and annotations must be written in _UpperCamelCase_. 
@@ -309,11 +358,25 @@ Class names are typically nouns or noun phrases. For example, `Character` or `Im
 Interface names may also be nouns or noun phrases (for example, `List`), but may sometimes be 
 adjectives or adjective phrases instead (for example, `Readable`).
 
+**Rationale:**
+This convention for type names is pervasive among Java programmers and 
+is even the same convention used by companies like Oracle and Google.
+
 ## WhitespaceAround
 
-You need to ensure that code tokens are surrounded by whitespace. Empty constructor, 
-method, class, enum, interface, loop bodies (blocks), lambdas of the forms
-presented below are exempt:
+You need to ensure that code tokens are surrounded by whitespace. 
+
+```java
+if (n==0) { // invalid
+    ...
+```
+```java
+if (n == 0) { // valid
+    ...
+```
+
+Empty constructor, method, class, enum, interface, loop bodies (blocks), 
+lambdas of the forms presented below are exempt:
 
 ```java
 public MyClass() {}      // empty constructor
