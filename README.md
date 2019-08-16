@@ -59,7 +59,7 @@ should appear with the type designation."
 
 ## ConstantName
 
-Constant names must use _CONSTANT_CASE_: all uppercase letters, with each word separated 
+Constant names must use `CONSTANT_CASE`: all uppercase letters, with each word separated 
 from the next by a single underscore.
 
 **Rationale:**
@@ -70,6 +70,14 @@ programmers to easily identify a constant when used in source code.
 ## EmptyCatchBlock
 
 Empty `catch` blocks are not allowed. 
+
+```java
+try {
+    ...
+} catch (IOException ioe) {
+    // empty; invalid style
+}
+```
 
 **Rationale:** The purpose of a `catch` block is to handle an exception.
 If it is not appropriate for you to handle the exception in a method
@@ -83,6 +91,16 @@ import declarations, fields, constructors, methods, nested classes,
 static initializers and instance initializers. An exception to this
 policy is made to allow no empty lines between fields (e.g., between
 instance variables in a class).
+
+```java
+import java.util.Scanner; // not separated by
+public class MyClass {    // at least one line;
+    private int x;        // invalid style
+    ...
+```
+
+**Rationale:**
+This vastly improves readability. 
 
 ## FileTabCharacter
 
@@ -145,20 +163,38 @@ information like line numbers, multiple files, project tree, class hierarchy, et
 
 ## MemberName
 
-Local variable names must be written in _lowerCamelCase_.
+Instance variable names must be written in `lowerCamelCase`.
+
+**Rationale:**
+This naming convention for instance variables is pervasive among Java programmers and 
+is even the same convention used by Oracle.
 
 ## MethodName
 
-Method names must be written in _lowerCamelCase_.
+Method names must be written in `lowerCamelCase`.
+
+**Rationale:**
+This naming convention for methods is pervasive among Java programmers and 
+is even the same convention used by Oracle.
 
 ## MethodLength
 
 The bodies of methods and constuctors should never exceed 60 lines.
+This includes the line(s) with the method's signature and opening curly brace, 
+all lines in the body of the method (including blank lines), and the line with the 
+method's ending curly brace. The method length does not include a method's Javadoc 
+comment, however, it does include any comments and blank lines contained within the 
+body of the method.
 
 **Rationale:**
 If a method becomes very long it is hard to understand. Therefore long methods 
 should usually be refactored into several individual methods that focus on a 
-specific task. 
+specific task.
+
+**Instructor Note:**
+You should always try to limit the number of lines for a method so that the 
+entire method can be seen on the screen at once, even when multiple files
+are open at the same time on a single screen.
 
 ## MissingJavadocMethod
 
