@@ -30,9 +30,9 @@
    1. [Setup Checkstyle](#setup-checkstyle)
    1. [Run Checkstyle](#run-checkstyle)
 
-## Guidelines
+# Specific Guidelines
 
-### ArrayTypeStyle
+## ArrayTypeStyle
 
 You must use the Java style for array type declarations and not the C style. 
 
@@ -44,12 +44,12 @@ public static void main(String[] args) { // Java style; valid style
 public static void main(String args[]) { // C style; invalid style
 ```
 
-### ConstantName
+## ConstantName
 
 Constant names must use _CONSTANT_CASE_: all uppercase letters, with each word separated 
 from the next by a single underscore.
 
-### EmptyCatchBlock
+## EmptyCatchBlock
 
 Empty `catch` blocks are not allowed. 
 
@@ -58,7 +58,7 @@ If it is not appropriate for you to handle the exception in a method
 directly, then explore the posibility of propagating the exception up
 using `throws` in the method signature.
 
-### EmptyLineSeparator
+## EmptyLineSeparator
 
 You should ensure that empty line separators after header, package, all 
 import declarations, fields, constructors, methods, nested classes, 
@@ -66,7 +66,7 @@ static initializers and instance initializers. An exception to this
 policy is made to allow no empty lines between fields (e.g., between
 instance variables in a class).
 
-### FileTabCharacter
+## FileTabCharacter
 
 No tab characters (`\t`) are allowed in the whitespace of the source code.
 This does not include tabs in string literals. For example, the following
@@ -82,7 +82,7 @@ same file in different ways, depending on the tab width configured for the
 given editor. Developers should not need to configure the tab width of their 
 text editors in order to be able to read source code.
 
-### Indentation
+## Indentation
 
 The following indentation rules must be followed:
 
@@ -95,12 +95,12 @@ The following indentation rules must be followed:
 | `arrayInitIndent`         | how far an array initialization should be indented when on next line       | 4      |
 | `lineWrappingIndentation` | how far continuation line should be indented when line-wrapping is present | 4      |
 
-### JavadocMethod
+## JavadocMethod
 
 All methods, except the `main` method, must have **full** Javadoc documentation, 
 including documentation of parameters, exceptions, and return value.
 
-### LeftCurly
+## LeftCurly
 
 Left curly braces (`{`) for code blocks must always be on the end of the line. 
 For example:
@@ -110,7 +110,7 @@ if (condition) {
     ...
 ```        
 
-### LineLength
+## LineLength
 
 You should limit the number of characters, including whitespace, on any given 
 line to 100 characters. Except as noted below, any line that would exceed this 
@@ -125,15 +125,15 @@ column limit include:
 limited screen space for the source code, e.g. if the editor displays additional 
 information like line numbers, multiple files, project tree, class hierarchy, etc.
 
-### MemberName
+## MemberName
 
 Local variable names must be written in _lowerCamelCase_.
 
-### MethodName
+## MethodName
 
 Method names must be written in _lowerCamelCase_.
 
-### MethodLength
+## MethodLength
 
 The bodies of methods and constuctors should never exceed 60 lines.
 
@@ -142,16 +142,16 @@ If a method becomes very long it is hard to understand. Therefore long methods
 should usually be refactored into several individual methods that focus on a 
 specific task. 
 
-### MissingJavadocMethod
+## MissingJavadocMethod
 
 All methods, except the `main` method, must have Javadoc documentation.
 
-### MissingJavadocType
+## MissingJavadocType
 
 All class, enum, interface, and annotation interface definitions must have Javadoc
 documentation.
 
-### ModifierOrder
+## ModifierOrder
 
 When using modifier keywords, you should ensure that their order conforms to 
 the suggestions in the Java Language specification, sections 
@@ -175,13 +175,13 @@ native
 strictfp
 ```
 
-### NeedBraces
+## NeedBraces
 
 Braces are always used where technically optional. Braces should be used with 
 `if`, `else`, `for`, `do`, and `while` statements, even when the body is empty 
 or contains only a single statement.
 
-### OneStatementPerLine
+## OneStatementPerLine
 
 In general, you only have one statement per line. The policy specifically checks 
 the following types of statements: variable declaration statements, empty statements, 
@@ -195,7 +195,7 @@ In the Java programming language, statements are the fundamental unit of executi
 All statements except blocks are terminated by a semicolon. 
 Blocks are denoted by open and close curly braces.
 
-### OneTopLevelClass
+## OneTopLevelClass
 
 Each top-level class, interface or enum resides in a source file of its own. 
 Official description of a 'top-level' term: 
@@ -203,7 +203,7 @@ Official description of a 'top-level' term:
 If the file does not contain a `public` class, enum or interface, then the top-level
 type is the first type in file.
 
-### OuterTypeFilename
+## OuterTypeFilename
 
 In any given `.java` file, the outer type name and the file name must match. 
 For example, the class `Foo` must be in a file named `Foo.java`.
@@ -213,7 +213,7 @@ Specification when the outer type is declared with `public` visibility, we
 stick to this convention for other visibilities as well. In any case, most of
 the time your outer type will be declared as `public`. 
 
-### RightCurly
+## RightCurly
 
 Right curly braces (`}`) for single-part blocks must be on their own line.
 Right curly braces for multi-part blocks must be on the same line as the 
@@ -240,7 +240,7 @@ else {
     ...
 ```
 
-### SummaryJavadoc
+## SummaryJavadoc
 
 In Javadoc comments, the
 [summary sentence](https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html#firstsentence)
@@ -248,14 +248,14 @@ should always be present and correctly punctuated.
 The only exception to this rule is when the first statement in the comment
 is `{@inheritDoc}`.
 
-### TypeName
+## TypeName
 
 Type names for classes, interfaces, enums, and annotations must be written in _UpperCamelCase_. 
 Class names are typically nouns or noun phrases. For example, `Character` or `ImmutableList`. 
 Interface names may also be nouns or noun phrases (for example, `List`), but may sometimes be 
 adjectives or adjective phrases instead (for example, `Readable`).
 
-### WhitespaceAround
+## WhitespaceAround
 
 You need to ensure that code tokens are surrounded by whitespace. Empty constructor, 
 method, class, enum, interface, loop bodies (blocks), lambdas of the forms
@@ -279,7 +279,7 @@ public @interface Beta {} // empty annotation type
 
 ## How to Check
 
-### Setup Checkstyle
+## Setup Checkstyle
 
 Before you can use the `checkstyle` command on Nike for the first time, you will
 need to configure your environment to make it available. To do this, follow the
@@ -293,7 +293,7 @@ steps below while logged into Nike:
    export PATH=/usr/local/checkstyle:$PATH
    ```
 
-### Run Checkstyle
+## Run Checkstyle
 
 To run checkstyle on an individual file, say `src/Test.java`, you can execute
 the following:
