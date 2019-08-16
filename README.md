@@ -52,6 +52,11 @@ public static void main(String[] args) { // Java style; valid style
 public static void main(String args[]) { // C style; invalid style
 ```
 
+**Rational:** 
+While the C style is also syntactically correct in Java, Oracle advises that,
+"convention discourages this form; the brackets identify the array type and 
+should appear with the type designation."
+
 ## ConstantName
 
 Constant names must use _CONSTANT_CASE_: all uppercase letters, with each word separated 
