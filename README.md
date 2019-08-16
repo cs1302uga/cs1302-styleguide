@@ -230,9 +230,9 @@ comment, however, it does include any comments and blank lines contained within 
 body of the method.
 
 **Rationale:**
-If a method becomes very long it is hard to understand. Therefore long methods 
-should usually be refactored into several individual methods that focus on a 
-specific task.
+If a method becomes very long it is hard to understand. Here is the spirit of this 
+guideline: methods that are too big and/or repetitive should be refactored to include 
+proper looping constructs and/or broken up into smaller methods to improve readability.
 
 **Instructor Note:**
 You should always try to limit the number of lines for a method so that the 
