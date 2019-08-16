@@ -5,19 +5,23 @@
 
 1. [Guidelines](#guidelines)
    1. ArrayTypeStyle
+   1. ConstantName
    1. EmptyCatchBlock
    1. EmptyLineSeparator
    1. FileTabCharacter
    1. Indentation
+   1. JavadocMethod
    1. LeftCurly
    1. LineLength
    1. MemberName
+   1. MissingJavadocMethod
    1. ModifierOrder
    1. NeedBraces
    1. OneStatementPerLine
    1. OneTopLevelClass
    1. OuterTypeFilename
    1. RightCurly
+   1. SummaryJavadoc
    1. TypeName
    1. WhitespaceAround
 1. [Recommended Emacs Configuration](#recommended-emacs-configuration)
@@ -29,7 +33,7 @@
 
 ### ArrayTypeStyle
 
-You should use the Java style for array type declarations and not the C style. 
+You must use the Java style for array type declarations and not the C style. 
 
 ```java
 public static void main(String[] args) { // Java style; valid style
@@ -38,6 +42,11 @@ public static void main(String[] args) { // Java style; valid style
 ```java
 public static void main(String args[]) { // C style; invalid style
 ```
+
+### ConstantName
+
+Constant names must use _CONSTANT_CASE_: all uppercase letters, with each word separated 
+from the next by a single underscore.
 
 ### EmptyCatchBlock
 
@@ -85,6 +94,11 @@ The following indentation rules must be followed:
 | `arrayInitIndent`         | how far an array initialization should be indented when on next line       | 4      |
 | `lineWrappingIndentation` | how far continuation line should be indented when line-wrapping is present | 4      |
 
+### JavadocMethod
+
+All methods, except the `main` method, must have **full** Javadoc documentation, 
+including documentation of parameters, exceptions, and return value.
+
 ### LeftCurly
 
 Left curly braces (`{`) for code blocks must always be on the end of the line. 
@@ -117,6 +131,19 @@ Local variable names must be written in _lowerCamelCase_.
 ### MethodName
 
 Method names must be written in _lowerCamelCase_.
+
+### MethodLength
+
+The bodies of methods and constuctors should never exceed 60 lines.
+
+**Rationale:**
+If a method becomes very long it is hard to understand. Therefore long methods 
+should usually be refactored into several individual methods that focus on a 
+specific task. 
+
+### MissingJavadocMethod
+
+All methods, except the `main` method, must have Javadoc documentation.
 
 ### ModifierOrder
 
@@ -206,6 +233,14 @@ if (a > 0) {
 else { 
     ...
 ```
+
+### SummaryJavadoc
+
+In Javadoc comments, the
+[summary sentence](https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html#firstsentence)
+should always be present and correctly punctuated.
+The only exception to this rule is when the first statement in the comment
+is `{@inheritDoc}`.
 
 ### TypeName
 
