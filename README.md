@@ -392,6 +392,9 @@ Runnable noop = () -> {}; // empty lambda
 public @interface Beta {} // empty annotation type
 ```
 
+**Rationale:**
+This convention improves readability.
+
 ## Recommended Emacs Configuration
 
 ## How to Check
