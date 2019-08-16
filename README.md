@@ -3,7 +3,7 @@
 
 # CS1302 Code Style Guide
 
-1. [Guidelines](#guidelines)
+1. [Specific Guidelines](#specific-guidelines)
    1. ArrayTypeStyle
    1. ConstantName
    1. EmptyCatchBlock
