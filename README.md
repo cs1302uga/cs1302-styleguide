@@ -477,7 +477,7 @@ in that file instead of `~/.emacs`.
 ;; highlight lines that exceed some column limit
 (setq-default
  whitespace-line-column 100
- whitespace-style '(face lines-tail))
+ whitespace-style '(face lines))
 (add-hook 'prog-mode-hook #'whitespace-mode)
 ```
 
