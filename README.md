@@ -40,7 +40,7 @@ about how to use the `checkstyle` tool for compliance.
 1. [How to Check](#how-to-check)
    1. [Setup Checkstyle](#setup-checkstyle)
    1. [Run Checkstyle](#run-checkstyle)
-      1. [Output Example](#output-examples)
+      1. [Output Examples](#output-examples)
 
 # Motivation
 
