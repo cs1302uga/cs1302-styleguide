@@ -4,27 +4,27 @@
 # CS1302 Code Style Guide
 
 1. [Specific Guidelines](#specific-guidelines)
-   1. ArrayTypeStyle
-   1. ConstantName
-   1. EmptyCatchBlock
-   1. EmptyLineSeparator
-   1. FileTabCharacter
-   1. Indentation
-   1. JavadocMethod
-   1. LeftCurly
-   1. LineLength
-   1. MemberName
-   1. MissingJavadocMethod
-   1. MissingJavadocType
-   1. ModifierOrder
-   1. NeedBraces
-   1. OneStatementPerLine
-   1. OneTopLevelClass
-   1. OuterTypeFilename
-   1. RightCurly
-   1. SummaryJavadoc
-   1. TypeName
-   1. WhitespaceAround
+   1. [ArrayTypeStyle](#arraytypestyle)
+   1. [ConstantName](#constantname)
+   1. [EmptyCatchBlock](#emptycatchblock)
+   1. [EmptyLineSeparator](#emptylineseparator)
+   1. [FileTabCharacter](#filetabcharacter)
+   1. [Indentation](#indentation)
+   1. [JavadocMethod](#javadocmethod)
+   1. [LeftCurly](#leftcurly)
+   1. [LineLength](#linelength)
+   1. [MemberName](#membername)
+   1. [MissingJavadocMethod](#missingjavadocmethod)
+   1. [MissingJavadocType](#missingjavadoctype)
+   1. [ModifierOrder](#modifierorder)
+   1. [NeedBraces](#needbraces)
+   1. [OneStatementPerLine](#onestatementperline)
+   1. [OneTopLevelClass](#onetoplevelclass)
+   1. [OuterTypeFilename](#outertypefilename)
+   1. [RightCurly](#rightcurly)
+   1. [SummaryJavadoc](#summaryjavadoc)
+   1. [TypeName](#typename)
+   1. [WhitespaceAround](#whitespacearound)
 1. [Recommended Emacs Configuration](#recommended-emacs-configuration)
 1. [How to Check](#how-to-check)
    1. [Setup Checkstyle](#setup-checkstyle)
