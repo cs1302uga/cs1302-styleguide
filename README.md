@@ -14,6 +14,7 @@ about how to use the `checkstyle` tool for compliance.
 
 ## Table of Contents
 
+1. [Motivation](#motivation)
 1. [Specific Guidelines](#specific-guidelines)
    1. [ArrayTypeStyle](#arraytypestyle)
    1. [ConstantName](#constantname)
@@ -41,6 +42,12 @@ about how to use the `checkstyle` tool for compliance.
 1. [How to Check](#how-to-check)
    1. [Setup Checkstyle](#setup-checkstyle)
    1. [Run Checkstyle](#run-checkstyle)
+
+# Motivation
+
+Many companies will not let you commit changes for review until their established
+guidelines are met--a notable example is Google. Why do these companies do this?
+The short answer is m
 
 # Specific Guidelines
 
@@ -492,4 +499,10 @@ guidelines presented earlier in this document.
 Copyright &copy; Michael E. Cotterell, Bradley J. Barnes, and the University of Georgia.
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a> to students and the public.
 The content and opinions expressed on this Web page do not necessarily reflect the views of nor are they endorsed by the University of Georgia or the University System of Georgia.
+</small>
+
+<small>
+Portions of this document are adapted from 
+   <a href="">Google's Style Guides</a>
+   under a Creative Commons Attribution 3.0 Unported (CC BY 3.0) License.
 </small>
