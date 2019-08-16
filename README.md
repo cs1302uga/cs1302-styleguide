@@ -152,14 +152,14 @@ text editors in order to be able to read source code.
 
 The following indentation rules must be followed:
 
-| Property                  | Description                                                                | Spaces |
-|---------------------------|----------------------------------------------------------------------------|--------|
-| `basicOffset`             | how far new indentation level should be indented when on the next line     | 4      |
-| `braceAdjustment`         | how far a braces should be indented when on the next line 	               | 0      |
-| `caseIndent`              | how far a case label should be indented when on next line 	               | 0      |
-| `throwsIndent` 	          | how far a throws clause should be indented when on next line               | 4      |
-| `arrayInitIndent`         | how far an array initialization should be indented when on next line       | 4      |
-| `lineWrappingIndentation` | how far continuation line should be indented when line-wrapping is present | 4      |
+| Property                  | Description                                                                 | Spaces |
+|---------------------------|-----------------------------------------------------------------------------|--------|
+| `basicOffset`             | how far new indentation level should be indented when on the next line      | 4      |
+| `braceAdjustment`         | how far a braces should be indented when on the next line 	                | 0      |
+| `caseIndent`              | how far a case label should be indented when on next line 	                | 0      |
+| `throwsIndent` 	          | how far a throws clause should be indented when on next line                | 4      |
+| `arrayInitIndent`         | how far an array initializer list item should be indented when on next line | 4      |
+| `lineWrappingIndentation` | how far continuation line should be indented when line-wrapping is present  | 4      |
 
 ## JavadocMethod
 
