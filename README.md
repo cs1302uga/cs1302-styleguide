@@ -18,6 +18,7 @@ about how to use the `checkstyle` tool for compliance.
 1. [Specific Guidelines](#specific-guidelines)
    1. [ArrayTypeStyle](#arraytypestyle)
    1. [ConstantName](#constantname)
+   1. [EmptyBlock](#emptyblock)
    1. [EmptyCatchBlock](#emptycatchblock)
    1. [EmptyLineSeparator](#emptylineseparator)
    1. [FileTabCharacter](#filetabcharacter)
@@ -96,6 +97,14 @@ from the next by a single underscore.
 This naming convention for constants is pervasive among Java programmers and is even
 the same convention used by Oracle and Google. This specific convention allows most
 programmers to easily identify a constant when used in source code.
+
+## EmptyBlock
+
+Empty code blocks are not allowed.
+
+**Rationale:** 
+Code blocks are for code. If, for some reason, you believe that you need an empty code
+block, then take a step back and rework your control flow.
 
 ## EmptyCatchBlock
 
