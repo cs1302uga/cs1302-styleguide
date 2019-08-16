@@ -47,7 +47,26 @@ about how to use the `checkstyle` tool for compliance.
 
 Many companies will not let you commit changes for review until their established
 guidelines are met--a notable example is Google. Why do these companies do this?
-The short answer is m
+The short answer is that it makes things easier for everybody:
+
+* If your code looks good, which we'll define here as adhering to an established
+  style guide, then it's very likely easier to read. At the very least, it's easier
+  to read compared to code that applies stylistic choices inconsistently. It's
+  certainly easier to read by those who are familiar with the conventions outlined
+  in the style guide.
+  
+* If your code looks good, then it's easier to identify common bugs and syntax
+  errors (e.g., missing a curly brace). This saves real world time when it comes
+  to fixing problems in the code.
+  
+* If your code looks good, then it's easier to extend and/or incorporate into
+  other projects. This results in your code being more useful to others as well
+  as your future self.
+  
+The list could go on. The important thing to remember is that quality not only
+refers to the output of a program but also its effect on the people who interact
+with the code. In some cases that's only. If you're a software engineer, then it's
+likely many others as well. 
 
 # Specific Guidelines
 
