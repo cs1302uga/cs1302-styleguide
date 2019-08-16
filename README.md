@@ -281,6 +281,10 @@ public @interface Beta {} // empty annotation type
 
 ### Setup Checkstyle
 
+Before you can use the `checkstyle` command on Nike for the first time, you will
+need to configure your environment to make it available. To do this, follow the
+steps below while logged into Nike:
+
 1. **Add `/usr/local/checkstyle` to your `PATH`.** You can do this by adding the 
    following to your `~/.bash_profile`, then logging out and back in:
 
@@ -290,6 +294,16 @@ public @interface Beta {} // empty annotation type
    ```
 
 ### Run Checkstyle
+
+To run checkstyle on an individual file, say `src/Test.java`, you can execute
+the following:
+
+```
+$ checkstyle -c cs1302_checks.xml src/Test.java
+```
+
+In the program output, any warnings that appear relate directly to style 
+guidelines presented earlier in this document. 
 
 <hr/>
 
