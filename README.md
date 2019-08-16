@@ -1,3 +1,4 @@
+![status-not-ready](https://img.shields.io/badge/Status-Not%20Ready-red)
 **UNDER CONSTRUCTION; IN PROGRESS**
 <hr/>
 
