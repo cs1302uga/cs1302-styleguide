@@ -52,7 +52,7 @@ public static void main(String[] args) { // Java style; valid style
 public static void main(String args[]) { // C style; invalid style
 ```
 
-**Rational:** 
+**Rationale:** 
 While the C style is also syntactically correct in Java, Oracle advises that,
 "convention discourages this form; the brackets identify the array type and 
 should appear with the type designation."
@@ -61,6 +61,11 @@ should appear with the type designation."
 
 Constant names must use _CONSTANT_CASE_: all uppercase letters, with each word separated 
 from the next by a single underscore.
+
+**Rationale:**
+This naming convention for constants is pervasive among Java programmers and is even
+the same convention used by Oracle and Google. This specific convention allows most
+programmers to easily identify a constant when used in source code.
 
 ## EmptyCatchBlock
 
