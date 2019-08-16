@@ -15,6 +15,7 @@
    1. LineLength
    1. MemberName
    1. MissingJavadocMethod
+   1. MissingJavadocType
    1. ModifierOrder
    1. NeedBraces
    1. OneStatementPerLine
@@ -144,6 +145,11 @@ specific task.
 ### MissingJavadocMethod
 
 All methods, except the `main` method, must have Javadoc documentation.
+
+### MissingJavadocType
+
+All class, enum, interface, and annotation interface definitions must have Javadoc
+documentation.
 
 ### ModifierOrder
 
