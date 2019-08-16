@@ -52,10 +52,9 @@ The short answer is that it makes things easier for everybody.
 If your code looks good, which we'll define here as adhering to an established 
 style guide, then:
   
-* It's very likely easier to read. At the very least, it's easier
-  to read compared to code that applies stylistic choices inconsistently. It's
-  certainly easier to read by those who are familiar with the conventions outlined
-  in the style guide.
+* It's easier to read, especially when compared to code that applies stylistic choices 
+  inconsistently. It's certainly easier to read by those who are familiar with the 
+  conventions outlined in the style guide.
   
 * It's easier to identify common bugs and syntax errors (e.g., missing a curly brace). 
   This saves real world time when it comes to fixing problems in your code.
@@ -66,8 +65,8 @@ style guide, then:
 The list could go on. The important thing to remember is that quality not only
 refers to the output of a program but also its effect on the people who interact
 with the code. Rarely, in practice, are you the only one who will read and use your
-code. If you're a software engineer, then it's very likely many others will interact
-your code as well. 
+code. If you're a software engineer, then it's very likely that many others will 
+interact your code as well. 
 
 # Specific Guidelines
 
