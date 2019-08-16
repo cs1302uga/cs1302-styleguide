@@ -518,15 +518,36 @@ steps below while logged into Nike:
 
 ## Run Checkstyle
 
-To run checkstyle on an individual file, say `src/Test.java`, you can execute
+To run checkstyle on an individual file, say `src/cs1302/Test.java`, you can execute
 the following:
 
 ```
-$ checkstyle -c cs1302_checks.xml src/Test.java
+$ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
 ```
 
 In the program output, any warnings that appear relate directly to style 
 guidelines presented earlier in this document. 
+
+Here is some example output that include some warnings:
+
+```
+$ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
+Starting audit...
+[WARN] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
+[WARN] src/cs1302/Test.java:7:9: '{' at column 9 should be on the previous line. [LeftCurly]
+[WARN] src/cs1302/Test.java:7:9: Must have at least one statement. [EmptyBlock]
+[WARN] src/cs1302/Test.java:11: 'if' construct must use '{}'s. [NeedBraces]
+Audit done.
+```
+
+Here is some example output that does not include any warning (i.e.,
+the checked file is in valid style):
+
+```
+$ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
+Starting audit...
+Audit done.
+```
 
 <hr/>
 
