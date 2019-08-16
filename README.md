@@ -413,7 +413,6 @@ if (n==0) { // invalid
 if (n == 0) { // valid
     ...
 ```
-
 ```java
 while(n == 0) { // invalid
     ...
