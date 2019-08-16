@@ -8,14 +8,17 @@
    1. EmptyCatchBlock
    1. EmptyLineSeparator
    1. FileTabCharacter
+   1. Indentation
    1. LeftCurly
    1. LineLength
+   1. MemberName
    1. ModifierOrder
    1. NeedBraces
    1. OneStatementPerLine
    1. OneTopLevelClass
    1. OuterTypeFilename
    1. RightCurly
+   1. TypeName
    1. WhitespaceAround
 1. [Recommended Emacs Configuration](#recommended-emacs-configuration)
 1. [How to Check](#how-to-check)
@@ -69,6 +72,19 @@ same file in different ways, depending on the tab width configured for the
 given editor. Developers should not need to configure the tab width of their 
 text editors in order to be able to read source code.
 
+### Indentation
+
+The following indentation rules must be followed:
+
+| Property                  | Description                                                                | Spaces |
+|---------------------------|----------------------------------------------------------------------------|--------|
+| `basicOffset`             | how far new indentation level should be indented when on the next line     | 4      |
+| `braceAdjustment`         | how far a braces should be indented when on the next line 	               | 0      |
+| `caseIndent`              | how far a case label should be indented when on next line 	               | 0      |
+| `throwsIndent` 	          | how far a throws clause should be indented when on next line               | 4      |
+| `arrayInitIndent`         | how far an array initialization should be indented when on next line       | 4      |
+| `lineWrappingIndentation` | how far continuation line should be indented when line-wrapping is present | 4      |
+
 ### LeftCurly
 
 Left curly braces (`{`) for code blocks must always be on the end of the line. 
@@ -93,6 +109,14 @@ column limit include:
 **Rationale:** Long lines are hard to read in printouts or if developers have 
 limited screen space for the source code, e.g. if the editor displays additional 
 information like line numbers, multiple files, project tree, class hierarchy, etc.
+
+### MemberName
+
+Local variable names must be written in _lowerCamelCase_.
+
+### MethodName
+
+Method names must be written in _lowerCamelCase_.
 
 ### ModifierOrder
 
@@ -182,6 +206,13 @@ if (a > 0) {
 else { 
     ...
 ```
+
+### TypeName
+
+Type names for classes, interfaces, enums, and annotations must be written in _UpperCamelCase_. 
+Class names are typically nouns or noun phrases. For example, `Character` or `ImmutableList`. 
+Interface names may also be nouns or noun phrases (for example, `List`), but may sometimes be 
+adjectives or adjective phrases instead (for example, `Readable`).
 
 ### WhitespaceAround
 
