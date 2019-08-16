@@ -33,7 +33,7 @@ about how to use the `checkstyle` tool for compliance.
    1. [SummaryJavadoc](#summaryjavadoc)
    1. [TypeName](#typename)
    1. [WhitespaceAround](#whitespacearound)
-1. [Recommended Emacs Configuration](#recommended-emacs-configuration)
+1. [Recommended Emacs Configurations](#recommended-emacs-configurations)
 1. [How to Check](#how-to-check)
    1. [Setup Checkstyle](#setup-checkstyle)
    1. [Run Checkstyle](#run-checkstyle)
@@ -395,7 +395,52 @@ public @interface Beta {} // empty annotation type
 **Rationale:**
 This convention improves readability.
 
-## Recommended Emacs Configuration
+## Recommended Emacs Configurations
+
+Emacs can be configured in a couple different ways. The usual way is to edit
+a file in your user home directory called `.emacs` and place desired configuration
+settings there. You can create the `~/.emacs` file if it does not exist. If you 
+have an `~/.emacs.el` or `~/.emacs.d/init.el file`, then you can place the lines 
+in that file instead of `~/.emacs`.
+
+```
+;; add and configure line numbers and column numbers
+(setq line-number-mode t)
+(setq column-number-mode t)
+(global-linum-mode 1)
+(setq linum-format "%d ")
+```
+
+```
+;; set a dedicated directory for backup files
+(setq backup-directory-alist `(("." . "~/.saves")))
+```
+
+```
+;; no tab characters in whitespace
+(setq-default indent-tabs-mode nil)
+```
+
+```
+;; handle indentation with 4 white spaces
+(setq-default c-default-style "linux"
+              c-basic-offset 4)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+```
+
+```
+;; auto remove trailing white space
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+```
+
+```
+;; highlight lines that exceed some column limit
+(setq-default
+ whitespace-line-column 100
+ whitespace-style '(face lines-tail))
+(add-hook 'prog-mode-hook #'whitespace-mode)
+```
 
 ## How to Check
 
