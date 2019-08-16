@@ -40,6 +40,7 @@ about how to use the `checkstyle` tool for compliance.
 1. [How to Check](#how-to-check)
    1. [Setup Checkstyle](#setup-checkstyle)
    1. [Run Checkstyle](#run-checkstyle)
+      1. [Output Example](#output-examples)
 
 # Motivation
 
@@ -528,7 +529,7 @@ $ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
 In the program output, any warnings that appear relate directly to style 
 guidelines presented earlier in this document. 
 
-### Examples
+### Output Examples
 
 Here is some example output that for an invalid file:
 
