@@ -528,10 +528,11 @@ $ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
 In the program output, any warnings that appear relate directly to style 
 guidelines presented earlier in this document. 
 
-Here is some example output that include some warnings:
+### Examples
+
+Here is some example output that for an invalid file:
 
 ```
-$ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
 Starting audit...
 [WARN] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
 [WARN] src/cs1302/Test.java:7:9: '{' at column 9 should be on the previous line. [LeftCurly]
@@ -540,11 +541,9 @@ Starting audit...
 Audit done.
 ```
 
-Here is some example output that does not include any warning (i.e.,
-the checked file is in valid style):
+Here is some example output for a valid file:
 
 ```
-$ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
 Starting audit...
 Audit done.
 ```
