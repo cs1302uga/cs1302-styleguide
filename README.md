@@ -34,6 +34,7 @@ about how to use the `checkstyle` tool for compliance.
    1. [TypeName](#typename)
    1. [WhitespaceAround](#whitespacearound)
 1. [Recommended Emacs Configurations](#recommended-emacs-configurations)
+1. [Recommended Vi Configurations](#recommended-vi-configurations)
 1. [How to Check](#how-to-check)
    1. [Setup Checkstyle](#setup-checkstyle)
    1. [Run Checkstyle](#run-checkstyle)
@@ -440,6 +441,16 @@ in that file instead of `~/.emacs`.
  whitespace-line-column 100
  whitespace-style '(face lines-tail))
 (add-hook 'prog-mode-hook #'whitespace-mode)
+```
+
+## Recommended Vi Configurations
+
+Vi/Vim can be configured in a couple different ways. The usual way is to edit
+a file in your user home directory called `.vimrc` and place desired configuration
+settings there. You can create the `~/.vimrc` file if it does not exist.
+
+```
+set number " enable line numbers
 ```
 
 ## How to Check
