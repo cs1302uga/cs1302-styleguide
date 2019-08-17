@@ -513,6 +513,9 @@ set number " enable line numbers
 ```
 
 ```
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
 set expandtab " no tab characters in whitespace
 ```
 
