@@ -519,6 +519,11 @@ set shiftwidth=4
 set expandtab " no tab characters in whitespace
 ```
 
+```
+" show trailing whitespace
+set list listchars=trail:.,extends:>
+```
+
 ## How to Check
 
 ## Setup Checkstyle
