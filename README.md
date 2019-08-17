@@ -509,14 +509,16 @@ a file in your user home directory called `.vimrc` and place desired configurati
 settings there. You can create the `~/.vimrc` file if it does not exist.
 
 ```
-set number " enable line numbers
+" enable line numbers
+set number
 ```
 
 ```
+" handle tabs and indents
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
-set expandtab " no tab characters in whitespace
+set expandtab 
 ```
 
 ```
