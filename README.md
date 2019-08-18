@@ -7,7 +7,7 @@ for Java source code. For the purposes of this course, a Java source file is
 described as being in _valid style_ if and only if it adheres to the rules herein.
 This document not only contains the specific guidelines that must be followed,
 but also includes editor configuration reccomendations as well information
-about how to use the `checkstyle` tool for compliance.
+about how to use the `checkstyle` tool to check your code for compliance.
 
 ## Table of Contents
 
@@ -68,6 +68,11 @@ code. If you're a software engineer, then it's very likely that many others will
 interact your code as well. 
 
 # Specific Guidelines
+
+The name for each of these guidelines corresponds to a `checkstyle` module
+configured in [`cs1302_checks.xml`](cs1302_checks.xml) for use  by the
+`checkstyle` program. This was done so that it's easier for users to relate 
+`checkstyle` program output to the actual guidelines. 
 
 ## ArrayTypeStyle
 
@@ -562,7 +567,7 @@ to style guidelines presented earlier in this document. For example:
 Here, we see that the `MissingJavadocType` guideline was not met on line `2` in
 `src/cs1302/Test.java`. The output even gives a short description of what it
 thinks is wrong. If the short description is not sufficient to determin what the
-issue is, then you should consult the specific guideline item in this styleguid
+issue is, then you should consult the specific guideline item in this styleguide
 for more information.
 
 ### Output Examples
