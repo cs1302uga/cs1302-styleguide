@@ -1,4 +1,4 @@
-# CS1302 Code Style Guide
+# CSCI 1302 Code Style Guide
 
 ![Approved for: Fall 2019](https://img.shields.io/badge/Approved%20for-Fall%202019-brightgreen)
 
