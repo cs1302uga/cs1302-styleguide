@@ -566,7 +566,7 @@ to style guidelines presented earlier in this document. For example:
 
 Here, we see that the `MissingJavadocType` guideline was not met on line `2` in
 `src/cs1302/Test.java`. The output even gives a short description of what it
-thinks is wrong. If the short description is not sufficient to determin what the
+thinks is wrong. If the short description is not sufficient to determine what the
 issue is, then you should consult the specific guideline item in this styleguide
 for more information.
 
