@@ -551,8 +551,19 @@ the following:
 $ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
 ```
 
-In the program output, any warnings that appear relate directly to style 
-guidelines presented earlier in this document. 
+The `-c cs1302_checks.xml` option ensures that `checkstyle` is checking for compliance
+with this styleguide. In the program output, any warnings that appear relate directly 
+to style guidelines presented earlier in this document. For example:
+
+```
+[WARN] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
+```
+
+Here, we see that the `MissingJavadocType` guideline was not met on line `2` in
+`src/cs1302/Test.java`. The output even gives a short description of what it
+thinks is wrong. If the short description is not sufficient to determin what the
+issue is, then you should consult the specific guideline item in this styleguid
+for more information.
 
 ### Output Examples
 
