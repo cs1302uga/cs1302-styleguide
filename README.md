@@ -570,6 +570,15 @@ thinks is wrong. If the short description is not sufficient to determine what th
 issue is, then you should consult the specific guideline item in this styleguide
 for more information.
 
+### Multiple Files
+
+You might want to check all the files in some `src` directory. To do this, you
+might try the following command:
+
+```
+$ find src -name "*.java" | xargs checkstyle -c cs1302_checks.xml
+```
+
 ### Output Examples
 
 Here is some example output that for an invalid file:
