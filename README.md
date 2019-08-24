@@ -582,7 +582,7 @@ $ find src -name "*.java" | xargs checkstyle -c cs1302_checks.xml
 
 ### Output Examples
 
-Here is some example output that for an invalid file:
+Here is some example output for an **invalid file**:
 
 ```
 Starting audit...
@@ -593,7 +593,7 @@ Starting audit...
 Audit done.
 ```
 
-Here is some example output for a valid file:
+Here is some example output for a **valid file**:
 
 ```
 Starting audit...
