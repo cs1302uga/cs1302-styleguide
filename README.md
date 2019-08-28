@@ -566,10 +566,10 @@ file located in your home directory and add the following line to the end:
 alias check1302="checkstyle -c cs1302_checks.xml"
 ```
 
-After adding the above line to your `.bashrc` file, exit `emacs` and run the command
+After adding the above line to your `.bash_profile` file, exit `emacs` and run the command
 
 ```
-source ~/.bashrc
+source ~/.bash_profile
 ```
 
 Now, you can run checkstyle on a Java file using the following, shortened, command:
