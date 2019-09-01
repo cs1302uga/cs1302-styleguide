@@ -41,6 +41,7 @@ about how to use the `checkstyle` tool to check your code for compliance.
    1. [Setup Checkstyle](#setup-checkstyle)
    1. [Run Checkstyle](#run-checkstyle)
       1. [Multiple Files](#multiple-files)
+      1. [Setup an Alias](#setup-an-alias)
       1. [Output Examples](#output-examples)
 
 # Motivation
@@ -565,26 +566,7 @@ $ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
 ```
 
 The `-c cs1302_checks.xml` option ensures that `checkstyle` is checking for compliance
-with this styleguide. Since you'll be typing this command often, you may want to set up
-a Bash alias to avoid typing the entire command each time. Do do this, open your `.bashrc`
-file located in your home directory and add the following line to the end:
-
-```
-alias check1302="checkstyle -c cs1302_checks.xml"
-```
-
-After adding the above line to your `~/.bash_profile` file, exit your text editor, 
-then run the command:
-
-```
-$ source ~/.bash_profile
-```
-
-Now, you can run checkstyle on a Java file using the following, shortened, command:
-
-```
-$ check1302 src/cs1302/Test.java
-```
+with this styleguide. 
 
 In the program output, any warnings that appear relate directly 
 to style guidelines presented earlier in this document. For example:
@@ -602,10 +584,33 @@ for more information.
 ### Multiple Files
 
 You might want to check all the files in some `src` directory. To do this, you
-might try the following command:
+try the following command:
 
 ```
 $ find src -name "*.java" | xargs checkstyle -c cs1302_checks.xml
+```
+
+### Setup an Alias
+
+Since you will be using the `checkstyle` command often, you may want to set up
+a Bash alias to avoid typing the entire command each time. Do do this, add
+the following line to the end of your `~/.bash_profile` file:
+
+```
+alias check1302="checkstyle -c cs1302_checks.xml"
+```
+
+After adding the line to your `~/.bash_profile` file, exit your text editor, 
+then run the command:
+
+```
+$ source ~/.bash_profile
+```
+
+Now, you can run `checkstyle` on a Java file using the following, shortened, command:
+
+```
+$ check1302 src/cs1302/Test.java
 ```
 
 ### Output Examples
