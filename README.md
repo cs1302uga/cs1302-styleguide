@@ -593,8 +593,8 @@ $ find src -name "*.java" | xargs checkstyle -c cs1302_checks.xml
 ### Setup an Alias
 
 Since you will be using the `checkstyle` command often, you may want to set up
-a Bash alias to avoid typing the entire command each time. Do do this, add
-the following line to the end of your `~/.bash_profile` file:
+a Bash alias to avoid typing the entire command each time. 
+**To do this, add the following line to the end of your `~/.bash_profile` file:**
 
 ```
 alias check1302="checkstyle -c cs1302_checks.xml"
