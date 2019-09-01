@@ -559,7 +559,7 @@ steps below while logged into Nike:
 ## Run Checkstyle
 
 To run checkstyle on an individual file, say `src/cs1302/Test.java`, you can execute
-the command below. **The program is only guaranteed to work if your code compiles.**:
+the command below. **The program is only guaranteed to work if your code compiles.**
 
 ```
 $ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
