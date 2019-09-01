@@ -558,7 +558,7 @@ steps below while logged into Nike:
 ## Run Checkstyle
 
 To run checkstyle on an individual file, say `src/cs1302/Test.java`, you can execute
-the following:
+the command below. **The program is only guaranteed to work if your code compiles.**:
 
 ```
 $ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
@@ -566,23 +566,24 @@ $ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
 
 The `-c cs1302_checks.xml` option ensures that `checkstyle` is checking for compliance
 with this styleguide. Since you'll be typing this command often, you may want to set up
-a bash alias to avoid typing the entire command each time. Do do this, open your `.bashrc`
+a Bash alias to avoid typing the entire command each time. Do do this, open your `.bashrc`
 file located in your home directory and add the following line to the end:
 
 ```
 alias check1302="checkstyle -c cs1302_checks.xml"
 ```
 
-After adding the above line to your `.bash_profile` file, exit `emacs` and run the command
+After adding the above line to your `~/.bash_profile` file, exit your text editor, 
+then run the command:
 
 ```
-source ~/.bash_profile
+$ source ~/.bash_profile
 ```
 
 Now, you can run checkstyle on a Java file using the following, shortened, command:
 
 ```
-check1302 src/cs1302/Test.java
+$ check1302 src/cs1302/Test.java
 ```
 
 In the program output, any warnings that appear relate directly 
