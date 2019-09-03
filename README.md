@@ -96,7 +96,8 @@ should appear with the type designation."
 ## ConstantName
 
 Constant names must use `CONSTANT_CASE`: all uppercase letters, with each word separated 
-from the next by a single underscore.
+from the next by a single underscore. A _constant_ is a `static` and `final` field or an 
+interface/annotation field, except `serialVersionUID` and `serialPersistentFields`.
 
 **Rationale:**
 This naming convention for constants is pervasive among Java programmers and is even
