@@ -174,6 +174,30 @@ snippet is okay:
 String s = "word1\tword2";
 ```
 
+What tabs are not allowed? Specifically, this policy forbids a tab from
+ocurring in the underlying whitespace of your source code. Consider a scenario
+where you declare a method, then prepare to write the method's body.
+For example:
+
+```java
+public String getName() {
+    
+}
+```
+
+When you go to write the inside / body of the method, you likely press the
+`TAB` key on your keyboard. Most text editors implement this by placing the
+following directly in the contents of the code file where you pressed the
+`TAB` key:
+
+1. One `\t` (single tab character); or
+1. Multiple ` ` (single whitespace character).  
+
+This policy specifically forbids the first of these two approaches. 
+If you use the [recommended Emacs configurations](#recommended-emacs-configurations)
+or [recommended Vi configurations](#recommended-vi-configurations), then
+you will be to avoid _future_ non-conformance of this policy.
+
 **Rationale:** 
 Use of tabs instead of spaces may result in different text editors displaying
 same file in different ways, depending on the tab width configured for the
