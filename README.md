@@ -88,6 +88,14 @@ public static void main(String[] args) { // Java style; valid style
 public static void main(String args[]) { // C style; invalid style
 ```
 
+```java
+String[] someVar; // Java style; valid style
+```
+
+```java
+String someVar[]; // C style; invalid style
+```
+
 **Rationale:** 
 While the C style is also syntactically correct in Java, Oracle advises that,
 "convention discourages this form; the brackets identify the array type and 
