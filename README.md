@@ -79,6 +79,8 @@ configured in [`cs1302_checks.xml`](cs1302_checks.xml) for use  by the
 ## ArrayTypeStyle
 
 You must use the Java style for array type declarations and not the C style. 
+The Java style places the square brackets (i.e., the `[]`) to left of the
+variable name, next to the array's element type.
 
 ```java
 public static void main(String[] args) { // Java style; valid style
