@@ -139,6 +139,9 @@ If it is not appropriate for you to handle the exception in a method
 directly, then explore the posibility of propagating the exception up
 using `throws` in the method signature.
 
+**Note:** Depending on the parsing behavior of the `checkstyle` program,
+an empty `catch` block may trigger the `EmptyBlock` policy instead. 
+
 ## EmptyLineSeparator
 
 You should ensure that empty line separators are present after header, 
