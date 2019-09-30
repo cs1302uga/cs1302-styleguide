@@ -660,10 +660,10 @@ Here is some example output for an **invalid file**:
 
 ```
 Starting audit...
-[WARN] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
-[WARN] src/cs1302/Test.java:7:9: '{' at column 9 should be on the previous line. [LeftCurly]
-[WARN] src/cs1302/Test.java:7:9: Must have at least one statement. [EmptyBlock]
-[WARN] src/cs1302/Test.java:11: 'if' construct must use '{}'s. [NeedBraces]
+[ERROR] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
+[ERROR] src/cs1302/Test.java:7:9: '{' at column 9 should be on the previous line. [LeftCurly]
+[ERROR] src/cs1302/Test.java:7:9: Must have at least one statement. [EmptyBlock]
+[ERROR] src/cs1302/Test.java:11: 'if' construct must use '{}'s. [NeedBraces]
 Audit done.
 ```
 
