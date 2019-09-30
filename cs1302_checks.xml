@@ -9,11 +9,15 @@
     Authors: Michael E. Cotterell, Bradley J. Barnes
  -->
 
+<!--
+    2019-09-30 Updated default severity to `error` to avoid confusion.
+ -->
+
 <module name = "Checker">
 
   <!-- General configuration options                      -->
   <property name="charset" value="UTF-8"/>
-  <property name="severity" value="warning"/>
+  <property name="severity" value="error"/>
   <property name="fileExtensions" value="java, properties, xml"/>
 
   <!-- Excludes all 'module-info.java' files              -->
