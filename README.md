@@ -613,7 +613,7 @@ In the program output, any warnings that appear relate directly
 to style guidelines presented earlier in this document. For example:
 
 ```
-[WARN] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
+[ERROR] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
 ```
 
 Here, we see that the `MissingJavadocType` guideline was not met on line `2` in
