@@ -43,6 +43,7 @@ about how to use the `checkstyle` tool to check your code for compliance.
       1. [Multiple Files](#multiple-files)
       1. [Setup an Alias](#setup-an-alias)
       1. [Output Examples](#output-examples)
+1. [Publication History](#publication-history)
 
 # Motivation
 
@@ -674,9 +675,16 @@ Starting audit...
 Audit done.
 ```
 
+## Publication History
+
+| DOI | Tag | Date | Description |
+|-----|-----|------|-------------|
+| [10.5281/zenodo.3370471](https://doi.org/10.5281/zenodo.3370471) | NA        | NA           | All Versions |
+| [10.5281/zenodo.3370472](https://doi.org/10.5281/zenodo.3370472) | `v2019su` | Aug 18, 2019 | Summer 2019  |
+
 <hr/>
 
-[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc-nd/4.0/) [![DOI](https://zenodo.org/badge/202375392.svg)](https://zenodo.org/badge/latestdoi/202375392)
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc-nd/4.0/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3370471.svg)](https://doi.org/10.5281/zenodo.3370471)
 
 <small>
 Copyright &copy; Michael E. Cotterell, Bradley J. Barnes, and the University of Georgia.
