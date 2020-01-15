@@ -12,6 +12,14 @@ about how to use the `checkstyle` tool to check your code for compliance.
 ## Table of Contents
 
 1. [Motivation](#motivation)
+1. [How to Check](#how-to-check)
+   1. [Setup Checkstyle](#setup-checkstyle)
+   1. [Run Checkstyle](#run-checkstyle)
+      1. [Multiple Files](#multiple-files)
+      1. [Setup an Alias](#setup-an-alias)
+      1. [Output Examples](#output-examples)
+1. [Recommended Emacs Configurations](#recommended-emacs-configurations)
+1. [Recommended Vi Configurations](#recommended-vi-configurations)
 1. [Specific Guidelines](#specific-guidelines)
    1. [ArrayTypeStyle](#arraytypestyle)
    1. [ConstantName](#constantname)
@@ -35,14 +43,6 @@ about how to use the `checkstyle` tool to check your code for compliance.
    1. [SummaryJavadoc](#summaryjavadoc)
    1. [TypeName](#typename)
    1. [WhitespaceAround](#whitespacearound)
-1. [Recommended Emacs Configurations](#recommended-emacs-configurations)
-1. [Recommended Vi Configurations](#recommended-vi-configurations)
-1. [How to Check](#how-to-check)
-   1. [Setup Checkstyle](#setup-checkstyle)
-   1. [Run Checkstyle](#run-checkstyle)
-      1. [Multiple Files](#multiple-files)
-      1. [Setup an Alias](#setup-an-alias)
-      1. [Output Examples](#output-examples)
 1. [Publication History](#publication-history)
 
 # Motivation
@@ -64,11 +64,175 @@ style guide, then:
 * It's easier to extend and/or incorporate into other projects. This results in your 
   code being more useful to others as well as your future self.
   
-The list could go on. The important thing to remember is that quality not only
+The list could go on. The important thing to remember is that **quality not only
 refers to the output of a program but also its effect on the people who interact
-with the code. Rarely, in practice, are you the only one who will read and use your
+with the code**. Rarely, in practice, are you the only one who will read and use your
 code. If you're a software engineer, then it's very likely that many others will 
 interact your code as well. 
+
+## How to Check
+
+## Setup Checkstyle
+
+Before you can use the `checkstyle` command on Nike for the first time, you will
+need to configure your environment to make it available. To do this, follow the
+steps below while logged into Nike:
+
+1. **Add `/usr/local/checkstyle` to your `PATH`.** You can do this by adding the 
+   following to your `~/.bash_profile`, then logging out and back in:
+
+   ```
+   # setup checkstyle
+   export PATH=/usr/local/checkstyle:$PATH
+   ```
+
+## Run Checkstyle
+
+To run checkstyle on an individual file, say `src/cs1302/Test.java`, you can execute
+the command below. **The program is only guaranteed to work if your code compiles.**
+
+```
+$ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
+```
+
+The `-c cs1302_checks.xml` option ensures that `checkstyle` is checking for compliance
+with this styleguide. 
+
+In the program output, any warnings that appear relate directly 
+to style guidelines presented earlier in this document. For example:
+
+```
+[ERROR] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
+```
+
+Here, we see that the `MissingJavadocType` guideline was not met on line `2` in
+`src/cs1302/Test.java`. The output even gives a short description of what it
+thinks is wrong. If the short description is not sufficient to determine what the
+issue is, then you should consult the specific guideline item in this styleguide
+for more information.
+
+### Multiple Files
+
+You might want to check all the files in some `src` directory. To do this, you
+try the following command:
+
+```
+$ find src -name "*.java" | xargs checkstyle -c cs1302_checks.xml
+```
+
+### Setup an Alias
+
+Since you will be using the `checkstyle` command often, you may want to set up
+a Bash alias to avoid typing the entire command each time. 
+**To do this, add the following line to the end of your `~/.bash_profile` file:**
+
+```
+alias check1302="checkstyle -c cs1302_checks.xml"
+```
+
+After adding the line to your `~/.bash_profile` file, exit your text editor, 
+then run the command:
+
+```
+$ source ~/.bash_profile
+```
+
+Now, you can run `checkstyle` on a Java file using the following, shortened, command:
+
+```
+$ check1302 src/cs1302/Test.java
+```
+
+### Output Examples
+
+Here is some example output for an **invalid file**:
+
+```
+Starting audit...
+[ERROR] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
+[ERROR] src/cs1302/Test.java:7:9: '{' at column 9 should be on the previous line. [LeftCurly]
+[ERROR] src/cs1302/Test.java:7:9: Must have at least one statement. [EmptyBlock]
+[ERROR] src/cs1302/Test.java:11: 'if' construct must use '{}'s. [NeedBraces]
+Audit done.
+```
+
+Here is some example output for a **valid file**:
+
+```
+Starting audit...
+Audit done.
+```
+
+## Recommended Emacs Configurations
+
+Emacs can be configured in a couple different ways. The usual way is to edit
+a file in your user home directory called `.emacs` and place desired configuration
+settings there. You can create the `~/.emacs` file if it does not exist. If you 
+have an `~/.emacs.el` or `~/.emacs.d/init.el file`, then you can place the lines 
+in that file instead of `~/.emacs`.
+
+```
+;; add and configure line numbers and column numbers
+(setq line-number-mode t)
+(setq column-number-mode t)
+(global-linum-mode 1)
+(setq linum-format "%d ")
+```
+
+```
+;; set a dedicated directory for backup files
+(setq backup-directory-alist `(("." . "~/.saves")))
+```
+
+```
+;; no tab characters in whitespace
+(setq-default indent-tabs-mode nil)
+```
+
+```
+;; handle indentation with 4 white spaces
+(setq-default c-default-style "linux"
+              c-basic-offset 4)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+```
+
+```
+;; auto remove trailing white space
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+```
+
+```
+;; highlight lines that exceed some column limit
+(setq-default
+ whitespace-line-column 100
+ whitespace-style '(face lines))
+(add-hook 'prog-mode-hook #'whitespace-mode)
+```
+
+## Recommended Vi Configurations
+
+Vi/Vim can be configured in a couple different ways. The usual way is to edit
+a file in your user home directory called `.vimrc` and place desired configuration
+settings there. You can create the `~/.vimrc` file if it does not exist.
+
+```
+" enable line numbers
+set number
+```
+
+```
+" handle tabs and indents
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab 
+```
+
+```
+" show trailing whitespace
+set list listchars=trail:.,extends:>
+```
 
 # Specific Guidelines
 
@@ -76,6 +240,11 @@ The name for each of these guidelines corresponds to a `checkstyle` module
 configured in [`cs1302_checks.xml`](cs1302_checks.xml) for use  by the
 `checkstyle` program. This was done so that it's easier for users to relate 
 `checkstyle` program output to the actual guidelines. 
+
+In the example above for an **invalid file**, the programmer would want to look at
+the four error messages given, read the comment for each, and then look up the error message
+in the list below for more details. In that example, the programmer would look up, the 
+`MissingJavadocType`, `LeftCurly`, `EmptyBlock`, and `NeedBraces` details in the list below.
 
 ## ArrayTypeStyle
 
@@ -510,170 +679,6 @@ public @interface Beta {} // empty annotation type
 
 **Rationale:**
 This convention improves readability.
-
-## Recommended Emacs Configurations
-
-Emacs can be configured in a couple different ways. The usual way is to edit
-a file in your user home directory called `.emacs` and place desired configuration
-settings there. You can create the `~/.emacs` file if it does not exist. If you 
-have an `~/.emacs.el` or `~/.emacs.d/init.el file`, then you can place the lines 
-in that file instead of `~/.emacs`.
-
-```
-;; add and configure line numbers and column numbers
-(setq line-number-mode t)
-(setq column-number-mode t)
-(global-linum-mode 1)
-(setq linum-format "%d ")
-```
-
-```
-;; set a dedicated directory for backup files
-(setq backup-directory-alist `(("." . "~/.saves")))
-```
-
-```
-;; no tab characters in whitespace
-(setq-default indent-tabs-mode nil)
-```
-
-```
-;; handle indentation with 4 white spaces
-(setq-default c-default-style "linux"
-              c-basic-offset 4)
-(setq-default tab-width 4)
-(setq indent-line-function 'insert-tab)
-```
-
-```
-;; auto remove trailing white space
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-```
-
-```
-;; highlight lines that exceed some column limit
-(setq-default
- whitespace-line-column 100
- whitespace-style '(face lines))
-(add-hook 'prog-mode-hook #'whitespace-mode)
-```
-
-## Recommended Vi Configurations
-
-Vi/Vim can be configured in a couple different ways. The usual way is to edit
-a file in your user home directory called `.vimrc` and place desired configuration
-settings there. You can create the `~/.vimrc` file if it does not exist.
-
-```
-" enable line numbers
-set number
-```
-
-```
-" handle tabs and indents
-filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
-set expandtab 
-```
-
-```
-" show trailing whitespace
-set list listchars=trail:.,extends:>
-```
-
-## How to Check
-
-## Setup Checkstyle
-
-Before you can use the `checkstyle` command on Nike for the first time, you will
-need to configure your environment to make it available. To do this, follow the
-steps below while logged into Nike:
-
-1. **Add `/usr/local/checkstyle` to your `PATH`.** You can do this by adding the 
-   following to your `~/.bash_profile`, then logging out and back in:
-
-   ```
-   # setup checkstyle
-   export PATH=/usr/local/checkstyle:$PATH
-   ```
-
-## Run Checkstyle
-
-To run checkstyle on an individual file, say `src/cs1302/Test.java`, you can execute
-the command below. **The program is only guaranteed to work if your code compiles.**
-
-```
-$ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
-```
-
-The `-c cs1302_checks.xml` option ensures that `checkstyle` is checking for compliance
-with this styleguide. 
-
-In the program output, any warnings that appear relate directly 
-to style guidelines presented earlier in this document. For example:
-
-```
-[ERROR] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
-```
-
-Here, we see that the `MissingJavadocType` guideline was not met on line `2` in
-`src/cs1302/Test.java`. The output even gives a short description of what it
-thinks is wrong. If the short description is not sufficient to determine what the
-issue is, then you should consult the specific guideline item in this styleguide
-for more information.
-
-### Multiple Files
-
-You might want to check all the files in some `src` directory. To do this, you
-try the following command:
-
-```
-$ find src -name "*.java" | xargs checkstyle -c cs1302_checks.xml
-```
-
-### Setup an Alias
-
-Since you will be using the `checkstyle` command often, you may want to set up
-a Bash alias to avoid typing the entire command each time. 
-**To do this, add the following line to the end of your `~/.bash_profile` file:**
-
-```
-alias check1302="checkstyle -c cs1302_checks.xml"
-```
-
-After adding the line to your `~/.bash_profile` file, exit your text editor, 
-then run the command:
-
-```
-$ source ~/.bash_profile
-```
-
-Now, you can run `checkstyle` on a Java file using the following, shortened, command:
-
-```
-$ check1302 src/cs1302/Test.java
-```
-
-### Output Examples
-
-Here is some example output for an **invalid file**:
-
-```
-Starting audit...
-[ERROR] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
-[ERROR] src/cs1302/Test.java:7:9: '{' at column 9 should be on the previous line. [LeftCurly]
-[ERROR] src/cs1302/Test.java:7:9: Must have at least one statement. [EmptyBlock]
-[ERROR] src/cs1302/Test.java:11: 'if' construct must use '{}'s. [NeedBraces]
-Audit done.
-```
-
-Here is some example output for a **valid file**:
-
-```
-Starting audit...
-Audit done.
-```
 
 ## Publication History
 
