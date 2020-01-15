@@ -156,6 +156,13 @@ Starting audit...
 Audit done.
 ```
 
+In the example above, the programmer would need to find the four error messages listed in
+the [Specific Guidelines](#specific-guidelines) section of this document, and also be sure to
+read the description and motiviation for each error. Here, the programmer would look up the 
+`MissingJavadocType`, `LeftCurly`, `EmptyBlock`, and `NeedBraces` details. The `checkstyle`
+output usually provides extra information to help you fix the problem as illustrated in
+the example above.
+
 Here is some example output for a **valid file**:
 
 ```
@@ -240,11 +247,6 @@ The name for each of these guidelines corresponds to a `checkstyle` module
 configured in [`cs1302_checks.xml`](cs1302_checks.xml) for use  by the
 `checkstyle` program. This was done so that it's easier for users to relate 
 `checkstyle` program output to the actual guidelines. 
-
-In the example above for an **invalid file**, the programmer would want to look at
-the four error messages given, read the comment for each, and then look up the error message
-in the list below for more details. In that example, the programmer would look up, the 
-`MissingJavadocType`, `LeftCurly`, `EmptyBlock`, and `NeedBraces` details in the list below.
 
 ## ArrayTypeStyle
 
