@@ -481,7 +481,18 @@ are open at the same time on a single screen.
 
 ## MissingJavadocMethod
 
-All methods, except the `main` method, must have Javadoc documentation.
+All methods, except the `main` method, must have Javadoc documentation. 
+
+If the method overrides a method in an interface, then you are still required to provide
+a comment to stay compliant with this style guide. If you want to inherit the comment
+from the interface, then use the following comment:
+
+```java
+/** {@inheritDoc} */
+```
+
+You can even add more text after the `{@inheritDoc}` if you want to provide more details
+in addition to what it inherited. 
 
 **Rationale:**
 Providing sufficiently detailed documention helps make code maintenance and bug
