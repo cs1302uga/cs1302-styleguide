@@ -483,16 +483,44 @@ are open at the same time on a single screen.
 
 All methods, except the `main` method, must have Javadoc documentation. 
 
-If the method overrides a method in an interface, then you are still required to provide
-a comment to stay compliant with this style guide. If you want to inherit the comment
-from the interface, then use the following comment:
+If a method overrides a method from another class or interface, then you are still 
+required to provide a Javadoc comment to stay compliant with this style guide. If you 
+want to inherit the comment from the interface, then use the following comment:
 
 ```java
 /** {@inheritDoc} */
 ```
 
+If Javadoc does not have access to the source code for the class or interface, then
+you should use the following comment, replacing the sentence with something appropriate,
+in order to avoid a blank description in the generated documentation website:
+
+```java
+/**
+ * Summary sentence.
+ *
+ * <p> 
+ * {@inheritDoc}
+ */
+ ```
+ 
 You can even add more text after the `{@inheritDoc}` if you want to provide more details
-in addition to what it inherited. 
+in addition to what is inherited: 
+
+```java
+/**
+ * Summary sentence.
+ *
+ * <p>
+ * {@inheritDoc}
+ *
+ * <p>
+ * A sentence or two concerning how this method behaves in a
+ * particular way due to the underlying implementation.  
+ */
+```
+
+**NOTE:** The `<p>` tags in the Javadoc comments above just start new paragraphs in the website output.
 
 **Rationale:**
 Providing sufficiently detailed documention helps make code maintenance and bug
