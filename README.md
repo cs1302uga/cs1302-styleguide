@@ -376,6 +376,15 @@ If you use the [recommended Emacs configurations](#recommended-emacs-configurati
 or [recommended Vi configurations](#recommended-vi-configurations), then
 you will be to avoid _future_ non-conformance of this policy.
 
+**Fix using Emacs:**
+If you are an Emacs user who has setup the 
+[recommended Emacs configurations](#recommended-emacs-configurations), then you 
+can fix individual lines that violate `FileTabCharacter` by moving to the start 
+of an offending line and using the following command: `M-x untabify RET` 
+(i.e., type `M-x`, the entire word `untabify`, then the
+return key). To fix an entire file, move to the beginning of the file and use the
+following command: `C-u M-x untabify`. 
+
 **Rationale:** 
 Use of tabs instead of spaces may result in different text editors displaying
 same file in different ways, depending on the tab width configured for the
