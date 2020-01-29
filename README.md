@@ -113,9 +113,9 @@ for more information.
 
 ### Multiple Files
 
-You might want to check all the files in some `src` directory. To do this, you
+You might want to check all the files in some `src` directory. To do this, you can
 try the command below. It finds all files under `src` that end with `.java`, then
-pipes those paths to `xargs` so that they are supplied as space separated
+pipes those file paths to `xargs` so that they are supplied as space separated
 command-line arguments to `checkstyle`. Here is the command:
 
 ```
