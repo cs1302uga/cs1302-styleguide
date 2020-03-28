@@ -214,7 +214,7 @@ in that file instead of `~/.emacs`.
 ```
 
 ```
-;; handle inline lambda expressions
+;; handle multi-line inline lambda expressions
 (setq c-offsets-alist '((arglist-cont-nonempty . 0)))
 ```
 
