@@ -419,9 +419,9 @@ The following indentation rules must be followed:
 | `lineWrappingIndentation` | how far continuation line should be indented when line-wrapping is present  | 4      |
 
 Sometimes, indentation rules are a little hard to parse when parentheses and 
-curly braces are involved, as is sometimes the case with inline lambda 
-expressions. Here is an example of an inline lambda expression, i.e., a 
-lambda expression that is used as a parameter to a method:
+curly braces are involved, as is sometimes the case with multi-line inline lambda 
+expressions. An inline lambda expression is a lambda expression that is used as 
+a parameter to a method. Here is an example:
 
 ```java
 // BAD INDENTATION
