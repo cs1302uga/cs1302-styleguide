@@ -214,6 +214,11 @@ in that file instead of `~/.emacs`.
 ```
 
 ```
+;; handle inline lambda expressions
+(setq c-offsets-alist '((arglist-cont-nonempty . 0)))
+```
+
+```
 ;; auto remove trailing white space
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ```
@@ -412,6 +417,35 @@ The following indentation rules must be followed:
 | `throwsIndent` 	          | how far a throws clause should be indented when on next line                | 4      |
 | `arrayInitIndent`         | how far an array initializer list item should be indented when on next line | 4      |
 | `lineWrappingIndentation` | how far continuation line should be indented when line-wrapping is present  | 4      |
+
+Sometimes, indentation rules are a little hard to parse when parentheses and 
+curly braces are involved, as is sometimes the case with inline lambda 
+expressions. Here is an example of an inline lambda expression, i.e., a 
+lambda expression that is used as a parameter to a method:
+
+```java
+// BAD INDENTATION
+Arrays.sort(array, (a, b) -> {
+        return a.compareTo(b);  // 'block' child has incorrect indentation
+    });                         // 'block rcurly' has incorrect indentation
+```
+
+```java
+// GOOD INDENTATION
+Arrays.sort(array, (a, b) -> {
+    return a.compareTo(b);
+}); 
+```
+
+If these rules make one of your inline lambda expressions look less readable, 
+then you are encouraged to refactor your lambda expression, if possible, to 
+avoid indentation. Here is the same inline lambda written using one line of 
+code:
+
+```java
+// HOWEVER, if you can write using one line, then please do so
+Arrays.sort(array, (a, b) -> a.compareTo(b));
+```
 
 ## JavadocMethod
 
