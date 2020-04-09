@@ -44,7 +44,7 @@ about how to use the `checkstyle` tool to check your code for compliance.
    1. [TypeName](#typename)
    1. [WhitespaceAround](#whitespacearound)
 1. [Appendix](#appendix)
-   1. [Setup Checkstyle Locally on MacOS]
+   1. [Setup Checkstyle Locally on MacOS](#how-to-setup-locally-on-macos)
 1. [Publication History](#publication-history)
 
 # Motivation
