@@ -43,6 +43,8 @@ about how to use the `checkstyle` tool to check your code for compliance.
    1. [SummaryJavadoc](#summaryjavadoc)
    1. [TypeName](#typename)
    1. [WhitespaceAround](#whitespacearound)
+1. [Appendix](#appendix)
+   1. [Setup Checkstyle Locally on MacOS]
 1. [Publication History](#publication-history)
 
 # Motivation
@@ -772,6 +774,10 @@ public @interface Beta {} // empty annotation type
 
 **Rationale:**
 This convention improves readability.
+
+## Appendix
+
+### How to Setup Locally on MacOS
 
 ## Publication History
 
