@@ -10,6 +10,7 @@
  -->
 
 <!--
+    2020-04-03 Updated for Checkstyle 8.31
     2019-09-30 Updated default severity to `error` to avoid confusion.
  -->
 
@@ -32,15 +33,15 @@
     <property name="eachLine" value="true"/>
   </module>
 
+  <module name="LineLength">
+    <property name="max" value="100"/>
+    <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
+    <property name="severity" value="error"/>
+  </module>
+
   <module name="TreeWalker">
 
     <module name="OuterTypeFilename"/>
-
-    <module name="LineLength">
-      <property name="max" value="100"/>
-      <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
-      <property name="severity" value="error"/>
-    </module>
 
     <module name="OneTopLevelClass"/>
 
@@ -109,7 +110,6 @@
 
     <module name="JavadocMethod">
       <property name="allowedAnnotations" value="Override, Test, SafeVarargs"/>
-      <property name="ignoreMethodNamesRegex" value="^main$"/>
     </module>
 
     <module name="MissingJavadocType">
