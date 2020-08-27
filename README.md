@@ -81,9 +81,9 @@ interact your code as well.
 
 ## Setup Checkstyle
 
-Before you can use the `checkstyle` command on Nike for the first time, you will
+Before you can use the `checkstyle` command on Odin for the first time, you will
 need to configure your environment to make it available. To do this, follow the
-steps below while logged into Nike:
+steps below while logged into Odin:
 
 1. **Add `/usr/local/checkstyle` to your `PATH`.** You can do this by adding the 
    following to your `~/.bash_profile`, then logging out and back in:
