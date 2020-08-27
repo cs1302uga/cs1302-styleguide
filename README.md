@@ -1,6 +1,6 @@
 # CSCI 1302 Code Style Guide
 
-![Approved for: Spring 2020](https://img.shields.io/badge/Approved%20for-Spring%202020-blue)
+![Approved for: Fall 2020](https://img.shields.io/badge/Approved%20for-Fall%202020-blueviolet)
 
 This document serves as the complete definition of CSCI 1302's coding standards 
 for Java source code. For the purposes of this course, a Java source file is 
@@ -8,6 +8,11 @@ described as being in _valid style_ if and only if it adheres to the rules herei
 This document not only contains the specific guidelines that must be followed,
 but also includes editor configuration reccomendations as well information
 about how to use the `checkstyle` tool to check your code for compliance.
+
+Make sure you read through this document carefully. **It contains setup instructions 
+for the `checkstyle` program which lets you run your code through an application to 
+check for proper code style. It also contains recommended Emacs and Vi configurations 
+that, if used, will reduce the number of style issues you have in your code moving forward.**
 
 ## Table of Contents
 
