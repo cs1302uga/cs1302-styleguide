@@ -79,7 +79,7 @@ interact your code as well.
 
 ## How to Check
 
-## Setup Checkstyle
+<!-- ## Setup Checkstyle
 
 Before you can use the `checkstyle` command on Odin for the first time, you will
 need to configure your environment to make it available. To do this, follow the
@@ -91,7 +91,7 @@ steps below while logged into Odin:
    ```
    # setup checkstyle
    export PATH=/usr/local/checkstyle:$PATH
-   ```
+   ``` -->
 
 ## Run Checkstyle
 
@@ -99,11 +99,11 @@ To run checkstyle on an individual file, say `src/cs1302/Test.java`, you can exe
 the command below. **The program is only guaranteed to work if your code compiles.**
 
 ```
-$ checkstyle -c cs1302_checks.xml src/cs1302/Test.java
+$ check1302 src/cs1302/Test.java
 ```
 
-The `-c cs1302_checks.xml` option ensures that `checkstyle` is checking for compliance
-with this styleguide. 
+<!-- The `-c cs1302_checks.xml` option ensures that `checkstyle` is checking for compliance
+with this styleguide. -->
 
 In the program output, any warnings that appear relate directly 
 to style guidelines presented earlier in this document. For example:
@@ -121,7 +121,9 @@ for more information.
 ### Multiple Files
 
 You might want to check all the files in some `src` directory. To do this, you can
-try the command below. It finds all files under `src` that end with `.java`, then
+pass the entire directory to `check1302` as in the following command:
+
+<!-- try the command below. It finds all files under `src` that end with `.java`, then
 pipes those file paths to `xargs` so that they are supplied as space separated
 command-line arguments to `checkstyle`. Here is the command:
 
@@ -130,13 +132,13 @@ $ find src -name "*.java" | xargs checkstyle -c cs1302_checks.xml
 ```
 
 If you are okay with `checkstyle` deciding which files should be checked, then this 
-simpler version can be used:
+simpler version can be used: -->
 
 ```
-$ checkstyle -c cs1302_checks.xml src
+$ check1302 src
 ```
 
-### Setup an Alias
+<!-- ### Setup an Alias
 
 Since you will be using the `checkstyle` command often, you may want to set up
 a Bash alias to avoid typing the entire command each time. 
@@ -158,7 +160,7 @@ Now, you can run `checkstyle` on a Java file using the following, shortened, com
 ```
 $ check1302 src/cs1302/Test.java
 ```
-
+-->
 ### Output Examples
 
 Here is some example output for an **invalid file**:
