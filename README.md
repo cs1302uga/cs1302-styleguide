@@ -18,10 +18,10 @@ that, if used, will reduce the number of style issues you have in your code movi
 
 1. [Motivation](#motivation)
 1. [How to Check](#how-to-check)
-   1. [Setup Checkstyle](#setup-checkstyle)
+   <!-- 1. [Setup Checkstyle](#setup-checkstyle) -->
    1. [Run Checkstyle](#run-checkstyle)
       1. [Multiple Files](#multiple-files)
-      1. [Setup an Alias](#setup-an-alias)
+      <!-- 1. [Setup an Alias](#setup-an-alias) -->
       1. [Output Examples](#output-examples)
 1. [Recommended Emacs Configurations](#recommended-emacs-configurations)
 1. [Recommended Vi Configurations](#recommended-vi-configurations)
