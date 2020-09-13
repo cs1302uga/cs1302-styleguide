@@ -37,6 +37,8 @@ that, if used, will reduce the number of style issues you have in your code movi
    1. [LeftCurly](#leftcurly)
    1. [LineLength](#linelength)
    1. [MemberName](#membername)
+   1. [MethodName](#methodname)
+   1. [MethodLength](#methodlength)
    1. [MissingJavadocMethod](#missingjavadocmethod)
    1. [MissingJavadocType](#missingjavadoctype)
    1. [ModifierOrder](#modifierorder)
