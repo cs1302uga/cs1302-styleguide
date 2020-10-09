@@ -800,13 +800,12 @@ _Coming Soon!_
 
 <hr/>
 
-[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc-nd/4.0/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3370471.svg)](https://doi.org/10.5281/zenodo.3370471)
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc-nd/4.0/) [![License: CC BY-NC 4.0](https://img.shields.io/badge/Instructor%20License-CC%20BY--NC%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc/4.0/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3370471.svg)](https://doi.org/10.5281/zenodo.3370471)
 
 <small>
 Copyright &copy; Michael E. Cotterell, Bradley J. Barnes, and the University of Georgia.
-This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a> to students and the public.
+This work is licensed under 
+a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a> to students and the public and licensed under
+a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a> to instructors at institutions of higher education.
 The content and opinions expressed on this Web page do not necessarily reflect the views of nor are they endorsed by the University of Georgia or the University System of Georgia.
-Portions of this document are adapted from 
-<a href="https://google.github.io/styleguide/">Google's Style Guides</a>
-under a Creative Commons Attribution 3.0 Unported (CC BY 3.0) License.
 </small>
