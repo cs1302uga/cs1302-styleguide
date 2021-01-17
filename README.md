@@ -1,6 +1,6 @@
 # CSCI 1302 Code Style Guide
 
-![Approved for: Fall 2020](https://img.shields.io/badge/Approved%20for-Fall%202020-blueviolet)
+![Approved for: Spring 2021](https://img.shields.io/badge/Approved%20for-Spring%202021-success)
 
 This document serves as the complete definition of CSCI 1302's coding standards 
 for Java source code. For the purposes of this course, a Java source file is 
