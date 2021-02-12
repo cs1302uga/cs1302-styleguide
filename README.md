@@ -198,7 +198,7 @@ settings there. You can create the `~/.emacs` file if it does not exist. If you
 have an `~/.emacs.el` or `~/.emacs.d/init.el file`, then you can place the lines 
 in that file instead of `~/.emacs`.
 
-```
+```emacs
 ;; add and configure line numbers and column numbers
 (setq line-number-mode t)
 (setq column-number-mode t)
@@ -206,17 +206,17 @@ in that file instead of `~/.emacs`.
 (setq linum-format "%d ")
 ```
 
-```
+```emacs
 ;; set a dedicated directory for backup files
 (setq backup-directory-alist `(("." . "~/.saves")))
 ```
 
-```
+```emacs
 ;; no tab characters in whitespace
 (setq-default indent-tabs-mode nil)
 ```
 
-```
+```emacs
 ;; handle indentation with 4 white spaces
 (setq-default c-default-style "linux"
               c-basic-offset 4)
@@ -224,22 +224,31 @@ in that file instead of `~/.emacs`.
 (setq indent-line-function 'insert-tab)
 ```
 
-```
+```emacs
 ;; handle multi-line inline lambda expressions
 (setq c-offsets-alist '((arglist-cont-nonempty . 0)))
 ```
 
-```
+```emacs
 ;; auto remove trailing white space
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ```
 
-```
+```emacs
 ;; highlight lines that exceed some column limit
 (setq-default
  whitespace-line-column 100
  whitespace-style '(face lines))
 (add-hook 'prog-mode-hook #'whitespace-mode)
+```
+
+```emacs
+;; run check1302 on current file with M-x check1302
+(defun check1302 ()
+  (interactive)
+  (when (eq major-mode 'java-mode)
+    (shell-command
+     (format "check1302 %s" buffer-file-name))))
 ```
 
 ## Recommended Vi Configurations
