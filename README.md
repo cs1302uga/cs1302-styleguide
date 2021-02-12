@@ -243,7 +243,7 @@ in that file instead of `~/.emacs`.
 ```
 
 ```emacs
-;; run check1302 on current file with M-x check1302
+;; run check1302 on saved version of current file with M-x check1302
 (defun check1302 ()
   (interactive)
   (when (eq major-mode 'java-mode)
