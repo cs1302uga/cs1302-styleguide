@@ -215,7 +215,7 @@ in that file instead of `~/.emacs`.
 ;; set a backup policy
 (setq make-backup-files t)
 (setq version-control t)
-(setq kept-new-versions 10)
+(setq kept-new-versions 5)
 (setq delete-old-versions t)
 ```
 
