@@ -209,6 +209,10 @@ in that file instead of `~/.emacs`.
 ```emacs
 ;; set a dedicated directory for backup files
 (setq backup-directory-alist `(("." . "~/.saves")))
+```
+
+```emacs
+;; set a backup policy
 (setq make-backup-files t)
 (setq version-control t)
 (setq kept-new-versions 10)
