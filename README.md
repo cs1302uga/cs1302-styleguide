@@ -259,6 +259,10 @@ in that file instead of `~/.emacs`.
      (format "check1302 %s" buffer-file-name))))
 ```
 
+If you want to know what any of these Emacs settings do, then you can use 
+`M-x describe-variable` while in Emacs. When you see the "Describe variable:" prompt, 
+provide the setting variable name (e.g., `make-backup-files`).
+
 ## Recommended Vi Configurations
 
 Vi/Vim can be configured in a couple different ways. The usual way is to edit
