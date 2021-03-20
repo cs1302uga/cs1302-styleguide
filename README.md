@@ -446,6 +446,8 @@ as `^I`.
   
   ```
   $ echo -e "public class One {\n\tprivate int x = 1;\n}\n" > One.java
+  ```
+  ```
   $ cat -T One.java
   public class One
   ^Iprivate int x = 1;
@@ -480,6 +482,8 @@ as `^I`.
   
   ```
   $ echo -e "public class Two {\n\tprivate int y = 2;\n}\n" > Two.java
+  ```
+  ```
   $ cat -T Two.java
   public class Two
       private int y = 2;
