@@ -2,13 +2,6 @@
 
 ![Approved for: Spring 2021](https://img.shields.io/badge/Approved%20for-Spring%202021-success)
 
-This document serves as the complete definition of CSCI 1302's coding standards 
-for Java source code. For the purposes of this course, a Java source file is 
-described as being in _valid style_ if and only if it adheres to the rules herein.
-This document not only contains the specific guidelines that must be followed,
-but also includes editor configuration reccomendations as well information
-about how to use the `checkstyle` tool to check your code for compliance.
-
 Make sure you read through this document carefully. **It contains setup instructions 
 for the `checkstyle` program which lets you run your code through an application to 
 check for proper code style. It also contains recommended Emacs and Vi configurations 
@@ -16,9 +9,10 @@ that, if used, will reduce the number of style issues you have in your code movi
 
 ## Table of Contents
 
+1. [Compliance](#compliance)
 1. [Motivation](#motivation)
-1. [How to Check](#how-to-check)
-   <!-- 1. [Setup Checkstyle](#setup-checkstyle) -->
+1. [When and How to Check](#when-and-how-to-check)
+   1. [When to Check](#when-to-check)
    1. [Run Checkstyle](#run-checkstyle)
       1. [Multiple Files](#multiple-files)
       <!-- 1. [Setup an Alias](#setup-an-alias) -->
@@ -55,14 +49,77 @@ that, if used, will reduce the number of style issues you have in your code movi
 1. [References](#references)
 1. [Publication History](#publication-history)
 
+## Compliance
+
+From a technical standpoint, this style guide serves as the complete definition of
+the coding standards for Java source code in CSCI 1302 at the University of Georgia. 
+When it comes to submitting code for an assignment, a Java source file is described 
+as being in _valid style_ (or compliant with this code style guide) if and only if 
+it adheres to the rules herein. 
+
+We recognize that some of the guidelines may be new for some students, so while
+this style guide does contain the technical details for each guideline, it also
+provides context, examples, and additional information that you may use to
+check your code. In some assignments, terms like "checkstyle audit" or 
+"check1302 audit" are be used to remind you to check your code for compliance
+with this style guide.
+
+We also recognize that the terminal-based text editors used in this course are
+new for many students. That is why we include recommendations for how to configure
+those editors to help you stay in compliance. These recommendations will not
+fix all code style violations, but they should help you avoid writing code that
+violates some of the guidelines that are annoying to spot by hand and even more
+annoying to fix.
+
+Finally, we also include information about how to use the `check1302` program
+on `odin` to check your code for compliance. This is the same tool that graders 
+will use to check your code. **It is your responsibility to ensure that all
+Java source files included with a submission are compliant.** This obviously
+includes code that you write, but it also includes code that may have been given
+to you as part of the assignment. It even includes code that may not be used
+in your program but is still included with your submission.
+
 ## Motivation
 
-Many companies will not let you commit changes for review until their established
-guidelines are met--a notable example is Google. Why do these companies do this?
-The short answer is that it makes things easier for everybody. 
+Many companies will not let you commit changes for review until your 
+code meets their established guidelines--a notable example is Google. 
+Why do these companies do this? The short answer is that enforcing
+good style makes things easier for everybody, and while you may not 
+believe it just yet, it does, in fact, make things easier for you
+too.
 
-If your code looks good, which we'll define here as adhering to an established 
-style guide, then:
+In the preface to *The Practice of Programming* [[TPOP](#ref-tpop)] by 
+[Kernighan](https://en.wikipedia.org/wiki/Brian_Kernighan)
+and [Pike](https://en.wikipedia.org/wiki/Rob_Pike), the authors start by
+asking the reader if they have ever encountered some of the difficult,
+tedious, or annoying scenarios that we all find ourselves in when
+writing code (i.e., the "not fun" part). The last two quetions in the
+list are specifically worth mentioning here:
+
+* Have you ever tried to make a modest change in someone else's program?
+* Have you ever rewritten a program because you couldn't understand it?
+
+The authors end their interrogation with the following comments:
+
+> These things happen to programmers all the time. But dealing with such
+> problems is often harder than it should be because topics like testing,
+> debugging, portability, performance, design alternatives, and
+> style--the *practice* of programming--are not usually the focus of
+> computer science or programming courses. Most programmers learn them
+> haphazardly as their experience grows, and a few never learn them
+> at all. 
+> **-- Kernighan and Pike**
+
+Regarding style, they even go on to say:
+
+> Good style is so important to good programming that we have chosen
+> to cover it first. Well-written programs are better than badly-written
+> ones--they have fewer errors and are easier to debug and modify--so
+> **it is important to think about style from the beginning**.
+> **-- Kernighan and Pike**
+
+If your code looks good, which we'll define here as adhering to an 
+established style guide, then:
   
 * It's easier to read, especially when compared to code that applies stylistic choices 
   inconsistently. It's certainly easier to read by those who are familiar with the 
@@ -76,94 +133,86 @@ style guide, then:
   
 The list could go on. The important thing to remember is that **quality not only
 refers to the output of a program but also its effect on the people who interact
-with the code**. Rarely, in practice, are you the only one who will read and use your
-code. If you're a software engineer, then it's very likely that many others will 
-interact your code as well. 
+with the code**. Rarely, in practice, are you the only one who will read and use 
+your code. If you're a software engineer, then it's very likely that many others 
+will interact with it as well. 
 
-## How to Check
+## When and How to Check
 
-<!-- ## Setup Checkstyle
+Here is a fair and honest warning: if you wait until you are nearly done 
+writing some code before checking its style, then do not be surprised if 
+you significantly increases the overall the amount of time you need 
+to complete the assignment. You won't have a good time. Some of that extra
+time will be from:
+ 
+ * fixing many code style violations; 
+ * fixing bugs introduced by fixing code style violations;
+ * fixing bugs earlier that would have been easier to spot had your code
+   been in compliance.
+   
+Why would you subject yourself to that? Is there a better way? Remember,
+Kernighan and Pike said, "it is important to think about style from the 
+beginning." If you're a beginner, then that seems almost as daunting as
+the alternative, even if you do nod your head as we list out the 
+benefits. It's daunting because you may not yet be familiar with good
+style. We know this, and that is why we provide you with access to Checkstyle, 
+a program that automates the process of checking your code for compliance!
 
-Before you can use the `checkstyle` command on Odin for the first time, you will
-need to configure your environment to make it available. To do this, follow the
-steps below while logged into Odin:
+### When to Check
 
-1. **Add `/usr/local/checkstyle` to your `PATH`.** You can do this by adding the 
-   following to your `~/.bash_profile`, then logging out and back in:
+You should check your code early and often. The goal is to help you learn 
+good style, so every time you see that you're not in compliance, you should
+take the time to fix it. Although you may find that you have many violations
+early on (that's to be expected), over time you will find that you run into
+fewer and fewer violations. This happens because you start to write code
+code in good style. It's a pretty neat way to learn.
 
-   ```
-   # setup checkstyle
-   export PATH=/usr/local/checkstyle:$PATH
-   ``` -->
+If you don't check your code for compliance early and often, then not only
+are you dooming yourself to the miserable time sink of "not fun" activities
+described earlier, you are actively avoiding learning. 
 
-## Run Checkstyle
+### Run Checkstyle
 
-To run checkstyle on an individual file, say `src/cs1302/Test.java`, you can execute
-the command below. **The program is only guaranteed to work if your code compiles.**
+To check your Java source code for compliance, you can use a custom version
+of the Checkstyle program on `odin` called `check1302`. **This program is
+only guaranteed to work if your code compiles**, so if you encounter a 
+crash, then check to make sure your code compiles before proclaiming 
+defeat.
+
+To run the `check1302` program on an individual file, say `src/cs1302/Test.java`, 
+you can execute the command below:
 
 ```
 $ check1302 src/cs1302/Test.java
 ```
 
-<!-- The `-c cs1302_checks.xml` option ensures that `checkstyle` is checking for compliance
-with this styleguide. -->
-
 In the program output, any warnings that appear relate directly 
-to style guidelines presented earlier in this document. For example:
+to style guidelines presented elsewhere in this document. For example:
 
 ```
 [ERROR] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
 ```
 
-Here, we see that the `MissingJavadocType` guideline was not met on line `2` in
-`src/cs1302/Test.java`. The output even gives a short description of what it
-thinks is wrong. If the short description is not sufficient to determine what the
-issue is, then you should consult the specific guideline item in this styleguide
-for more information.
+Here, we see that the [`MissingJavadocType`](#missingjavadoctype) guideline was 
+not met on line `2` in `src/cs1302/Test.java`. The output even gives a short 
+description of what it thinks is wrong. If the short description is not sufficient
+to determine what the issue is, then you should consult the section for that 
+guideline [here](#specific-guidelines) for more information.
+
+To avoid needless
+scrolling, we recommend using the table of contents near the beginning of this 
+style guide or your browser's "find text" feature whenever you want to find 
+the section for a specific guideline.
 
 ### Multiple Files
 
 You might want to check all the files in some `src` directory. To do this, you can
 pass the entire directory to `check1302` as in the following command:
 
-<!-- try the command below. It finds all files under `src` that end with `.java`, then
-pipes those file paths to `xargs` so that they are supplied as space separated
-command-line arguments to `checkstyle`. Here is the command:
-
-```
-$ find src -name "*.java" | xargs checkstyle -c cs1302_checks.xml
-```
-
-If you are okay with `checkstyle` deciding which files should be checked, then this 
-simpler version can be used: -->
-
 ```
 $ check1302 src
 ```
 
-<!-- ### Setup an Alias
-
-Since you will be using the `checkstyle` command often, you may want to set up
-a Bash alias to avoid typing the entire command each time. 
-**To do this, add the following line to the end of your `~/.bash_profile` file:**
-
-```
-alias check1302="checkstyle -c cs1302_checks.xml"
-```
-
-After adding the line to your `~/.bash_profile` file, exit your text editor, 
-then run the command:
-
-```
-$ source ~/.bash_profile
-```
-
-Now, you can run `checkstyle` on a Java file using the following, shortened, command:
-
-```
-$ check1302 src/cs1302/Test.java
-```
--->
 ### Output Examples
 
 Here is some example output for an **invalid file**:
@@ -197,7 +246,8 @@ Emacs can be configured in a couple different ways. The usual way is to edit
 a file in your user home directory called `.emacs` and place desired configuration
 settings there. You can create the `~/.emacs` file if it does not exist. If you 
 have an `~/.emacs.el` or `~/.emacs.d/init.el file`, then you can place the lines 
-in that file instead of `~/.emacs`.
+in that file instead of `~/.emacs`. **If you do not understand what file you 
+need to create or edit, then please ask your instructor or a TA!**
 
 ```emacs
 ;; add and configure line numbers and column numbers
@@ -205,53 +255,37 @@ in that file instead of `~/.emacs`.
 (setq column-number-mode t)
 (global-linum-mode 1)
 (setq linum-format "%d ")
-```
 
-```emacs
 ;; set a dedicated directory for backup files
 (setq backup-directory-alist `(("." . "~/.saves")))
-```
 
-```emacs
 ;; set a backup policy
 (setq make-backup-files t)
 (setq version-control t)
 (setq kept-new-versions 5)
 (setq delete-old-versions t)
-```
 
-```emacs
 ;; no tab characters in whitespace
 (setq-default indent-tabs-mode nil)
-```
 
-```emacs
 ;; handle indentation with 4 white spaces
 (setq-default c-default-style "linux"
               c-basic-offset 4)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
-```
 
-```emacs
 ;; handle multi-line inline lambda expressions
 (setq c-offsets-alist '((arglist-cont-nonempty . 0)))
-```
 
-```emacs
 ;; auto remove trailing white space
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-```
 
-```emacs
 ;; highlight lines that exceed some column limit
 (setq-default
  whitespace-line-column 100
  whitespace-style '(face lines))
 (add-hook 'prog-mode-hook #'whitespace-mode)
-```
 
-```emacs
 ;; run check1302 on saved version of current file with M-x check1302
 (defun check1302 ()
   (interactive)
@@ -269,31 +303,29 @@ provide the setting variable name (e.g., `make-backup-files`).
 Vi/Vim can be configured in a couple different ways. The usual way is to edit
 a file in your user home directory called `.vimrc` and place desired configuration
 settings there. You can create the `~/.vimrc` file if it does not exist.
+**If you do not understand what file you need to create or edit, then please 
+ask your instructor or a TA!**
 
 ```
 " enable line numbers
 set number
-```
 
-```
 " handle tabs and indents
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab 
-```
 
-```
 " show trailing whitespace
 set list listchars=trail:.,extends:>
 ```
 
 # Specific Guidelines
 
-The name for each of these guidelines corresponds to a `checkstyle` module
-configured in [`cs1302_checks.xml`](cs1302_checks.xml) for use  by the
-`checkstyle` program. This was done so that it's easier for users to relate 
-`checkstyle` program output to the actual guidelines. 
+The name for each of these guidelines corresponds to a Checkstyle module
+configured in [`cs1302_checks.xml`](cs1302_checks.xml) for use by the
+`check1302` program. This was done so that it's easier for users to relate 
+`check1302` program output to the actual guidelines. 
 
 ## ArrayTypeStyle
 
@@ -814,8 +846,8 @@ _Coming Soon!_
 
 ## References
 
-* Diamond, M. ([@dimo414](https://github.com/dimo414)). *Google Java Style Guide.* URL: https://google.github.io/styleguide/javaguide.html
-* Kernighan, B.W. and Pike, R. 1999. *The Practice of Programming.* Addison-Wesley Professional. ISBN: 9780133133448.
+* <a id="ref-google-javaguide"/>Diamond, M. ([@dimo414](https://github.com/dimo414)). 2016. *Google Java Style Guide.* URL: https://google.github.io/styleguide/javaguide.html
+* <a id="ref-tpop"/>Kernighan, B.W. and Pike, R. 1999. *The Practice of Programming.* Addison-Wesley Professional. ISBN: 9780133133448.
 
 ## Publication History
 
