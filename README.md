@@ -425,7 +425,7 @@ This vastly improves readability.
 
 ## FileTabCharacter
 
-No tab characters (`\t`) are allowed in the whitespace of the source code.
+No tab characters (`\t`) are allowed in the normal whitespace of the source code.
 This does not include tabs in string literals. For example, the following
 snippet is okay:
 
@@ -434,17 +434,50 @@ String s = "word1\tword2";
 ```
 
 What tabs are not allowed? Specifically, this policy forbids a tab from
-ocurring in the underlying whitespace of your source code. Consider a scenario
-where you declare a method, then prepare to write the method's body.
-For example:
+ocurring in the underlying whitespace of your source code. Some
+examples that illustrate the difference are provided below. When using
+`cat` to display a file, the `-T` option can be used to display `TAB` characters
+as `^I`.
 
-```java
-public String getName() {
-    
-}
-```
+* Use the command below to generate `One.java`, a small class that 
+  violates the `FileTabCharacter` guideline by using single `TAB`
+  character in the whitespace just before the declaration of 
+  `private int x = 1;`:
+  
+  ```
+  $ echo -e "public class One {\n\tprivate int x = 1;\n}\n" > One.java
+  $ cat -T One.java
+  ```
+  
+  Since a `TAB` (`\t`) is used in the whitespace, the line with the `TAB`
+  may appear differently depending on how the program used to view the
+  file is configured. We can simulate that here:
+  
+  ```
+  $ tabs 3; cat One.java
+  $ tabs 5; cat One.java
+  $ tabs 9; cat One.java
+  ```
 
-When you go to write the inside / body of the method, you likely press the
+* Use the command below to generate `Two.java`, a small class where 
+  four spaces are used before the declaration of `private int y = 2;`:
+  
+  ```
+  $ echo -e "public class Two {\n\tprivate int y = 2;\n}\n" > Two.java
+  $ cat -T Two.java
+  ```
+  
+  Since no `TAB` (`\t`) is used in the whitespace, the line with four
+  spaces do not appear differently depending on how the program used 
+  to view the file is configured. We can simulate that here:
+  
+  ```
+  $ tabs 3; cat Two.java
+  $ tabs 5; cat Two.java
+  $ tabs 9; cat Two.java
+  ```
+
+When you go to write the inside / body of a class or method, you likely press the
 `TAB` key on your keyboard. Most text editors implement this by placing the
 following directly in the contents of the code file where you pressed the
 `TAB` key:
