@@ -148,7 +148,9 @@ time will be from:
  * fixing many code style violations; 
  * fixing bugs introduced by fixing code style violations;
  * fixing bugs earlier that would have been easier to spot had your code
-   been in compliance.
+   been in compliance; and
+ * rewriting code you wrote earlier because you no longer understand
+   how it works.
    
 Why would you subject yourself to that? Is there a better way? Remember,
 Kernighan and Pike said, "it is important to think about style from the 
