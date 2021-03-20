@@ -447,6 +447,9 @@ as `^I`.
   ```
   $ echo -e "public class One {\n\tprivate int x = 1;\n}\n" > One.java
   $ cat -T One.java
+  public class One
+  ^Iprivate int x = 1;
+  }
   ```
   
   Since a `TAB` (`\t`) is used in the whitespace, the line with the `TAB`
@@ -455,8 +458,21 @@ as `^I`.
   
   ```
   $ tabs 3; cat One.java
+  public class One
+	 private int x = 1;
+  }
+  ```
+  ```
   $ tabs 5; cat One.java
+  public class One
+	   private int x = 1;
+  }
+  ```
+  ```
   $ tabs 9; cat One.java
+  public class One
+	       private int x = 1;
+  }
   ```
 
 * Use the command below to generate `Two.java`, a small class where 
@@ -465,6 +481,9 @@ as `^I`.
   ```
   $ echo -e "public class Two {\n\tprivate int y = 2;\n}\n" > Two.java
   $ cat -T Two.java
+  public class Two
+      private int y = 2;
+  }
   ```
   
   Since no `TAB` (`\t`) is used in the whitespace, the line with four
@@ -473,8 +492,21 @@ as `^I`.
   
   ```
   $ tabs 3; cat Two.java
+  public class Two
+      private int y = 2;
+  }
+  ```
+  ```
   $ tabs 5; cat Two.java
+  public class Two
+      private int y = 2;
+  }
+  ```
+  ```
   $ tabs 9; cat Two.java
+  public class Two
+      private int y = 2;
+  }
   ```
 
 When you go to write the inside / body of a class or method, you likely press the
