@@ -141,8 +141,8 @@ will interact with it as well.
 
 Here is a fair and honest warning: if you wait until you are nearly done 
 writing some code before checking its style, then do not be surprised if 
-you significantly increases the overall the amount of time you need 
-to complete the assignment. You won't have a good time. Some of that extra
+you significantly increases the overall amount of time you need 
+to complete an assignment. You won't have a good time. Much of that extra
 time will be from:
  
  * fixing many code style violations; 
@@ -154,8 +154,8 @@ Why would you subject yourself to that? Is there a better way? Remember,
 Kernighan and Pike said, "it is important to think about style from the 
 beginning." If you're a beginner, then that seems almost as daunting as
 the alternative, even if you do nod your head as we list out the 
-benefits. It's daunting because you may not yet be familiar with good
-style. We know this, and that is why we provide you with access to Checkstyle, 
+benefits. It's daunting because you may not know what good style is yet.
+We know this, and that is why we provide you with access to Checkstyle, 
 a program that automates the process of checking your code for compliance!
 
 ### When to Check
