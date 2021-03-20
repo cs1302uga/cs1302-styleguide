@@ -52,9 +52,10 @@ that, if used, will reduce the number of style issues you have in your code movi
    1. [WhitespaceAround](#whitespacearound)
 1. [Appendix](#appendix)
    1. [Setup Checkstyle Locally on MacOS](#how-to-setup-locally-on-macos)
+1. [References](#references)
 1. [Publication History](#publication-history)
 
-# Motivation
+## Motivation
 
 Many companies will not let you commit changes for review until their established
 guidelines are met--a notable example is Google. Why do these companies do this?
@@ -810,6 +811,11 @@ This convention improves readability.
 ### How to Setup Locally on MacOS
 
 _Coming Soon!_
+
+## References
+
+* Diamond, M. ([@dimo414](https://github.com/dimo414)). *Google Java Style Guide.* URL: https://google.github.io/styleguide/javaguide.html
+* Kernighan, B.W. and Pike, R. 1999. *The Practice of Programming.* Addison-Wesley Professional. ISBN: 9780133133448.
 
 ## Publication History
 
