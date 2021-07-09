@@ -93,7 +93,7 @@ In the preface to *The Practice of Programming* [[TPOP](#ref-tpop)] by
 and [Pike](https://en.wikipedia.org/wiki/Rob_Pike), the authors start by
 asking the reader if they have ever encountered some of the difficult,
 tedious, or annoying scenarios that we all find ourselves in when
-writing code (i.e., the "not fun" part). The last two quetions in the
+writing code (i.e., the "not fun" part). The last two questions in the
 list are specifically worth mentioning here:
 
 * Have you ever tried to make a modest change in someone else's program?
