@@ -332,7 +332,7 @@ configured in [`cs1302_checks.xml`](cs1302_checks.xml) for use by the
 ## ArrayTypeStyle
 
 You must use the Java style for array type declarations and not the C style. 
-The Java style places the square brackets (i.e., the `[]`) to left of the
+The Java style places the square brackets (i.e., the `[]`) to the left of the
 variable name, next to the array's element type.
 
 ```java
@@ -352,15 +352,27 @@ String someVar[]; // C style; invalid style
 ```
 
 **Rationale:** 
-While the C style is also syntactically correct in Java, Oracle advises that,
+An array is a type of object in Java. While the C style presented above is
+syntactically correct in Java (i.e., it will compile), Oracle advises that,
 "convention discourages this form; the brackets identify the array type and 
-should appear with the type designation."
+should appear with the type designation." When declaring a variable 
+that refers to an array object, the Java style results in a declaration that
+is consistent with how variables to other, non-array types of objects are
+declared.
 
 ## ConstantName
 
 Constant names must use `CONSTANT_CASE`: all uppercase letters, with each word separated 
 from the next by a single underscore. A _constant_ is a `static` and `final` field or an 
-interface/annotation field, except `serialVersionUID` and `serialPersistentFields`.
+interface/annotation field, except `serialVersionUID` and `serialPersistentFields`. 
+
+**Note:** A field that is `final` but not `static` is sometimes referred
+to as an *instance contant* or *constant instance member* because it looks 
+like an instance variable that is also declared `final`. Despite being `final`, an 
+instance constant is not considered a "constant" under the definition 
+provided by this `[ConstantName]` guideline -- the definition requires that it also be
+`static` -- and should follow the same naming convention as instance variables as 
+described in the [`[MemberName]`](#membername) guideline.
 
 **Rationale:**
 This naming convention for constants is pervasive among Java programmers and is even
@@ -402,7 +414,6 @@ an empty `catch` block may trigger the `EmptyBlock` policy instead.
 
 You should ensure that empty line separators are present after header, 
 package, all import declarations, fields, constructors, methods, nested classes, 
-static initializers and instance initializers. An exception to this
 policy is made to allow no empty lines between fields (e.g., between
 instance variables in a class).
 
