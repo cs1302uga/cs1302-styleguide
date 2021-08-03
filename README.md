@@ -367,7 +367,7 @@ from the next by a single underscore. A _constant_ is a `static` and `final` fie
 interface/annotation field, except `serialVersionUID` and `serialPersistentFields`. 
 
 **Note:** A field that is `final` but not `static` is sometimes referred
-to as an *instance contant* or *constant instance member* because it looks 
+to as an *instance constant* or *constant instance member* because it looks 
 like an instance variable that is also declared `final`. Despite being `final`, an 
 instance constant is not considered a "constant" under the definition 
 provided by this `[ConstantName]` guideline -- the definition requires that it also be
