@@ -1,6 +1,6 @@
 # CSCI 1302 Code Style Guide
 
-![Approved for: Spring 2021](https://img.shields.io/badge/Approved%20for-Spring%202021-success)
+![Approved for: Fall 2021](https://img.shields.io/badge/Approved%20for-Fall%202021-blue)
 
 Make sure you read through this document carefully. **It contains setup instructions 
 for the `checkstyle` program which lets you run your code through an application to 
