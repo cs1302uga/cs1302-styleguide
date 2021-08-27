@@ -44,8 +44,6 @@ that, if used, will reduce the number of style issues you have in your code movi
    1. [SummaryJavadoc](#summaryjavadoc)
    1. [TypeName](#typename)
    1. [WhitespaceAround](#whitespacearound)
-1. [Appendix](#appendix)
-   1. [Setup Checkstyle Locally on MacOS](#how-to-setup-locally-on-macos)
 1. [References](#references)
 1. [Publication History](#publication-history)
 
@@ -919,12 +917,6 @@ public @interface Beta {} // empty annotation type
 
 **Rationale:**
 This convention improves readability.
-
-## Appendix
-
-### How to Setup Locally on MacOS
-
-_Coming Soon!_
 
 ## References
 
