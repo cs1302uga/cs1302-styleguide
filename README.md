@@ -242,12 +242,39 @@ Audit done.
 
 ## Recommended Emacs Configurations
 
-Emacs can be configured in a couple different ways. The usual way is to edit
-a file in your user home directory called `.emacs` and place desired configuration
-settings there. You can create the `~/.emacs` file if it does not exist. If you 
-have an `~/.emacs.el` or `~/.emacs.d/init.el file`, then you can place the lines 
-in that file instead of `~/.emacs`. **If you do not understand what file you 
+Emacs is used by thousands of programmers every day, and each of those
+programmers may need to follow one or more style guides at any given 
+time. Under its default configuration, Emacs can assist programmers in dealing
+with many common style issues, and its configuration settings can be
+adjusted to help accomodate additional guidelines related to style. While
+the degree to which Emacs provides assistance may vary from guideline to 
+guideline, any assistance at all saves programmers a lot of time and
+energy.
+
+To update your Emacs configuration settings so that it assists with
+more of the specific guidelines described in this code style guide,
+you need to add some text to the end of a configuration file. In most
+cases, this file is stored in your home directory and named `.emacs` -- this
+is a text file that literally names `.emacs` (instead of something like
+`.emacs.txt`). If you do not have a `~/.emacs` file, then check to to see 
+if either `~/.emacs.el` or `~/.emacs.d/init.el` exist; if so, then use one
+of those files instead. If none of these files exist, then we recommend that 
+you create `~/.emacs` and store your configuration settings there.
+
+Assuming you want to store your settings in `~/.emacs`, you can open
+that file with Emacs, even if it does not yet exist -- Emacs will
+create it when you save. Once open, add the lines we present below
+to the end of that file, then save and close Emacs. If you did
+this correctly, then the settings will take effect the next time
+you launch Emacs. One quick way to see if you got it working is
+to open a `.java` in Emacs and see if it shows line numbers; if so,
+then you should be good to go!
+
+**If you do not understand what file you 
 need to create or edit, then please ask your instructor or a TA!**
+
+Here are the lines that you should add to your Emacs configuration
+file:
 
 ```emacs
 ;; add and configure line numbers and column numbers
