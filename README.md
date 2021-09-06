@@ -262,10 +262,10 @@ of those files instead. If none of these files exist, then we recommend that
 you create `~/.emacs` and store your configuration settings there.
 
 Let's assume that you want to store your settings in `~/.emacs`. 
-You can open that file with Emacs, even if it does not yet exist -- itw
+You can open that file with Emacs, even if it does not yet exist -- it
 will get created when you save. Once open, add the lines we present below
 to the end of the file (could be the top if it's empty), then save the
-file and close Emacs. If you did this correctly, then the settings will
+file and exit Emacs. If you did this correctly, then the settings will
 take effect the next time you launch Emacs. One quick way to see if you 
 got it working is to open a `.java` in Emacs and see if it shows line 
 numbers; if so, then you should be good to go!
@@ -327,11 +327,35 @@ provide the setting variable name (e.g., `make-backup-files`).
 
 ## Recommended Vi Configurations
 
-Vi/Vim can be configured in a couple different ways. The usual way is to edit
-a file in your user home directory called `.vimrc` and place desired configuration
-settings there. You can create the `~/.vimrc` file if it does not exist.
-**If you do not understand what file you need to create or edit, then please 
-ask your instructor or a TA!**
+Vi/Vim, hereafter referred to as Vi, is used by thousands of programmers every day, 
+and each of those programmers may need to follow one or more style guides at any 
+given time. Under its default configuration, Vi can assist programmers in dealing
+with many common style issues, and its configuration settings can be adjusted to 
+help accomodate additional guidelines related to style. While the degree to which Vi 
+provides assistance may vary from guideline to guideline, any assistance at all 
+saves programmers a lot of time and energy.
+
+To update your Vi configuration settings so that it assists with
+more of the specific guidelines described in this code style guide,
+you need to add some text to the end of a configuration file. In most
+cases, this file is stored in your home directory and named `.vimrc` -- this
+is a text file that is literally named `.vimrc` (instead of something like
+`.vimrc.txt`).  
+
+Let's assume that you want to store your settings in `~/.vimrc`. 
+You can open that file with Vi, even if it does not yet exist -- it
+will get created when you save. Once open, add the lines we present below
+to the end of the file (could be the top if it's empty), then save the
+file and exit Vi. If you did this correctly, then the settings will
+take effect the next time you launch Vi. One quick way to see if you 
+got it working is to open a `.java` in Vi and see if it shows line 
+numbers; if so, then you should be good to go!
+
+**If you do not understand what file you need to create or edit, 
+then please ask your instructor or a TA!**
+
+Here are the lines that you should add to your Vi configuration
+file:
 
 ```
 " enable line numbers
