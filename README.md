@@ -243,8 +243,8 @@ Audit done.
 ## Recommended Emacs Configurations
 
 **_This section is intended for Emacs users._ 
-If you are Vi/Vim user, then please refer to the [Recommended Vi Configurations](#recommended-vi-configurations)
-section instead.**
+If you are a Vi/Vim user, then please refer to the [Recommended Vi Configurations](#recommended-vi-configurations)
+section.**
 
 Emacs is used by thousands of programmers every day, and each of those
 programmers may need to follow one or more style guides at any given 
@@ -330,6 +330,10 @@ If you want to know what any of these Emacs settings do, then you can use
 provide the setting variable name (e.g., `make-backup-files`).
 
 ## Recommended Vi Configurations
+
+**_This section is intended for Vi/Vim users._ 
+If you are an Emacs userr, then please refer to the [Recommended Emacs Configurations](#recommended-emacs-configurations)
+section.**
 
 Vi/Vim, hereafter referred to as Vi, is used by thousands of programmers every day, 
 and each of those programmers may need to follow one or more style guides at any 
