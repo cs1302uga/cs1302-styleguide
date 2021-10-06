@@ -741,12 +741,13 @@ All methods, except the `main` method, must have Javadoc documentation.
 
 If a method is annotated with `@Override`, then it is assumed to have
 Javadoc documentation inherited from the method it's overriding. 
-If a method overrides a method from another class or interface without using the
-`@Override` annotation, then you are still required to provide a Javadoc comment 
-for that method to stay compliant with this style guide. 
+If a method overrides a method without using the `@Override` annotation, 
+then you are required to explicitly provide a Javadoc comment for that 
+method to stay compliant with this style guide. 
 
-If you want to explicitly write a Javadoc comment for an overload that inherits 
-its documentation from the method it is overloading, then use the following comment:
+If you want to explicitly write a Javadoc comment for an override that 
+inherits its documentation from the method it is overriding, then use 
+the following comment:
 
 ```java
 /** {@inheritDoc} */
