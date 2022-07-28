@@ -88,11 +88,11 @@ too.
 
 In the preface to *The Practice of Programming* [[TPOP](#ref-tpop)] by 
 [Kernighan](https://en.wikipedia.org/wiki/Brian_Kernighan)
-and [Pike](https://en.wikipedia.org/wiki/Rob_Pike), the authors start by
-asking the reader if they have ever encountered some of the difficult,
-tedious, or annoying scenarios that we all find ourselves in when
-writing code (i.e., the "not fun" part). The last two questions in the
-list are specifically worth mentioning here:
+and [Pike](https://en.wikipedia.org/wiki/Rob_Pike), the authors ask the 
+reader to consider some questions related to several difficult, tedious, 
+or annoying scenarios that programmers find themselves in when writing 
+code (i.e., the "not fun" parts). Their last two questions are specifically 
+worth mentioning here:
 
 * Have you ever tried to make a modest change in someone else's program?
 * Have you ever rewritten a program because you couldn't understand it?
@@ -116,24 +116,25 @@ Regarding style, they even go on to say:
 > **it is important to think about style from the beginning**.
 > **-- Kernighan and Pike**
 
-If your code looks good, which we'll define here as adhering to an 
+If your code looks good, which we will define here as adhering to an 
 established style guide, then:
   
-* It's easier to read, especially when compared to code that applies stylistic choices 
-  inconsistently. It's certainly easier to read by those who are familiar with the 
+* It is easier to read, especially when compared to code that applies stylistic choices 
+  inconsistently. It is certainly easier to read by those who are familiar with the 
   conventions outlined in the style guide.
   
-* It's easier to identify common bugs and syntax errors (e.g., missing a curly brace). 
+* It is easier to identify common bugs and syntax errors (e.g., missing a curly brace). 
   This saves real world time when it comes to fixing problems in your code.
   
-* It's easier to extend and/or incorporate into other projects. This results in your 
+* It is easier to extend and/or incorporate into other projects. This results in your 
   code being more useful to others as well as your future self.
   
 The list could go on. The important thing to remember is that **quality not only
 refers to the output of a program but also its effect on the people who interact
 with the code**. Rarely, in practice, are you the only one who will read and use 
-your code. If you're a software engineer, then it's very likely that many others 
-will interact with it as well. 
+your code. If you're a software engineer, then it is very likely that *many*
+people will interact your code over time and that you will interact with *lots*
+of code written by others as well.
 
 ## When and How to Check
 
