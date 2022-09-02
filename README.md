@@ -278,8 +278,13 @@ numbers; if so, then you should be good to go!
 **If you do not understand what file you need to create or edit, 
 then please ask your instructor or a TA!**
 
-Here are the lines that you should add to your Emacs configuration
-file:
+Below are the lins you should add to your configuration file. We recommend copying
+and pasting the text below into your `~/.emacs` at the very bottom of the file. If there
+are closing parenthesis at the end, paste this below them. **We do not not recommend typing
+this out manually** as a single error can cause it not to work. If you are having trouble 
+pasting the text into Emacs on Odin, right-click and hit paste instead of using keyboard 
+shortcuts.
+
 
 ```emacs
 ;; add and configure line numbers and column numbers
