@@ -10,43 +10,45 @@ you have in your code moving forward.**
 
 ## Table of Contents
 
-1. [Compliance](#compliance)
-1. [Motivation](#motivation)
-1. [When and How to Check](#when-and-how-to-check)
-   1. [When to Check](#when-to-check)
-   1. [Run Checkstyle](#run-checkstyle)
-      1. [Multiple Files](#multiple-files)
-      <!-- 1. [Setup an Alias](#setup-an-alias) -->
-      1. [Output Examples](#output-examples)
-1. [Recommended Emacs Configurations](#recommended-emacs-configurations)
-1. [Recommended Vi Configurations](#recommended-vi-configurations)
-1. [Specific Guidelines](#specific-guidelines)
-   1. [ArrayTypeStyle](#arraytypestyle)
-   1. [ConstantName](#constantname)
-   1. [EmptyBlock](#emptyblock)
-   1. [EmptyCatchBlock](#emptycatchblock)
-   1. [EmptyLineSeparator](#emptylineseparator)
-   1. [FileTabCharacter](#filetabcharacter)
-   1. [Indentation](#indentation)
-   1. [JavadocMethod](#javadocmethod)
-   1. [LeftCurly](#leftcurly)
-   1. [LineLength](#linelength)
-   1. [MemberName](#membername)
-   1. [MethodName](#methodname)
-   1. [MethodLength](#methodlength)
-   1. [MissingJavadocMethod](#missingjavadocmethod)
-   1. [MissingJavadocType](#missingjavadoctype)
-   1. [ModifierOrder](#modifierorder)
-   1. [NeedBraces](#needbraces)
-   1. [OneStatementPerLine](#onestatementperline)
-   1. [OneTopLevelClass](#onetoplevelclass)
-   1. [OuterTypeFilename](#outertypefilename)
-   1. [RightCurly](#rightcurly)
-   1. [SummaryJavadoc](#summaryjavadoc)
-   1. [TypeName](#typename)
-   1. [WhitespaceAround](#whitespacearound)
-1. [References](#references)
-1. [Publication History](#publication-history)
+* [Compliance](#compliance)
+* [Motivation](#motivation)
+* [When and How to Check](#when-and-how-to-check)
+   * [When to Check](#when-to-check)
+   * [Run Checkstyle](#run-checkstyle)
+   * [Multiple Files](#multiple-files)
+   * [Output Examples](#output-examples)
+* [Recommended Emacs Configurations](#recommended-emacs-configurations)
+   * [Additional Emacs Configurations](#additional-emacs-configurations)
+      * [Automatically Update Emacs Packages](#automatically-update-emacs-packages)
+      * [Show Style Guide Violations in the Editor](#show-style-guide-violations-in-the-editor)
+* [Recommended Vi Configurations](#recommended-vi-configurations)
+* [Specific Guidelines](#specific-guidelines)
+   * [ArrayTypeStyle](#arraytypestyle)
+   * [ConstantName](#constantname)
+   * [EmptyBlock](#emptyblock)
+   * [EmptyCatchBlock](#emptycatchblock)
+   * [EmptyLineSeparator](#emptylineseparator)
+   * [FileTabCharacter](#filetabcharacter)
+   * [Indentation](#indentation)
+   * [JavadocMethod](#javadocmethod)
+   * [LeftCurly](#leftcurly)
+   * [LineLength](#linelength)
+   * [MemberName](#membername)
+   * [MethodName](#methodname)
+   * [MethodLength](#methodlength)
+   * [MissingJavadocMethod](#missingjavadocmethod)
+   * [MissingJavadocType](#missingjavadoctype)
+   * [ModifierOrder](#modifierorder)
+   * [NeedBraces](#needbraces)
+   * [OneStatementPerLine](#onestatementperline)
+   * [OneTopLevelClass](#onetoplevelclass)
+   * [OuterTypeFilename](#outertypefilename)
+   * [RightCurly](#rightcurly)
+   * [SummaryJavadoc](#summaryjavadoc)
+   * [TypeName](#typename)
+   * [WhitespaceAround](#whitespacearound)
+* [References](#references)
+* [Publication History](#publication-history)
 
 ## Compliance
 
@@ -443,14 +445,14 @@ set expandtab
 set list listchars=trail:.,extends:>
 ```
 
-# Specific Guidelines
+## Specific Guidelines
 
 The name for each of these guidelines corresponds to a Checkstyle module
 configured in [`cs1302_checks.xml`](cs1302_checks.xml) for use by the
 `check1302` program. This was done so that it's easier for users to relate
 `check1302` program output to the actual guidelines.
 
-## ArrayTypeStyle
+### ArrayTypeStyle
 
 You must use the Java style for array type declarations and not the C style.
 The Java style places the square brackets (i.e., the `[]`) to the left of the
@@ -481,7 +483,7 @@ that refers to an array object, the Java style results in a declaration that
 is consistent with how variables to other, non-array types of objects are
 declared.
 
-## ConstantName
+### ConstantName
 
 Constant names must use `CONSTANT_CASE`: all uppercase letters, with each word separated
 from the next by a single underscore. A _constant_ is a `static` and `final` field or an
@@ -500,7 +502,7 @@ This naming convention for constants is pervasive among Java programmers and is 
 the same convention used by Oracle and Google. This specific convention allows most
 programmers to easily identify a constant when used in source code.
 
-## EmptyBlock
+### EmptyBlock
 
 Empty code blocks are not allowed.
 
@@ -511,7 +513,7 @@ block, then take a step back and rework your control flow.
 **Note:** If the `checkstyle` tool reports this for an empty `catch` block, then please
 see the [[EmptyCatchBlock]](#emptycatchblock) policy.
 
-## EmptyCatchBlock
+### EmptyCatchBlock
 
 Empty `catch` blocks are not allowed.
 
@@ -531,7 +533,7 @@ using `throws` in the method signature.
 **Note:** Depending on the parsing behavior of the `checkstyle` program,
 an empty `catch` block may trigger the `EmptyBlock` policy instead.
 
-## EmptyLineSeparator
+### EmptyLineSeparator
 
 You should ensure that empty line separators are present after header,
 package, all import declarations, fields, constructors, methods, nested classes,
@@ -555,7 +557,7 @@ private int n, k; // k declaration not separated from previous statement
 **Rationale:**
 This vastly improves readability.
 
-## FileTabCharacter
+### FileTabCharacter
 
 No tab characters (`\t`) are allowed in the normal whitespace of the source code.
 This does not include tabs in string literals. For example, the following
@@ -673,7 +675,7 @@ same file in different ways, depending on the tab width configured for the
 given editor. Developers should not need to configure the tab width of their
 text editors in order to be able to read source code.
 
-## Indentation
+### Indentation
 
 The following indentation rules must be followed:
 
@@ -715,7 +717,7 @@ code:
 Arrays.sort(array, (a, b) -> a.compareTo(b));
 ```
 
-## JavadocMethod
+### JavadocMethod
 
 All methods, except the `main` method, must have **full** Javadoc documentation,
 including documentation of parameters, exceptions, and return value.
@@ -735,7 +737,7 @@ For example:
 public boolean contains(String o);
 ```
 
-## LeftCurly
+### LeftCurly
 
 Left curly braces (`{`) for code blocks must always be on the end of the line.
 For example:
@@ -749,7 +751,7 @@ if (condition) {
 This convention for curly braces is pervasive among Java programmers and
 is even the same convention used by companies like Google.
 
-## LineLength
+### LineLength
 
 You should limit the number of characters, including whitespace, on any given
 line to 100 characters. Except as noted below, any line that would exceed this
@@ -764,7 +766,7 @@ column limit include:
 limited screen space for the source code, e.g. if the editor displays additional
 information like line numbers, multiple files, project tree, class hierarchy, etc.
 
-## MemberName
+### MemberName
 
 Instance variable names must be written in `lowerCamelCase`.
 
@@ -772,7 +774,7 @@ Instance variable names must be written in `lowerCamelCase`.
 This naming convention for instance variables is pervasive among Java programmers and
 is even the same convention used by Oracle.
 
-## MethodName
+### MethodName
 
 Method names must be written in `lowerCamelCase`.
 
@@ -780,7 +782,7 @@ Method names must be written in `lowerCamelCase`.
 This naming convention for methods is pervasive among Java programmers and
 is even the same convention used by Oracle.
 
-## MethodLength
+### MethodLength
 
 The bodies of methods and constructors should never exceed 60 lines.
 This includes the line(s) with the method's signature and opening curly brace,
@@ -799,7 +801,7 @@ You should always try to limit the number of lines for a method so that the
 entire method can be seen on the screen at once, even when multiple files
 are open at the same time on a single screen.
 
-## MissingJavadocMethod
+### MissingJavadocMethod
 
 All methods, except the `main` method, must have Javadoc documentation.
 
@@ -857,7 +859,7 @@ method).
 **Instructor Note:**
 Well documented code is just as important as correctly working code.
 
-## MissingJavadocType
+### MissingJavadocType
 
 All class, enum, interface, and annotation interface definitions must have Javadoc
 documentation.
@@ -871,7 +873,7 @@ documentation to make things easier for programmers who wish to use the code.
 **Instructor Note:**
 Well documented code is just as important as correctly working code.
 
-## ModifierOrder
+### ModifierOrder
 
 When using modifier keywords, you should ensure that their order conforms to
 the suggestions in the Java Language specification, sections
@@ -899,7 +901,7 @@ strictfp
 This ordering convention for methods is pervasive among Java programmers and
 is even the same convention used by Oracle and Google.
 
-## NeedBraces
+### NeedBraces
 
 Curly braces are always used where technically optional. Braces should be used with
 `if`, `else`, `for`, `do`, and `while` statements, even when the body is empty
@@ -919,7 +921,7 @@ execute when the conditional's expression evaluates to `true`. That is,
 they forgot to add the curly braces. This guideline helps protect you
 against that scenario and improves readability.
 
-## OneStatementPerLine
+### OneStatementPerLine
 
 In general, you only have one statement per line. The policy specifically checks
 the following types of statements: variable declaration statements, empty statements,
@@ -933,7 +935,7 @@ In the Java programming language, statements are the fundamental unit of executi
 All statements except blocks are terminated by a semicolon.
 Blocks are denoted by open and close curly braces.
 
-## OneTopLevelClass
+### OneTopLevelClass
 
 Each top-level class, interface or enum resides in a source file of its own.
 Official description of a 'top-level' term:
@@ -941,7 +943,7 @@ Official description of a 'top-level' term:
 If the file does not contain a `public` class, enum or interface, then the top-level
 type is the first type in file.
 
-## OuterTypeFilename
+### OuterTypeFilename
 
 In any given `.java` file, the outer type name and the file name must match.
 For example, the class `Foo` must be in a file named `Foo.java`.
@@ -951,7 +953,7 @@ Specification when the outer type is declared with `public` visibility, we
 stick to this convention for other visibilities as well. In any case, most of
 the time your outer type will be declared as `public`.
 
-## RightCurly
+### RightCurly
 
 Right curly braces (`}`) for single-part blocks must be on their own line.
 Right curly braces for multi-part blocks must be on the same line as the
@@ -982,7 +984,7 @@ else {
 This convention for curly braces is pervasive among Java programmers and
 is even the same convention used by companies like Google.
 
-## SummaryJavadoc
+### SummaryJavadoc
 
 In Javadoc comments, the
 [summary sentence](https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html#firstsentence)
@@ -995,7 +997,7 @@ The first sentence of a Javadoc comment is the text that appears in the
 summary lists of a generated Javadoc website. Failure to either include a summary
 or correctly punctuate the summary can result in poor output.
 
-## TypeName
+### TypeName
 
 Type names for classes, interfaces, enums, and annotations must be written in _UpperCamelCase_.
 Class names are typically nouns or noun phrases. For example, `Character` or `ImmutableList`.
@@ -1006,7 +1008,7 @@ adjectives or adjective phrases instead (for example, `Readable`).
 This convention for type names is pervasive among Java programmers and
 is even the same convention used by companies like Oracle and Google.
 
-## WhitespaceAround
+### WhitespaceAround
 
 You need to ensure that code tokens are surrounded by whitespace.
 
