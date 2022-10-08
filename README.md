@@ -349,6 +349,10 @@ may need to download and install some things the next time it runs in order
 to make things work -- such installations may take several seconds to
 complete, but they only happen once unless package updates are installed.
 
+**NOTE:** If you want to use use-package declarations in Emacs on your
+local machine, then you will need to install and setup use-package
+first.
+
 #### Automatically Update Emacs Packages
 
 Add the lines below to your Emacs configuration file to install and
