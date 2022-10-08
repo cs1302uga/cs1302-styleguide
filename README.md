@@ -347,7 +347,7 @@ is pre-configured to let you use additional Emacs packages using
 to your Emacs configuration file that utilize use-package, then Emacs
 may need to download and install some things the next time it runs in order
 to make things work -- such installations may take several seconds to
-complete, but they only happen once unless (unless an update is applied).
+complete, but they only happen once unless package updates are installed.
 
 #### Automatically Update Emacs Packages
 
