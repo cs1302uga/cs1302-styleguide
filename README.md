@@ -343,14 +343,15 @@ provide the setting variable name (e.g., `make-backup-files`).
 If you followed the instructions provided by your instructor to enable the
 CSCI 1302 shell profile on `odin`, then the Emacs that you have access to
 is pre-configured to let you use additional Emacs packages using
-[use-package](https://github.com/jwiegley/use-package). If you add lines
-to your Emacs configuration file that utilize use-package, then Emacs
+[use-package](https://github.com/jwiegley/use-package). If you include
+`use-package` declarations in your Emacs configuration file, then Emacs
 may need to download and install some things the next time it runs in order
 to make things work -- such installations may take several seconds to
 complete, but they only happen once unless package updates are installed.
 
-**NOTE:** If you want to use use-package declarations in Emacs on your
-local machine, then you will need to install and setup use-package
+**NOTE:** If you want to use `use-package` declarations in an Emacs configuration
+file on another machine (e.g., your local machine), then you will need to install
+and setup [use-package](https://github.com/jwiegley/use-package)
 first.
 
 #### Automatically Update Emacs Packages
