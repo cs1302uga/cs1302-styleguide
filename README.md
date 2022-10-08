@@ -278,7 +278,7 @@ numbers; if so, then you should be good to go!
 **If you do not understand what file you need to create or edit, 
 then please ask your instructor or a TA!**
 
-Below are the lins you should add to your configuration file. We recommend copying
+Below are the lines you should add to your configuration file. We recommend copying
 and pasting the text below into your `~/.emacs` at the very bottom of the file. If there
 are closing parenthesis at the end, paste this below them. **We do not not recommend typing
 this out manually** as a single error can cause it not to work. If you are having trouble 
@@ -334,6 +334,31 @@ shortcuts.
 If you want to know what any of these Emacs settings do, then you can use 
 `M-x describe-variable` while in Emacs. When you see the "Describe variable:" prompt, 
 provide the setting variable name (e.g., `make-backup-files`).
+
+If you would like Emacs show Java code for style violations directly in the
+editor, then add the lines presented bewlow to your Emacs configuration file. 
+The first time that you run Emacs after adding these lines, there may be a 
+small delay as Emacs install any additional package required to make this work. 
+
+```elisp
+(use-package flycheck
+  :init (global-flycheck-mode)
+  :commands flycheck-parse-checkstyle
+  :config
+  (progn
+    (flycheck-define-checker java-checkstyle-checker
+      "A Java style checker using Checkstyle."
+      :command ("checkstyle" "-c" "/usr/local/mepcott/cs1302/cs1302_checks.xml" "-f" "xml" source)
+      :error-parser flycheck-parse-checkstyle
+      :enable t
+      :modes java-mode)
+    (add-to-list 'flycheck-checkers 'java-checkstyle-checker)))
+```
+
+**NOTE:** The configuration lines shown above will only work on the version of
+Emacs enabled by the CSCI 1302 Shell Profile. If you are interested in getting 
+this to work on a local version of Emacs, then please ask Dr. Cotterell about
+it on Piazza.
 
 ## Recommended Vi Configurations
 
