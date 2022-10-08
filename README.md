@@ -2,10 +2,11 @@
 
 ![Approved for: Fall 2022](https://img.shields.io/badge/Approved%20for-Fall%202022-darkgreen)
 
-Make sure you read through this document carefully. **It contains setup instructions
-for the `checkstyle` program which lets you run your code through an application to
-check for proper code style. It also contains recommended Emacs and Vi configurations
-that, if used, will reduce the number of style issues you have in your code moving forward.**
+Make sure you read through this document carefully. **It addition to describing why
+code style is important and what the code style guidelines are for CSCI 1302, it also
+describes how to use the `check1302` program on `odin` to check your code code as well
+as Emacs and Vi configurations that, if used, will reduce the number of style issues
+you have in your code moving forward.**
 
 ## Table of Contents
 
