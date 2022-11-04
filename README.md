@@ -293,8 +293,7 @@ shortcuts.
 ;; add and configure line numbers and column numbers
 (setq line-number-mode t)
 (setq column-number-mode t)
-(global-linum-mode 1)
-(setq linum-format "%d ")
+(global-display-line-numbers-mode)
 
 ;; set a dedicated directory for backup files
 (setq backup-directory-alist `(("." . "~/.saves")))
