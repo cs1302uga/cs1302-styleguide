@@ -1,6 +1,6 @@
 # CSCI 1302 Code Style Guide
 
-![Approved for: Fall 2022](https://img.shields.io/badge/Approved%20for-Fall%202022-darkgreen)
+![Approved for: Spring 2023](https://img.shields.io/badge/Approved%20for-Spring%202023-magenta)
 
 Make sure you read through this document carefully. **It addition to describing why
 code style is important and what the code style guidelines are for CSCI 1302, it also
