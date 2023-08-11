@@ -303,6 +303,7 @@ shortcuts.
 (setq version-control t)
 (setq kept-new-versions 5)
 (setq delete-old-versions t)
+(setq vc-make-backup-files t)
 
 ;; no tab characters in whitespace
 (setq-default indent-tabs-mode nil)
