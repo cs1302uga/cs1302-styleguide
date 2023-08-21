@@ -290,6 +290,11 @@ shortcuts.
 
 
 ```emacs
+;; handle multi-line inline lambda expressions
+(setq c-offsets-alist '((arglist-cont-nonempty . 0)))
+```
+<!--
+```emacs
 ;; add and configure line numbers and column numbers
 (setq line-number-mode t)
 (setq column-number-mode t)
@@ -333,6 +338,7 @@ shortcuts.
     (shell-command
      (format "check1302 %s" buffer-file-name))))
 ```
+//-->
 
 If you want to know what any of these Emacs settings do, then you can use
 `M-x describe-variable` while in Emacs. When you see the "Describe variable:" prompt,
