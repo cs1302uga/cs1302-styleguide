@@ -279,20 +279,48 @@ got it working is to open a `.java` in Emacs and see if it shows line
 numbers; if so, then you should be good to go!
 
 **If you do not understand what file you need to create or edit,
-then please ask your instructor or a TA!**
+then please ask your instructor or a TA! The following instructions
+assume that your Emacs configuration file is `~/.emacs`, which is the 
+default for most students.**
 
-Below are the lines you should add to your configuration file. We recommend copying
-and pasting the text below into your `~/.emacs` at the very bottom of the file. If there
-are closing parenthesis at the end, paste this below them. **We do not not recommend typing
-this out manually** as a single error can cause it not to work. If you are having trouble
-pasting the text into Emacs on Odin, right-click and hit paste instead of using keyboard
-shortcuts.
+You can open the `~/.emacs` file in Emacs using the following command, regardless
+of whether the `~/.emacs` file already exists -- if the file does not yet exist, then
+it will be created once you save the file using Emacs:
 
+```
+$ emacs ~/.emacs
+```
+
+Once your `~/.emacs` file is open in Emacs, take a quick look at it. It may be
+empty or it may have some existing lines in it -- either situation is okay. If
+there are existing lines, then you are NOT required to understand what they do
+for this course.
+
+Now, select and copy the configuration text below -- we recommend that you select 
+it with your mouse and copy it using a right click (and selecting "Copy") instead 
+of using a keyboard shortcut:
 
 ```emacs
 ;; handle multi-line inline lambda expressions
 (setq c-offsets-alist '((arglist-cont-nonempty . 0)))
 ```
+
+Now, return to Emacs where your `~/.emacs` file should still be open and  navigate to
+the bottom/end of the file by pressing `M->` (i.e., `M-Shift-.` where `.` is the period) -- if
+the file is empty, then you won't go very far (that's okay). Once your cursor is at the 
+bottom/end of the file, press the Return key once or twice to create some blank lines, then 
+paste what you copied above by right clicking on the terminal screen -- if right clicking does
+not paste the text automatically, then right click and select the "Paste" option to paste
+the text.
+
+Once the text is pasted in the file, press `C-x C-s` to save the file, then `C-x C-c` to 
+close/exit Emacs. 
+
+The configuraton changes should take effect the next time you start Emacs. If you get an
+error related to your "Init file" the next time you start Emacs, then see an instructor
+during office hours for assistance. If you do not encounter an error, then should be 
+good to go!
+
 <!--
 ```emacs
 ;; add and configure line numbers and column numbers
@@ -338,11 +366,11 @@ shortcuts.
     (shell-command
      (format "check1302 %s" buffer-file-name))))
 ```
-//-->
 
 If you want to know what any of these Emacs settings do, then you can use
 `M-x describe-variable` while in Emacs. When you see the "Describe variable:" prompt,
 provide the setting variable name (e.g., `make-backup-files`).
+//-->
 
 ### Additional Emacs Configurations
 
@@ -355,9 +383,9 @@ may need to download and install some things the next time it runs in order
 to make things work -- such installations may take several seconds to
 complete, but they only happen once unless package updates are installed.
 
-**NOTE:** If you want to use `use-package` declarations in an Emacs configuration
-file on another machine (e.g., your local machine), then you will need to install
-and setup [use-package](https://github.com/jwiegley/use-package)
+**NOTE:** Emacs 29.1 and above supports `use-package` statements by default.
+Older versions of Emacs require users to manually install the
+[use-package](https://github.com/jwiegley/use-package) package
 first.
 
 #### Automatically Update Emacs Packages
