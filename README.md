@@ -1,10 +1,10 @@
 # CSCI 1302 Code Style Guide
 
-![Approved for: Fall 2023](https://img.shields.io/badge/Approved%20for-Fall%202023-green)
+![Approved for: Spring 2024](https://img.shields.io/badge/Approved%20for-Spring%202024-blue)
 
-Make sure you read through this document carefully. **It addition to describing why
-code style is important and what the code style guidelines are for CSCI 1302, it also
-describes how to use the `check1302` program on `odin` to check your code code as well
+Make sure you read through this document carefully. **In addition to describing why
+code style is important and the code style guidelines for CSCI 1302, it also
+describes how to use the `check1302` program on `Odin` to check your code as well
 as Emacs and Vi configurations that, if used, will reduce the number of style issues
 you have in your code moving forward.**
 
@@ -62,7 +62,7 @@ We recognize that some of the guidelines may be new for some students, so while
 this style guide does contain the technical details for each guideline, it also
 provides context, examples, and additional information that you may use to
 check your code. In some assignments, terms like "checkstyle audit" or
-"check1302 audit" are be used to remind you to check your code for compliance
+"check1302 audit" will be used to remind you to check your code for compliance
 with this style guide.
 
 We also recognize that the terminal-based text editors used in this course are
@@ -264,14 +264,14 @@ more of the specific guidelines described in this code style guide,
 you need to add some text to the end of a configuration file. In most
 cases, this file is stored in your home directory and named `.emacs` -- this
 is a text file that is literally named `.emacs` (instead of something like
-`.emacs.txt`). If you do not have a `~/.emacs` file, then check to to see
+`.emacs.txt`). If you do not have a `~/.emacs` file, then check to see
 if either `~/.emacs.el` or `~/.emacs.d/init.el` exist; if so, then use one
 of those files instead. If none of these files exist, then we recommend that
 you create `~/.emacs` and store your configuration settings there.
 
 Let's assume that you want to store your settings in `~/.emacs`.
 You can open that file with Emacs, even if it does not yet exist -- it
-will get created when you save. Once open, add the lines we present below
+will get created when you save it. Once open, add the lines we present below
 to the end of the file (could be the top if it's empty), then save the
 file and exit Emacs. If you did this correctly, then the settings will
 take effect the next time you launch Emacs. One quick way to see if you
@@ -305,20 +305,20 @@ of using a keyboard shortcut:
 (setq c-offsets-alist '((arglist-cont-nonempty . 0)))
 ```
 
-Now, return to Emacs where your `~/.emacs` file should still be open and  navigate to
+Now, return to Emacs where your `~/.emacs` file should still be open, and navigate to
 the bottom/end of the file by pressing `M->` (i.e., `M-Shift-.` where `.` is the period) -- if
 the file is empty, then you won't go very far (that's okay). Once your cursor is at the 
 bottom/end of the file, press the Return key once or twice to create some blank lines, then 
-paste what you copied above by right clicking on the terminal screen -- if right clicking does
-not paste the text automatically, then right click and select the "Paste" option to paste
+paste what you copied above by right-clicking on the terminal screen -- if right-clicking does
+not paste the text automatically, then right-click and select the "Paste" option to paste
 the text.
 
 Once the text is pasted in the file, press `C-x C-s` to save the file, then `C-x C-c` to 
 close/exit Emacs. 
 
-The configuraton changes should take effect the next time you start Emacs. If you get an
-error related to your "Init file" the next time you start Emacs, then see an instructor
-during office hours for assistance. If you do not encounter an error, then should be 
+The configuration changes should take effect the next time you start Emacs. If you get an
+error related to your "Init file" the next time you start Emacs, see an instructor
+during office hours for assistance. If you do not encounter an error, then you should be 
 good to go!
 
 <!--
@@ -375,7 +375,7 @@ provide the setting variable name (e.g., `make-backup-files`).
 ### Additional Emacs Configurations
 
 If you followed the instructions provided by your instructor to enable the
-CSCI 1302 shell profile on `odin`, then the Emacs that you have access to
+CSCI 1302 shell profile on Odin, then the Emacs that you have access to
 is pre-configured to let you use additional Emacs packages using
 [use-package](https://github.com/jwiegley/use-package). If you include
 `use-package` declarations in your Emacs configuration file, then Emacs
@@ -574,7 +574,7 @@ an empty `catch` block may trigger the `EmptyBlock` policy instead.
 
 ### EmptyLineSeparator
 
-You should ensure that empty line separators are present after header,
+You should ensure that empty line separators are present after the header,
 package, all import declarations, fields, constructors, methods, nested classes,
 policy is made to allow no empty lines between fields (e.g., between
 instance variables in a class).
@@ -613,7 +613,7 @@ examples that illustrate the difference are provided below. When using
 as `^I`.
 
 * Use the command below to generate `One.java`, a small class that
-  violates the `FileTabCharacter` guideline by using single `TAB`
+  violates the `FileTabCharacter` guideline by using a single `TAB`
   character in the whitespace just before the declaration of
   `private int x = 1;`:
 
@@ -686,9 +686,9 @@ as `^I`.
   }
   ```
 
-When you go to write the inside / body of a class or method, you likely press the
+When you go to write the inside/body of a class or method, you likely press the
 `TAB` key on your keyboard. Most text editors implement this by placing the
-following directly in the contents of the code file where you pressed the
+following directly in the contents of the code file where you press the
 `TAB` key:
 
 1. One `\t` (single tab character); or
@@ -700,7 +700,7 @@ or [recommended Vi configurations](#recommended-vi-configurations), then
 you will be to avoid _future_ non-conformance of this policy.
 
 **Fix using Emacs:**
-If you are an Emacs user who has setup the
+If you are an Emacs user who has set up the
 [recommended Emacs configurations](#recommended-emacs-configurations), then you
 can fix individual lines that violate `FileTabCharacter` by moving to the start
 of an offending line and using the following command: `M-x untabify RET`
@@ -709,8 +709,8 @@ return key). To fix an entire file, move to the beginning of the file and use th
 following command: `C-u M-x untabify`.
 
 **Rationale:**
-Use of tabs instead of spaces may result in different text editors displaying
-same file in different ways, depending on the tab width configured for the
+The use of tabs instead of spaces may result in different text editors displaying
+the same file in different ways, depending on the tab width configured for the
 given editor. Developers should not need to configure the tab width of their
 text editors in order to be able to read source code.
 
@@ -720,12 +720,12 @@ The following indentation rules must be followed:
 
 | Property                  | Description                                                                 | Spaces |
 |---------------------------|-----------------------------------------------------------------------------|--------|
-| `basicOffset`             | how far new indentation level should be indented when on the next line      | 4      |
-| `braceAdjustment`         | how far a braces should be indented when on the next line 	                | 0      |
-| `caseIndent`              | how far a case label should be indented when on next line 	                | 0      |
-| `throwsIndent` 	          | how far a throws clause should be indented when on next line                | 4      |
+| `basicOffset`             | how far the new indentation level should be indented when on the next line      | 4      |
+| `braceAdjustment`         | how far a brace should be indented when on the next line 	                | 0      |
+| `caseIndent`              | how far a case label should be indented when on the next line 	                | 0      |
+| `throwsIndent` 	          | how far a throws clause should be indented when on the next line                | 4      |
 | `arrayInitIndent`         | how far an array initializer list item should be indented when on next line | 4      |
-| `lineWrappingIndentation` | how far continuation line should be indented when line-wrapping is present  | 4      |
+| `lineWrappingIndentation` | how far the continuation line should be indented when line-wrapping is present  | 4      |
 
 Sometimes, indentation rules are a little hard to parse when parentheses and
 curly braces are involved, as is sometimes the case with multi-line inline lambda
@@ -896,7 +896,7 @@ use but not necessarily see the actual implementation (e.g., when you use a `Str
 method).
 
 **Instructor Note:**
-Well documented code is just as important as correctly working code.
+Well-documented code is just as important as correctly working code.
 
 ### MissingJavadocType
 
@@ -910,12 +910,12 @@ conventions, etc. In some cases, even code examples are provided directly in the
 documentation to make things easier for programmers who wish to use the code.
 
 **Instructor Note:**
-Well documented code is just as important as correctly working code.
+Well-documented code is just as important as correctly working code.
 
 ### ModifierOrder
 
 When using modifier keywords, you should ensure that their order conforms to
-the suggestions in the Java Language specification, sections
+the suggestions in the Java Language Specification, sections
 [8.1.1, 8.3.1, 8.4.4](https://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html), and
 [9.4](https://docs.oracle.com/javase/specs/jls/se8/html/jls-9.html).
 
@@ -976,11 +976,11 @@ Blocks are denoted by open and close curly braces.
 
 ### OneTopLevelClass
 
-Each top-level class, interface or enum resides in a source file of its own.
-Official description of a 'top-level' term:
+Each top-level class, interface, or enum resides in a source file of its own.
+The official description of a 'top-level' term:
 [7.6. Top Level Type Declarations](https://docs.oracle.com/javase/specs/jls/se8/html/jls-7.html#jls-7.6).
-If the file does not contain a `public` class, enum or interface, then the top-level
-type is the first type in file.
+If the file does not contain a `public` class, enum, or interface, then the top-level
+type is the first type in the file.
 
 ### OuterTypeFilename
 
