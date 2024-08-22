@@ -264,19 +264,12 @@ more of the specific guidelines described in this code style guide,
 you need to add some text to the end of a configuration file. In most
 cases, this file is stored in your home directory and named `.emacs` -- this
 is a text file that is literally named `.emacs` (instead of something like
-`.emacs.txt`). If you do not have a `~/.emacs` file, then check to see
+`.emacs.txt`). From your home directory on Odin, execute the `ls -a` command.
+This will list files that start with a `.`. If you do not have a `~/.emacs` file, 
+then check to see
 if either `~/.emacs.el` or `~/.emacs.d/init.el` exist; if so, then use one
-of those files instead. If none of these files exist, then we recommend that
+of those files in the steps below. If none of these files exist, then we recommend that
 you create `~/.emacs` and store your configuration settings there.
-
-Let's assume that you want to store your settings in `~/.emacs`.
-You can open that file with Emacs, even if it does not yet exist -- it
-will get created when you save it. Once open, add the lines we present below
-to the end of the file (could be the top if it's empty), then save the
-file and exit Emacs. If you did this correctly, then the settings will
-take effect the next time you launch Emacs. One quick way to see if you
-got it working is to open a `.java` in Emacs and see if it shows line
-numbers; if so, then you should be good to go!
 
 **If you do not understand what file you need to create or edit,
 then please ask your instructor or a TA! The following instructions
@@ -372,7 +365,8 @@ If you want to know what any of these Emacs settings do, then you can use
 provide the setting variable name (e.g., `make-backup-files`).
 //-->
 
-### Additional Emacs Configurations
+<!--
+### Additional Emacs Configurations (Optional)
 
 If you followed the instructions provided by your instructor to enable the
 CSCI 1302 shell profile on Odin, then the Emacs that you have access to
@@ -408,8 +402,9 @@ near the bottom of the screen.
   (setq auto-package-update-interval 4)
   (auto-package-update-maybe))
 ```
+-->
 
-#### Show Style Guide Violations in the Editor
+#### Show Style Guide Violations in the Editor (Optional)
 
 Add the lines below to your Emacs configuration file to install and
 configure the [`flycheck`](https://www.flycheck.org/) package via
