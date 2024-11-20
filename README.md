@@ -24,6 +24,7 @@ you have in your code moving forward.**
 * [Recommended Vi Configurations](#recommended-vi-configurations)
 * [Specific Guidelines](#specific-guidelines)
    * [ArrayTypeStyle](#arraytypestyle)
+   * [CheckStyleException](#checkstyleexception)
    * [ConstantName](#constantname)
    * [EmptyBlock](#emptyblock)
    * [EmptyCatchBlock](#emptycatchblock)
@@ -516,6 +517,11 @@ should appear with the type designation." When declaring a variable
 that refers to an array object, the Java style results in a declaration that
 is consistent with how variables to other, non-array types of objects are
 declared.
+
+### CheckStyleException
+
+The checkstyle program assumes that the Java source code files it checks are able to be
+compiled.
 
 ### ConstantName
 
