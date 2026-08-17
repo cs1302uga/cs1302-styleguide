@@ -35,9 +35,12 @@ CHECKS_ENV_VAR="CS@COURSE_NUM@_CHECKS"
 # Resolve checks configuration: check environment variable, then fallback to default
 CHECKS_CONFIG="${!CHECKS_ENV_VAR:-${DEFAULT_CHECKS_FILE}}"
 
-# Path and executable discovery
-SOURCE="$(realpath "${BASH_SOURCE[0]}")"
 CHECKSTYLE="$(dirname "${SOURCE}")/checkstyle"
+if [[ ! -x "${CHECKSTYLE}" ]]; then
+    if command -v checkstyle >/dev/null 2>&1; then
+        CHECKSTYLE="$(command -v checkstyle)"
+    fi
+fi
 PROG="$(basename "$0")"
 
 # Terminal color and text styling

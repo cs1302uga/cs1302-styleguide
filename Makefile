@@ -89,7 +89,7 @@ install:
 
 ## clean: Remove temporary and generated test artifacts
 clean:
-	rm -rf .coverage .coverage.* htmlcov .pytest_cache
+	rm -rf .coverage .coverage.* htmlcov .pytest_cache .cache
 	rm -rf etc/__pycache__ tests/__pycache__
 	rm -rf tmp
 	@echo "Clean complete."

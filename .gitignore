@@ -11,4 +11,5 @@ htmlcov/
 
 # Local installation and temporary artifacts
 tmp/
+.cache/
 
