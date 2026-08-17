@@ -74,7 +74,7 @@ violates some of the guidelines that are annoying to spot by hand and even more
 annoying to fix.
 
 Finally, we also include information about how to use the `check1302` program
-on `odin` to check your code for compliance. This is the same tool that graders
+on `Odin` to check your code for compliance. This is the same tool that graders
 will use to check your code. **It is your responsibility to ensure that all
 Java source files included with a submission are compliant.** This obviously
 includes code that you write, but it also includes code that may have been given
@@ -128,7 +128,7 @@ established style guide, then:
   conventions outlined in the style guide.
 
 * It is easier to identify common bugs and syntax errors (e.g., missing a curly brace).
-  This saves real world time when it comes to fixing problems in your code.
+  This saves real-world time when it comes to fixing problems in your code.
 
 * It is easier to extend and/or incorporate into other projects. This results in your
   code being more useful to others as well as your future self.
@@ -137,14 +137,14 @@ The list could go on. The important thing to remember is that **quality not only
 refers to the output of a program but also its effect on the people who interact
 with the code**. Rarely, in practice, are you the only one who will read and use
 your code. If you're a software engineer, then it is very likely that *many*
-people will interact your code over time and that you will interact with *lots*
+people will interact with your code over time and that you will interact with *lots*
 of code written by others as well.
 
 ## When and How to Check
 
 Here is a fair and honest warning: if you wait until you are nearly done
 writing some code before checking its style, then do not be surprised if
-you significantly increases the overall amount of time you need
+you significantly increase the overall amount of time you need
 to complete an assignment. You won't have a good time. Much of that extra
 time will be from:
 
@@ -169,7 +169,7 @@ You should check your code early and often. The goal is to help you learn
 good style, so every time you see that you're not in compliance, you should
 take the time to fix it. Although you may find that you have many violations
 early on (that's to be expected), over time you will find that you run into
-fewer and fewer violations. This happens because you start to write code
+fewer and fewer violations. This happens because you start to write
 code in good style. It's a pretty neat way to learn.
 
 If you don't check your code for compliance early and often, then not only
@@ -179,7 +179,7 @@ described earlier, you are actively avoiding learning.
 ### Run Checkstyle
 
 To check your Java source code for compliance, you can use a custom version
-of the Checkstyle program on `odin` called `check1302`. **This program is
+of the Checkstyle program on `Odin` called `check1302`. **This program is
 only guaranteed to work if your code compiles**, so if you encounter a
 crash, then check to make sure your code compiles before proclaiming
 defeat.
@@ -268,7 +268,7 @@ is a text file that is literally named `.emacs` (instead of something like
 `.emacs.txt`). From your home directory on Odin, execute the `ls -a` command.
 This will list files that start with a `.`. If you do not have a `~/.emacs` file, 
 then check to see
-if either `~/.emacs.el` or `~/.emacs.d/init.el` exist; if so, then use one
+if either `~/.emacs.el` or `~/.emacs.d/init.el` exists; if so, then use one
 of those files in the steps below. If none of these files exist, then we recommend that
 you create `~/.emacs` and store your configuration settings there.
 
@@ -457,7 +457,7 @@ will get created when you save. Once open, add the lines we present below
 to the end of the file (could be the top if it's empty), then save the
 file and exit Vi. If you did this correctly, then the settings will
 take effect the next time you launch Vi. One quick way to see if you
-got it working is to open a `.java` in Vi and see if it shows line
+got it working is to open a `.java` file in Vi and see if it shows line
 numbers; if so, then you should be good to go!
 
 **If you do not understand what file you need to create or edit,
@@ -515,7 +515,7 @@ syntactically correct in Java (i.e., it will compile), Oracle advises that,
 "convention discourages this form; the brackets identify the array type and
 should appear with the type designation." When declaring a variable
 that refers to an array object, the Java style results in a declaration that
-is consistent with how variables to other, non-array types of objects are
+is consistent with how variables for other, non-array types of objects are
 declared.
 
 ### CheckStyleException
@@ -533,9 +533,9 @@ interface/annotation field, except `serialVersionUID` and `serialPersistentField
 to as an *instance constant* or *constant instance member* because it looks
 like an instance variable that is also declared `final`. Despite being `final`, an
 instance constant is not considered a "constant" under the definition
-provided by this `[ConstantName]` guideline -- the definition requires that it also be
+provided by this [`ConstantName`](#constantname) guideline -- the definition requires that it also be
 `static` -- and should follow the same naming convention as instance variables as
-described in the [`[MemberName]`](#membername) guideline.
+described in the [`MemberName`](#membername) guideline.
 
 **Rationale:**
 This naming convention for constants is pervasive among Java programmers and is even
@@ -551,7 +551,7 @@ Code blocks are for code. If, for some reason, you believe that you need an empt
 block, then take a step back and rework your control flow.
 
 **Note:** If the `checkstyle` tool reports this for an empty `catch` block, then please
-see the [[EmptyCatchBlock]](#emptycatchblock) policy.
+see the [`EmptyCatchBlock`](#emptycatchblock) policy.
 
 ### EmptyCatchBlock
 
@@ -577,6 +577,7 @@ an empty `catch` block may trigger the `EmptyBlock` policy instead.
 
 You should ensure that empty line separators are present after the header,
 package, all import declarations, fields, constructors, methods, nested classes,
+static initializers, and instance initializers. An exception to this
 policy is made to allow no empty lines between fields (e.g., between
 instance variables in a class).
 
@@ -665,7 +666,7 @@ as `^I`.
   ```
 
   Since no `TAB` (`\t`) is used in the whitespace, the line with four
-  spaces do not appear differently depending on how the program used
+  spaces does not appear differently depending on how the program used
   to view the file is configured. We can simulate that here:
 
   ```
@@ -693,12 +694,12 @@ following directly in the contents of the code file where you press the
 `TAB` key:
 
 1. One `\t` (single tab character); or
-1. Multiple ` ` (single whitespace character).
+1. Multiple ` ` (whitespace characters).
 
 This policy specifically forbids the first of these two approaches.
 If you use the [recommended Emacs configurations](#recommended-emacs-configurations)
 or [recommended Vi configurations](#recommended-vi-configurations), then
-you will be to avoid _future_ non-conformance of this policy.
+you will be able to avoid _future_ non-conformance with this policy.
 
 **Fix using Emacs:**
 If you are an Emacs user who has set up the
@@ -725,7 +726,7 @@ The following indentation rules must be followed:
 | `braceAdjustment`         | how far a brace should be indented when on the next line 	                | 0      |
 | `caseIndent`              | how far a case label should be indented when on the next line 	                | 0      |
 | `throwsIndent` 	          | how far a throws clause should be indented when on the next line                | 4      |
-| `arrayInitIndent`         | how far an array initializer list item should be indented when on next line | 4      |
+| `arrayInitIndent`         | how far an array initializer list item should be indented when on the next line | 4      |
 | `lineWrappingIndentation` | how far the continuation line should be indented when line-wrapping is present  | 4      |
 
 Sometimes, indentation rules are a little hard to parse when parentheses and
@@ -760,7 +761,7 @@ Arrays.sort(array, (a, b) -> a.compareTo(b));
 ### JavadocMethod
 
 All methods, except the `main` method, must have **full** Javadoc documentation,
-including documentation of parameters, exceptions, and return value.
+including documentation of parameters, exceptions, and the return value.
 For example:
 
 ```java
@@ -779,7 +780,7 @@ public boolean contains(String o);
 
 ### LeftCurly
 
-Left curly braces (`{`) for code blocks must always be on the end of the line.
+Left curly braces (`{`) for code blocks must always be at the end of the line.
 For example:
 
 ```java
@@ -800,10 +801,10 @@ column limit include:
 * lines where obeying the column limit is not possible (for example, a long URL
   in Javadoc, or a long JSNI method reference);
 * package and import statements; and
-* command line input examples in a comment that may be cut-and-pasted into a shell.
+* command-line input examples in a comment that may be cut-and-pasted into a shell.
 
 **Rationale:** Long lines are hard to read in printouts or if developers have
-limited screen space for the source code, e.g. if the editor displays additional
+limited screen space for the source code, e.g., if the editor displays additional
 information like line numbers, multiple files, project tree, class hierarchy, etc.
 
 ### MemberName
@@ -828,11 +829,11 @@ The bodies of methods and constructors should never exceed 60 lines.
 This includes the line(s) with the method's signature and opening curly brace,
 all lines in the body of the method (including blank lines), and the line with the
 method's ending curly brace. The method length does not include a method's Javadoc
-comment, however, it does include any comments and blank lines contained within the
+comment; however, it does include any comments and blank lines contained within the
 body of the method.
 
 **Rationale:**
-If a method becomes very long it is hard to understand. Here is the spirit of this
+If a method becomes very long, it is hard to understand. Here is the spirit of this
 guideline: methods that are too big and/or repetitive should be refactored to include
 proper looping constructs and/or broken up into smaller methods to improve readability.
 
@@ -905,8 +906,8 @@ All class, enum, interface, and annotation interface definitions must have Javad
 documentation.
 
 **Rationale:**
-Just like methods, type documentation is also important. Oftentimes class and interface
-documentation provide important high-level details about implementation, naming
+Just like methods, type documentation is also important. Oftentimes, class and interface
+documentation provides important high-level details about implementation, naming
 conventions, etc. In some cases, even code examples are provided directly in the
 documentation to make things easier for programmers who wish to use the code.
 
@@ -938,7 +939,7 @@ strictfp
 ```
 
 **Rationale:**
-This ordering convention for methods is pervasive among Java programmers and
+This ordering convention for modifiers is pervasive among Java programmers and
 is even the same convention used by Oracle and Google.
 
 ### NeedBraces
@@ -951,7 +952,7 @@ or contains only a single statement.
 Consider `if` statements without curly braces. In Java, only the first statement
 following such `if` statements is executed when the conditional's expression
 evaluates to `true`. Potential bugs can be avoided by using curly braces to
-clearly indicating what statement or statements are to execute when the
+clearly indicate what statement or statements are to execute when the
 conditional's expression evaluates to `true`.
 
 **Instructor Note:**
@@ -978,7 +979,7 @@ Blocks are denoted by open and close curly braces.
 ### OneTopLevelClass
 
 Each top-level class, interface, or enum resides in a source file of its own.
-The official description of a 'top-level' term:
+The official definition of the term 'top-level':
 [7.6. Top Level Type Declarations](https://docs.oracle.com/javase/specs/jls/se8/html/jls-7.html#jls-7.6).
 If the file does not contain a `public` class, enum, or interface, then the top-level
 type is the first type in the file.
@@ -1069,8 +1070,8 @@ while (n == 0) { // valid
     ...
 ```
 
-Empty constructor, method, class, enum, interface, loop bodies (blocks),
-lambdas of the forms presented below are exempt:
+Empty constructor, method, class, enum, interface, and loop bodies (blocks),
+as well as lambdas of the forms presented below, are exempt:
 
 ```java
 public MyClass() {}      // empty constructor
@@ -1111,5 +1112,5 @@ This convention improves readability.
 Copyright &copy; Michael E. Cotterell, Bradley J. Barnes, and the University of Georgia.
 This work is licensed under
 a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-The content and opinions expressed on this Web page do not necessarily reflect the views of nor are they endorsed by the University of Georgia or the University System of Georgia.
+The content and opinions expressed on this Web page do not necessarily reflect the views of, nor are they endorsed by, the University of Georgia or the University System of Georgia.
 </small>
