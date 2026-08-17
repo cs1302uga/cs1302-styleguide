@@ -1,8 +1,6 @@
-# Installation & Maintenance Guide
+# `check1302` Installation & Maintenance Guide
 
 This document describes how to install, configure, upgrade, and maintain the **CSCI 1302 Code Style Guide** environment (which provides the `check1302` command, etc.) using [`install.sh`](install.sh) and [`upgrade.sh`](upgrade.sh).
-
----
 
 ## Table of Contents
 
@@ -15,8 +13,6 @@ This document describes how to install, configure, upgrade, and maintain the **C
 7. [`upgrade.sh` Reference](#upgradesh-reference)
 8. [Uninstallation](#uninstallation)
 
----
-
 ## Prerequisites
 
 The installation and upgrade scripts adhere to **POSIX.1-2017** shell standards and require minimal system dependencies:
@@ -25,8 +21,6 @@ The installation and upgrade scripts adhere to **POSIX.1-2017** shell standards 
 * **Java Runtime Environment**: Java 17+ (Java 21+ recommended) with `java` available on `PATH`
 * **Download tool**: `curl` or `wget` (with fallback to `gh` CLI if available)
 * **Core utilities**: `sed`, `grep`, `mkdir`, `chmod`, `ln`, `tar`
-
----
 
 ## Quick Start (Remote One-Liner)
 
@@ -48,8 +42,6 @@ sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/cs1302uga/cs13
 
 *Installs to `${HOME}/.local/check1302` by default when run without write access to `/usr/local`.*
 
----
-
 ## Local Installation
 
 When working from a local clone of this repository:
@@ -58,21 +50,23 @@ When working from a local clone of this repository:
 # Clone the repository
 git clone https://github.com/cs1302uga/cs1302-styleguide.git
 cd cs1302-styleguide
+```
 
+```bash
 # Install with default prefix (/usr/local/check1302 or ~/.local/check1302)
 ./install.sh
+```
 
+```bash
 # Or install to a custom prefix
 ./install.sh --prefix=/opt/cs1302
 ```
-
----
 
 ## Filesystem Layout
 
 The installation adheres to the **Filesystem Hierarchy Standard (FHS v3.0)**:
 
-```text
+```plaintext
 <PREFIX>/
 ├── bin/
 │   ├── check1302 -> ../opt/checkstyle/bin/check1302
@@ -97,8 +91,6 @@ The installation adheres to the **Filesystem Hierarchy Standard (FHS v3.0)**:
 * **`opt/checkstyle-<version>/`**: Version-isolated Checkstyle binaries and rendered launcher scripts.
 * **`opt/checkstyle`**: Symlink pointing to the currently active Checkstyle version.
 * **`share/`**: Architecture-independent shared assets (`cs1302_checks.xml` style definitions and manual pages).
-
----
 
 ## Environment Setup (PATH & MANPATH)
 
@@ -125,12 +117,12 @@ export MANPATH="${PREFIX}/share/man:${MANPATH:-}"
 ```bash
 # Verify command is found
 which check1302
+```
 
+```bash
 # Check manual page
 man check1302
 ```
-
----
 
 ## `install.sh` Reference
 
@@ -160,12 +152,17 @@ man check1302
 ```bash
 # Install to custom directory in verbose mode
 ./install.sh --prefix=/opt/check1302 --verbose
+```
 
+```bash
 # Dry run to inspect actions before making changes
 ./install.sh --prefix=/usr/local/check1302 --dry-run
 ```
 
----
+```bash
+# Perform remote installation via curl
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/cs1302uga/cs1302-styleguide/master/install.sh)"
+```
 
 ## `upgrade.sh` Reference
 
@@ -196,15 +193,17 @@ man check1302
 ```bash
 # Upgrade active Checkstyle to latest release
 ./upgrade.sh
+```
 
+```bash
 # Install a specific Checkstyle release version
 ./upgrade.sh --version=10.21.4
+```
 
+```bash
 # Perform remote upgrade via curl
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/cs1302uga/cs1302-styleguide/master/upgrade.sh)"
 ```
-
----
 
 ## Uninstallation
 
@@ -213,7 +212,9 @@ To completely remove the installed style guide environment, simply delete the pr
 ```bash
 # For system-wide install
 sudo rm -rf /usr/local/check1302
+```
 
+```bash
 # For user-level install
 rm -rf ~/.local/check1302
 ```
