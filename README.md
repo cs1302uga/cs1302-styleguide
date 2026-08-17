@@ -25,27 +25,48 @@ you have in your code moving forward.**
 * [Recommended Vi Configurations](#recommended-vi-configurations)
 * [Specific Guidelines](#specific-guidelines)
    * [ArrayTypeStyle](#arraytypestyle)
+   * [AtclauseOrder](#atclauseorder)
    * [CheckStyleException](#checkstyleexception)
+   * [ClassTypeParameterName](#classtypeparametername)
+   * [CommentsIndentation](#commentsindentation)
    * [ConstantName](#constantname)
    * [EmptyBlock](#emptyblock)
    * [EmptyCatchBlock](#emptycatchblock)
    * [EmptyLineSeparator](#emptylineseparator)
    * [FileTabCharacter](#filetabcharacter)
+   * [GenericWhitespace](#genericwhitespace)
    * [Indentation](#indentation)
+   * [InterfaceTypeParameterName](#interfacetypeparametername)
    * [JavadocMethod](#javadocmethod)
+   * [JavadocParagraph](#javadocparagraph)
+   * [JavadocTagContinuationIndentation](#javadoctagcontinuationindentation)
+   * [LambdaParameterName](#lambdaparametername)
    * [LeftCurly](#leftcurly)
    * [LineLength](#linelength)
+   * [LocalVariableName](#localvariablename)
    * [MemberName](#membername)
    * [MethodLength](#methodlength)
    * [MethodName](#methodname)
+   * [MethodParamPad](#methodparampad)
+   * [MethodTypeParameterName](#methodtypeparametername)
    * [MissingJavadocMethod](#missingjavadocmethod)
    * [MissingJavadocType](#missingjavadoctype)
    * [ModifierOrder](#modifierorder)
+   * [MultipleVariableDeclarations](#multiplevariabledeclarations)
    * [NeedBraces](#needbraces)
+   * [NonEmptyAtclauseDescription](#nonemptyatclausedescription)
    * [OneStatementPerLine](#onestatementperline)
    * [OneTopLevelClass](#onetoplevelclass)
+   * [OperatorWrap](#operatorwrap)
    * [OuterTypeFilename](#outertypefilename)
+   * [PackageName](#packagename)
+   * [ParameterName](#parametername)
+   * [ParenPad](#parenpad)
+   * [PatternVariableName](#patternvariablename)
+   * [RecordComponentName](#recordcomponentname)
+   * [RecordTypeParameterName](#recordtypeparametername)
    * [RightCurly](#rightcurly)
+   * [StaticVariableName](#staticvariablename)
    * [SummaryJavadoc](#summaryjavadoc)
    * [TypeName](#typename)
    * [WhitespaceAround](#whitespacearound)
@@ -519,10 +540,118 @@ that refers to an array object, the Java style results in a declaration that
 is consistent with how variables for other, non-array types of objects are
 declared.
 
+### AtclauseOrder
+
+When multiple Javadoc block tags (`@...`) are present on a class, interface, enum, method, constructor, or field, they must appear in the following standard order:
+
+1. `@param`
+2. `@return`
+3. `@throws`
+4. `@see`
+5. `@since`
+6. `@serial` (or `@serialField`, `@serialData`)
+7. `@deprecated`
+
+```java
+/**
+ * Computes the result.
+ *
+ * @param input the input value
+ * @return the computed result
+ * @throws IllegalArgumentException if input is negative
+ * @see #otherMethod()
+ */
+public int compute(int input) {
+    ...
+} // compute
+```
+
+```java
+/**
+ * @return the computed result  // Invalid style: @return before @param
+ * @param input the input value
+ */
+```
+
+**Rationale:**
+Following a universal ordering convention allows readers to quickly scan documentation comments for parameters, return values, exceptions, and references in an intuitive sequence.
+
 ### CheckStyleException
 
-The checkstyle program assumes that the Java source code files it checks are able to be
-compiled.
+A `CheckstyleException` (specifically `com.puppycrawl.tools.checkstyle.api.CheckstyleException`)
+is an error thrown by `check1302` and `checkstyle` themselves and not by the program being
+checked. Unlike standard Checkstyle violations (which just tell you your code is formatted
+incorrectly), a `CheckstyleException` means the tool encountered a fatal error and crashed
+before it could finish analyzing your code. Because this exception is a generic wrapper,
+the actual problem is almost always found further down in the stack trace under the
+`Caused by:` line. Most often, this means that the java source code you are trying to
+check does not compile.
+
+This exception can happen for a variety of reasons, so the easiest way to
+fix it is to compile your code on your own first and fix any compilation errors before
+running `check1302` or `checkstyle` again. Common reasons this exception is thrown include:
+
+* Mismatched parentheses, brackets, or braces
+* Typos in class or method names
+* Missing import statements
+* Incompatible Java versions
+* Missing or corrupted source files
+
+### ClassTypeParameterName
+
+Generic type parameter names for generic classes must either be:
+
+1. a single uppercase letter optionally followed by a single digit (e.g., `T`, `E`, `K`, `V`, `T1`); or
+
+2. an `UpperCamelCase` name ending with `T` or `Type` (e.g., `RequestT`, `ResponseT`, `ValueType`).
+
+```java
+public class MyList<E> {         // valid style
+    ...
+} // MyList<E>
+
+public class Response<DataT> {   // valid style
+    ...
+} // Response<DataT>
+```
+
+```java
+public class MyList<element> {   // invalid style; lowercase
+    ...
+} // MyList<element>
+
+public class Response<Data> {    // invalid style; does not end with T or Type
+    ...
+} // Response<Data>
+```
+
+**Rationale:**
+Clear, concise naming conventions for type parameters avoid confusion with concrete class names.
+
+### CommentsIndentation
+
+Block comments (`/* ... */`) and single-line comments (`// ...`) must have the same indentation level as the surrounding code block or the statement that immediately follows them.
+
+```java
+// Valid style: comment indented to the same level as the code
+public void calculate() {
+    // initialize counter
+    int count = 0;
+} // calculate
+```
+
+```java
+// Invalid style: comment incorrectly indented
+public void calculate() {
+// initialize counter (too far left)
+    int count = 0;
+        // initialize total (too far right)
+    int total = 0;
+} // calculate
+```
+
+**Rationale:**
+Comments that align with surrounding code create clean visual hierarchy and improve readability.
 
 ### ConstantName
 
@@ -563,7 +692,7 @@ try {
     ...
 } catch (IOException ioe) {
     // empty; invalid style
-}
+} // try
 ```
 
 **Rationale:** The purpose of a `catch` block is to handle an exception.
@@ -620,73 +749,79 @@ as `^I`.
   character in the whitespace just before the declaration of
   `private int x = 1;`:
 
+  ```bash
+  echo -e "public class One {\n\tprivate int x = 1;\n} // One\n" > One.java
   ```
-  $ echo -e "public class One {\n\tprivate int x = 1;\n}\n" > One.java
-  ```
-  ```
+
+  ```bash
   $ cat -T One.java
   public class One
   ^Iprivate int x = 1;
-  }
+  } // One
   ```
 
   Since a `TAB` (`\t`) is used in the whitespace, the line with the `TAB`
   may appear differently depending on how the program used to view the
-  file is configured. We can simulate that here:
+  file is configured. We can simulate that here using the `tabs` command (see `man tabs` on most systems for more information):
 
-  ```
+  ```bash
   $ tabs 3; cat One.java
   public class One
-	 private int x = 1;
-  }
+     private int x = 1;
+  } // One
   ```
-  ```
+
+  ```bash
   $ tabs 5; cat One.java
   public class One
-	   private int x = 1;
-  }
+       private int x = 1;
+  } // One
   ```
-  ```
+
+  ```bash
   $ tabs 9; cat One.java
   public class One
-	       private int x = 1;
-  }
+           private int x = 1;
+  } // One
   ```
 
 * Use the command below to generate `Two.java`, a small class where
   four spaces are used before the declaration of `private int y = 2;`:
 
+  ```bash
+  echo -e "public class Two {\n\tprivate int y = 2;\n} // Two\n" > Two.java
   ```
-  $ echo -e "public class Two {\n\tprivate int y = 2;\n}\n" > Two.java
-  ```
-  ```
+
+  ```bash
   $ cat -T Two.java
   public class Two
-      private int y = 2;
-  }
+    private int y = 2;
+  } // Two
   ```
 
   Since no `TAB` (`\t`) is used in the whitespace, the line with four
   spaces does not appear differently depending on how the program used
   to view the file is configured. We can simulate that here:
 
-  ```
+  ```bash
   $ tabs 3; cat Two.java
   public class Two
       private int y = 2;
-  }
+  } // Two
   ```
-  ```
+
+  ```bash
   $ tabs 5; cat Two.java
   public class Two
       private int y = 2;
-  }
+  } // Two
   ```
-  ```
+
+  ```bash
   $ tabs 9; cat Two.java
   public class Two
       private int y = 2;
-  }
+  } // Two
   ```
 
 When you go to write the inside/body of a class or method, you likely press the
@@ -716,6 +851,26 @@ The use of tabs instead of spaces may result in different text editors displayin
 the same file in different ways, depending on the tab width configured for the
 given editor. Developers should not need to configure the tab width of their
 text editors in order to be able to read source code.
+
+### GenericWhitespace
+
+Whitespace around generic type arguments and type parameters (the `<` and `>` angle brackets) must adhere to standard Java conventions:
+
+* No whitespace precedes `<` in generic class/interface instantiations or declarations.
+* No whitespace immediately follows `<` or precedes `>`.
+* Whitespace follows `>` only if followed by a keyword, variable name, or operator.
+
+```java
+List<String> names = new ArrayList<>(); // valid style
+Map<String, List<Integer>> map;         // valid style
+```
+
+```java
+List < String > names = new ArrayList < > (); // invalid style
+```
+
+**Rationale:**
+Consistent spacing around angle brackets ensures generic declarations remain compact, distinct from comparison operators, and visually clean.
 
 ### Indentation
 
@@ -759,6 +914,33 @@ code:
 Arrays.sort(array, (a, b) -> a.compareTo(b));
 ```
 
+### InterfaceTypeParameterName
+
+Generic type parameter names for generic interfaces must either be:
+
+1. a single uppercase letter optionally followed by a single digit (e.g., `T`, `E`, `K`, `V`, `T1`); or
+
+2. an `UpperCamelCase` name ending with `T` or `Type` (e.g., `ElementT`, `ItemType`).
+
+```java
+public interface Map<K, V> {     // valid style
+    ...
+} // Map
+
+public interface Container<ItemType> { // valid style
+    ...
+} // Container
+```
+
+```java
+public interface Map<key, val> { // invalid style; lowercase
+    ...
+} // Map
+```
+
+**Rationale:**
+Standardized interface type parameter names ensure consistency across interface contracts and implementations.
+
 ### JavadocMethod
 
 All methods, except the `main` method, must have **full** Javadoc documentation,
@@ -779,6 +961,71 @@ For example:
 public boolean contains(String o);
 ```
 
+### JavadocParagraph
+
+Paragraphs in Javadoc comments must be separated by an empty line followed by a `<p>` tag on its own line, immediately preceding the new paragraph text. There should not be a closing `</p>` tag.
+
+```java
+/**
+ * First paragraph summarizing the method.
+ *
+ * <p>
+ * Second paragraph with additional implementation details.
+ */
+public void process() {
+    ...
+} // process
+```
+
+```java
+/**
+ * First paragraph.
+ * <p> Second paragraph without blank line preceding tag.
+ */
+```
+
+**Rationale:**
+The standard Javadoc HTML generator expects paragraph separation structured with `<p>` on its own line preceded by a blank Javadoc line for optimal website rendering.
+
+### JavadocTagContinuationIndentation
+
+When a Javadoc block tag description (such as for `@param`, `@return`, or `@throws`) wraps onto subsequent lines, the continuation line(s) must be indented at least **4 spaces** relative to the tag line.
+
+```java
+/**
+ * Processes student records.
+ *
+ * @param studentName the full legal name of the student to look up
+ *     in the departmental registration database
+ * @return the unique academic identifier assigned to the student
+ * @throws IllegalArgumentException if the student name is null
+ *     or consists only of whitespace
+ */
+public String lookupStudent(String studentName) {
+    ...
+} // lookupStudent
+```
+
+**Rationale:**
+Indenting tag continuation lines visually groups multi-line descriptions with their associated tags and clearly distinguishes them from subsequent tags.
+
+### LambdaParameterName
+
+Parameter names declared in lambda expressions must be written in `lowerCamelCase`.
+
+```java
+list.forEach(elementItem -> System.out.println(elementItem)); // valid style
+Comparator<String> comp = (firstStr, secondStr) -> firstStr.compareTo(secondStr); // valid style
+```
+
+```java
+list.forEach(ElementItem -> System.out.println(ElementItem)); // invalid style
+Comparator<String> comp = (first_str, second_str) -> first_str.compareTo(second_str); // invalid style
+```
+
+**Rationale:**
+Lambda parameters are local identifiers and must conform to the standard `lowerCamelCase` naming convention used for all Java parameters and local variables.
+
 ### LeftCurly
 
 Left curly braces (`{`) for code blocks must always be at the end of the line.
@@ -787,6 +1034,7 @@ For example:
 ```java
 if (condition) {
     ...
+} // if
 ```
 
 **Rationale:**
@@ -807,6 +1055,23 @@ column limit include:
 **Rationale:** Long lines are hard to read in printouts or if developers have
 limited screen space for the source code, e.g., if the editor displays additional
 information like line numbers, multiple files, project tree, class hierarchy, etc.
+
+### LocalVariableName
+
+Local variable names (variables declared inside methods, constructors, or code blocks) must be written in `lowerCamelCase`.
+
+```java
+int studentCount = 10;   // valid style
+String firstName = "Ada"; // valid style
+```
+
+```java
+int StudentCount = 10;   // invalid style; starts with uppercase letter
+String first_name = "Ada"; // invalid style; contains underscore
+```
+
+**Rationale:**
+This naming convention is pervasive throughout Java programming and provides visual distinction from type names (`UpperCamelCase`) and constants (`CONSTANT_CASE`).
 
 ### MemberName
 
@@ -842,6 +1107,52 @@ Method names must be written in `lowerCamelCase`.
 **Rationale:**
 This naming convention for methods is pervasive among Java programmers and
 is even the same convention used by Oracle.
+
+### MethodParamPad
+
+There must be no whitespace between a method, constructor, or annotation identifier and its opening parenthesis (`(`).
+
+```java
+public void calculateTotal(int count) { // valid style
+    doSomething();                      // valid style
+} // calculateTotal
+```
+
+```java
+public void calculateTotal (int count) { // invalid style; space before (
+    doSomething ();                      // invalid style; space before (
+} // calculateTotal
+```
+
+**Rationale:**
+Placing the opening parenthesis directly adjacent to the method or constructor name clearly identifies the token as a callable invocation or declaration.
+
+### MethodTypeParameterName
+
+Generic type parameter names for generic methods must either be:
+
+1. a single uppercase letter optionally followed by a single digit (e.g., `T`, `R`, `E`, `T1`); or
+
+2. an `UpperCamelCase` name ending with `T` or `Type` (e.g., `ResultT`, `ReturnType`).
+
+```java
+public <T> T getFirst(List<T> list) { // valid style
+    return list.get(0);
+} // getFirst
+
+public <ReturnType> ReturnType process(Task<ReturnType> task) { // valid style
+    return task.execute();
+} // process
+```
+
+```java
+public <type> type getFirst(List<type> list) { // invalid style; lowercase
+    return list.get(0);
+} // getFirst
+```
+
+**Rationale:**
+Conforming to standard single-letter or `T`-suffixed type parameter conventions ensures generic method signatures remain intuitive and readable.
 
 ### MissingJavadocMethod
 
@@ -943,6 +1254,22 @@ strictfp
 This ordering convention for modifiers is pervasive among Java programmers and
 is even the same convention used by Oracle and Google.
 
+### MultipleVariableDeclarations
+
+Each variable declaration must be declared in its own statement on a separate line. Declaring multiple variables in a single statement using commas is disallowed.
+
+```java
+int count = 0; // valid style
+int total = 0; // valid style
+```
+
+```java
+int count, total; // invalid style; multiple variables in single declaration
+```
+
+**Rationale:**
+Declaring one variable per line ensures every variable can be independently documented, easily modified, and read without ambiguity.
+
 ### NeedBraces
 
 Curly braces are always used where technically optional. Braces should be used with
@@ -962,6 +1289,36 @@ to a brace-less `if` statement with the intent that those statements only
 execute when the conditional's expression evaluates to `true`. That is,
 they forgot to add the curly braces. This guideline helps protect you
 against that scenario and improves readability.
+
+### NonEmptyAtclauseDescription
+
+Every Javadoc block tag (such as `@param`, `@return`, and `@throws`) must include a non-empty description.
+
+```java
+/**
+ * Searches for a record by identifier.
+ *
+ * @param id the unique numeric identifier
+ * @return the matching student record
+ * @throws NoSuchElementException if no record with the given id exists
+ */
+public Student findById(int id) {
+    ...
+} // findById
+```
+
+```java
+/**
+ * @param id
+ * @return
+ */
+public Student findById(int id) { // Invalid style: empty tag descriptions
+    ...
+} // findById
+```
+
+**Rationale:**
+A Javadoc tag without a descriptive explanation provides no meaningful documentation beyond what is already visible in the method signature.
 
 ### OneStatementPerLine
 
@@ -985,6 +1342,55 @@ The official definition of the term 'top-level':
 If the file does not contain a `public` class, enum, or interface, then the top-level
 type is the first type in the file.
 
+### OperatorWrap
+
+When a line-wrapped statement breaks across multiple lines at an operator (e.g., `+`, `-`, `*`, `/`, `&&`, `||`, `==`, `!=`, or `::`), the operator must wrap to the **new line** (i.e., appear at the beginning of the continuation line).
+
+```java
+// Valid style examples: operator wraps to the beginning of the continuation line
+
+int total = value1 + value2
+    + value3 + value4;
+
+String message =
+    "one, " +
+    "two, " +
+    "three";
+
+if (condition1 && condition2
+    && condition3) {
+    ...
+} // if
+
+boolean isValid = firstCondition
+    && secondCondition
+    && thirdCondition;
+```
+
+```java
+// Invalid style examples: operator remains at the end of the previous line
+
+int total = value1 + value2 +
+    value3 + value4;
+
+String badMessage = "one, " +
+    "two, " +
+    "three";
+
+if (condition1 && condition2 &&
+    condition3) {
+    ...
+} // if
+
+boolean isInvalid =
+    firstCondition &&
+    secondCondition &&
+    thirdCondition;
+```
+
+**Rationale:**
+Placing the operator at the beginning of the continuation line makes it immediately visible that the line is a continuation of the preceding expression.
+
 ### OuterTypeFilename
 
 In any given `.java` file, the outer type name and the file name must match.
@@ -994,6 +1400,137 @@ For example, the class `Foo` must be in a file named `Foo.java`.
 Specification when the outer type is declared with `public` visibility, we
 stick to this convention for other visibilities as well. In any case, most of
 the time your outer type will be declared as `public`.
+
+### PackageName
+
+Package names must be written in all lowercase letters, with subpackages separated by a single period (`.`). Package names must not contain uppercase letters, underscores, or other special characters.
+
+```java
+package cs1302.example; // valid style
+```
+
+```java
+package cs1302.MyExample; // invalid style; uppercase letter
+package cs1302_example;   // invalid style; underscore
+```
+
+**Rationale:**
+This naming convention is standard in Java (see the Java Language Specification, section 6.8.1). Lowercase package names avoid name conflicts with type names.
+
+### ParameterName
+
+Method and constructor formal parameter names must be written in `lowerCamelCase`.
+
+```java
+public void setScore(int finalScore, String studentName) { // valid style
+    ...
+} // setScore
+```
+
+```java
+public void setScore(int FinalScore, String student_name) { // invalid style
+    ...
+} // setScore
+```
+
+**Rationale:**
+Consistent parameter naming ensures seamless readability in method signatures and documentation across the codebase.
+
+### ParenPad
+
+There must be no whitespace immediately following an opening parenthesis (`(`) or immediately preceding a closing parenthesis (`)`) in method calls, constructor calls, control flow expressions (`if`, `for`, `while`, `switch`), and type casts.
+
+```java
+if (x > 0) {                 // valid style
+    String str = (String) o; // valid style
+    foo(a, b);               // valid style
+} // if
+```
+
+```java
+if ( x > 0 ) {               // invalid style; spaces inside parens
+    String str = ( String ) o; // invalid style; spaces inside parens
+    foo( a, b );             // invalid style; spaces inside parens
+} // if
+```
+
+**Rationale:**
+Padding inside parentheses adds unnecessary horizontal spacing and impairs readability.
+
+### PatternVariableName
+
+Pattern variable names introduced in `instanceof` pattern matching or switch pattern matching must be written in `lowerCamelCase`.
+
+```java
+if (obj instanceof String stringVal) { // valid style
+    System.out.println(stringVal.length());
+} // if
+```
+
+```java
+if (obj instanceof String StringVal) { // invalid style; uppercase start
+    ...
+} // if
+
+if (obj instanceof String string_val) { // invalid style; underscore
+    ...
+} // if
+```
+
+**Rationale:**
+Pattern variables act as local variables in their scoped blocks and should follow the universal Java `lowerCamelCase` naming convention.
+
+### RecordComponentName
+
+Record component names declared in record headers must be written in `lowerCamelCase`.
+
+```java
+public record StudentRecord(String firstName, int studentId) { // valid style
+} // StudentRecord
+```
+
+```java
+public record StudentRecord(String FirstName, int student_id) { // invalid style
+} // StudentRecord
+```
+
+**Rationale:**
+Record components define both private final fields and public accessor methods on the resulting record type. Naming them in `lowerCamelCase` ensures generated accessor methods (e.g. `firstName()`) adhere to standard Java method naming conventions.
+
+### RecordTypeParameterName
+
+Generic type parameter names for generic records must either be:
+
+1. a single uppercase letter optionally followed by a single digit (e.g., `T`, `E`, `K`, `V`, `T1`); or
+
+2. an `UpperCamelCase` name ending with `T` or `Type` (e.g., `ItemT`, `KeyType`, `ValueType`).
+
+```java
+// valid style
+public record Pair<K, V>(K key, V value) { 
+    ...
+} // Pair
+
+// valid style
+public record Entry<KeyType, ValueType>(KeyType key, ValueType val) { 
+    ...
+} // Entry
+```
+
+```java
+// invalid style; lowercase
+public record Pair<key, value>(key k, value v) { 
+    ...
+} // Pair
+
+// invalid style; does not end with T or Type
+public record Entry<Key, Value>(Key k, Value v) { 
+    ...
+} // Entry
+```
+
+**Rationale:**
+Record type parameters serve a role similar to type parameters in generic classes and interfaces, and should follow the same established conventions. Using single uppercase letters or `T`-suffixed names ensures they remain visually distinct from concrete record names and component field names.
 
 ### RightCurly
 
@@ -1026,6 +1563,36 @@ else {
 This convention for curly braces is pervasive among Java programmers and
 is even the same convention used by companies like Google.
 
+### StaticVariableName
+
+Static non-final field names (class variables) must be written in `lowerCamelCase`.
+
+```java
+public class Counter {
+
+    // valid style
+    private static int instanceCount = 0; 
+
+} // Counter
+```
+
+```java
+public class Counter {
+
+    // invalid style; uppercase start
+    private static int InstanceCount = 0;  
+
+    // invalid style; underscore
+    private static int instance_count = 0; 
+
+} // Counter
+```
+
+**Note:** A `static` **field** that is also `final` is a **constant** and must be written in `CONSTANT_CASE` as described in [`ConstantName`](#constantname).
+
+**Rationale:**
+Static non-final fields are **mutable class-level variables** and must be visually distinguished from constants.
+
 ### SummaryJavadoc
 
 In Javadoc comments, the
@@ -1057,26 +1624,33 @@ You need to ensure that code tokens are surrounded by whitespace.
 ```java
 if (n==0) { // invalid
     ...
+} // if
 ```
+
 ```java
 if (n == 0) { // valid
     ...
+} // if
 ```
+
 ```java
 while(n == 0) { // invalid
     ...
+} // while
 ```
+
 ```java
 while (n == 0) { // valid
     ...
+} // while
 ```
 
 Empty constructor, method, class, enum, interface, and loop bodies (blocks),
 as well as lambdas of the forms presented below, are exempt:
 
 ```java
-public MyClass() {}      // empty constructor
-public void func() {}    // empty method
+public MyClass() {} // empty constructor
+public void func() {} // empty method
 public interface Foo {} // empty interface
 public class Foo {} // empty class
 public enum Foo {} // empty enum

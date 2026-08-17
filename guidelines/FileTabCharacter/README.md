@@ -19,73 +19,79 @@ as `^I`.
   character in the whitespace just before the declaration of
   `private int x = 1;`:
 
+  ```bash
+  echo -e "public class One {\n\tprivate int x = 1;\n} // One\n" > One.java
   ```
-  $ echo -e "public class One {\n\tprivate int x = 1;\n}\n" > One.java
-  ```
-  ```
+
+  ```bash
   $ cat -T One.java
   public class One
   ^Iprivate int x = 1;
-  }
+  } // One
   ```
 
   Since a `TAB` (`\t`) is used in the whitespace, the line with the `TAB`
   may appear differently depending on how the program used to view the
-  file is configured. We can simulate that here:
+  file is configured. We can simulate that here using the `tabs` command (see `man tabs` on most systems for more information):
 
-  ```
+  ```bash
   $ tabs 3; cat One.java
   public class One
-	 private int x = 1;
-  }
+     private int x = 1;
+  } // One
   ```
-  ```
+
+  ```bash
   $ tabs 5; cat One.java
   public class One
-	   private int x = 1;
-  }
+       private int x = 1;
+  } // One
   ```
-  ```
+
+  ```bash
   $ tabs 9; cat One.java
   public class One
-	       private int x = 1;
-  }
+           private int x = 1;
+  } // One
   ```
 
 * Use the command below to generate `Two.java`, a small class where
   four spaces are used before the declaration of `private int y = 2;`:
 
+  ```bash
+  echo -e "public class Two {\n\tprivate int y = 2;\n} // Two\n" > Two.java
   ```
-  $ echo -e "public class Two {\n\tprivate int y = 2;\n}\n" > Two.java
-  ```
-  ```
+
+  ```bash
   $ cat -T Two.java
   public class Two
-      private int y = 2;
-  }
+    private int y = 2;
+  } // Two
   ```
 
   Since no `TAB` (`\t`) is used in the whitespace, the line with four
   spaces does not appear differently depending on how the program used
   to view the file is configured. We can simulate that here:
 
-  ```
+  ```bash
   $ tabs 3; cat Two.java
   public class Two
       private int y = 2;
-  }
+  } // Two
   ```
-  ```
+
+  ```bash
   $ tabs 5; cat Two.java
   public class Two
       private int y = 2;
-  }
+  } // Two
   ```
-  ```
+
+  ```bash
   $ tabs 9; cat Two.java
   public class Two
       private int y = 2;
-  }
+  } // Two
   ```
 
 When you go to write the inside/body of a class or method, you likely press the

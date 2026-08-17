@@ -7,7 +7,7 @@ try {
     ...
 } catch (IOException ioe) {
     // empty; invalid style
-}
+} // try
 ```
 
 **Rationale:** The purpose of a `catch` block is to handle an exception.

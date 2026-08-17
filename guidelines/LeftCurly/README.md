@@ -6,6 +6,7 @@ For example:
 ```java
 if (condition) {
     ...
+} // if
 ```
 
 **Rationale:**
