@@ -8,6 +8,7 @@ describes how to use the `check1302` program on `Odin` to check your code as wel
 as Emacs and Vi configurations that, if used, will reduce the number of style issues
 you have in your code moving forward.**
 
+
 ## Table of Contents
 
 * [Compliance](#compliance)
@@ -35,8 +36,8 @@ you have in your code moving forward.**
    * [LeftCurly](#leftcurly)
    * [LineLength](#linelength)
    * [MemberName](#membername)
-   * [MethodName](#methodname)
    * [MethodLength](#methodlength)
+   * [MethodName](#methodname)
    * [MissingJavadocMethod](#missingjavadocmethod)
    * [MissingJavadocType](#missingjavadoctype)
    * [ModifierOrder](#modifierorder)
@@ -815,14 +816,6 @@ Instance variable names must be written in `lowerCamelCase`.
 This naming convention for instance variables is pervasive among Java programmers and
 is even the same convention used by Oracle.
 
-### MethodName
-
-Method names must be written in `lowerCamelCase`.
-
-**Rationale:**
-This naming convention for methods is pervasive among Java programmers and
-is even the same convention used by Oracle.
-
 ### MethodLength
 
 The bodies of methods and constructors should never exceed 60 lines.
@@ -841,6 +834,14 @@ proper looping constructs and/or broken up into smaller methods to improve reada
 You should always try to limit the number of lines for a method so that the
 entire method can be seen on the screen at once, even when multiple files
 are open at the same time on a single screen.
+
+### MethodName
+
+Method names must be written in `lowerCamelCase`.
+
+**Rationale:**
+This naming convention for methods is pervasive among Java programmers and
+is even the same convention used by Oracle.
 
 ### MissingJavadocMethod
 

@@ -1,0 +1,23 @@
+#!/bin/bash
+# ==============================================================================
+# Pre-Commit Hook: Autogenerate README.md and Verify Synchronization
+# ==============================================================================
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "${REPO_ROOT}"
+
+echo "==> [pre-commit] Autogenerating README.md..."
+python3 etc/build_readme.py
+
+echo "==> [pre-commit] Staging README.md..."
+git add README.md
+
+echo "==> [pre-commit] Verifying style guide synchronization..."
+python3 etc/check_sync.py
+
+echo "==> [pre-commit] Running test suite..."
+python3 -m unittest discover -s tests -v
+
+echo "==> [pre-commit] Checks passed successfully."
+exit 0

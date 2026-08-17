@@ -1,0 +1,24 @@
+# See https://pre-commit.com for more information
+repos:
+  - repo: local
+    hooks:
+      - id: build-readme
+        name: Autogenerate README.md
+        entry: python3 etc/build_readme.py
+        language: system
+        files: ^(cs1302_checks\.xml|guidelines/.*|etc/README_.*\.md)$
+        pass_filenames: false
+
+      - id: check-sync
+        name: Verify Style Guide Synchronization
+        entry: python3 etc/check_sync.py
+        language: system
+        always_run: true
+        pass_filenames: false
+
+      - id: unit-tests
+        name: Run Unit Tests
+        entry: python3 -m unittest discover -s tests
+        language: system
+        always_run: true
+        pass_filenames: false
