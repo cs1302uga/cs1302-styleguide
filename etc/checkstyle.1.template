@@ -1,0 +1,160 @@
+.TH CHECKSTYLE 1
+
+.SH NAME
+checkstyle \- Java source code style and quality checker
+
+.SH SYNOPSIS
+.B checkstyle
+[\fIOPTION\fP...] \fIFILE\fP...
+
+.SH DESCRIPTION
+Checkstyle verifies that the specified source code files adhere to the specified
+rules. By default, violations are reported to standard out in plain format.
+Checkstyle requires a configuration XML file that configures the checks to apply.
+
+This wrapper script intercepts parser and compilation failures
+(\fIcom.puppycrawl.tools.checkstyle.api.CheckstyleException\fP) that arise
+when analyzing uncompilable code, and outputs a diagnostic message
+(\fICheckstyle suspects this file may not compile!\fP) in plain text or XML
+format matching the requested output format.
+
+.SH OPTIONS
+.TP
+\fIFILE\fP...
+One or more source files or folders to verify.
+
+.TP
+\fB-b\fP, \fB--branch-matching-xpath\fP=\fIxpath\fP
+Shows Abstract Syntax Tree (AST) branches that match given XPath query.
+
+.TP
+\fB-c\fP=\fIconfigurationFile\fP
+Specifies the location of the file that defines the configuration modules.
+The location can either be a filesystem location, or a name passed to the
+\fIClassLoader.getResource()\fP method.
+
+.TP
+\fB-d\fP, \fB--debug\fP
+Prints all debug logging of CheckStyle utility.
+
+.TP
+\fB-e\fP, \fB--exclude\fP=\fIexclude\fP
+Directory or file to exclude from CheckStyle. The path can be the full, absolute
+path, or relative to the current path. Multiple excludes are allowed.
+
+.TP
+\fB-E\fP, \fB--executeIgnoredModules\fP
+Allows ignored modules to be run.
+
+.TP
+\fB-f\fP=\fIformat\fP
+Specifies the output format. Valid values: \fBxml\fP, \fBsarif\fP, \fBplain\fP for
+\fIXMLLogger\fP, \fISarifLogger\fP, and \fIDefaultLogger\fP respectively. Defaults to \fBplain\fP.
+
+.TP
+\fB-g\fP, \fB--generate-xpath-suppression\fP
+Generates an output xpath suppression XML to use to suppress all violations from user's config.
+Instead of printing every violation, all violations will be caught and a single suppressions
+xml file will be printed out. Used only with \fB-c\fP option. Output location can be
+specified with \fB-o\fP option.
+
+.TP
+\fB-G\fP, \fB--generate-checks-and-files-suppression\fP
+Generates an output suppression XML that will have suppress elements with "checks" and "files"
+attributes only to use to suppress all violations from user's config. Instead of printing every
+violation, all violations will be caught and a single suppressions xml file will be printed out.
+Used only with \fB-c\fP option. Output location can be specified with \fB-o\fP option.
+
+.TP
+\fB-h\fP, \fB--help\fP
+Show this help message and exit.
+
+.TP
+\fB-j\fP, \fB--javadocTree\fP
+This option is used to print the Parse Tree of the Javadoc comment. The file has to contain only
+Javadoc comment content excluding '/**' and '*/' at the beginning and at the end respectively.
+It can only be used on a single file and cannot be combined with other options.
+
+.TP
+\fB-J\fP, \fB--treeWithJavadoc\fP
+This option is used to display the Abstract Syntax Tree (AST) with Javadoc nodes of the
+specified file. It can only be used on a single file and cannot be combined with other options.
+
+.TP
+\fB-o\fP=\fIoutputPath\fP
+Sets the output file. Defaults to stdout.
+
+.TP
+\fB-p\fP=\fIpropertiesFile\fP
+Sets the property files to load.
+
+.TP
+\fB-s\fP=\fIsuppressionLineColumnNumber\fP
+Prints xpath suppressions at the file's line and column position. Argument is the line and column
+number (separated by a \fB:\fP) in the file that the suppression should be generated for. The option
+cannot be used with other options and requires exactly one file to run on to be specified. Note
+that the generated result will have few queries, joined by pipe(\fB|\fP). Together they will match
+all AST nodes on specified line and column. You need to choose only one and recheck that it works.
+
+.TP
+\fB-t\fP, \fB--tree\fP
+This option is used to display the Abstract Syntax Tree (AST) without any comments of the specified
+file. It can only be used on a single file and cannot be combined with other options.
+
+.TP
+\fB-T\fP, \fB--treeWithComments\fP
+This option is used to display the Abstract Syntax Tree (AST) with comment nodes excluding Javadoc
+of the specified file. It can only be used on a single file and cannot be combined with other options.
+
+.TP
+\fB-V\fP, \fB--version\fP
+Print version information and exit.
+
+.TP
+\fB-w\fP, \fB--tabWidth\fP=\fItabWidth\fP
+Sets the length of the tab character. Used only with \fB-s\fP option. Default value is 8.
+
+.TP
+\fB-x\fP, \fB--exclude-regexp\fP=\fIexcludeRegex\fP
+Directory/file pattern to exclude from CheckStyle. Multiple excludes are allowed.
+
+.SH EXAMPLES
+Audit a Java source file against a custom configuration file:
+.PP
+.nf
+.RS
+$ \fBcheckstyle\fP -c /path/to/checks.xml MyClass.java
+.RE
+.fi
+.PP
+Output violations in XML format to a file:
+.PP
+.nf
+.RS
+$ \fBcheckstyle\fP -f xml -c /path/to/checks.xml -o report.xml src/
+.RE
+.fi
+
+.SH EXIT STATUS
+.TP
+\fB0\fP
+Verification succeeded and no errors or style violations were detected.
+.TP
+\fB>0\fP
+Style violations were encountered or execution failed.
+
+.SH SEE ALSO
+\fBcheck@COURSE_NUM@\fP(1)
+
+.SH AUTHORS
+\fBCheckstyle\fP is developed and maintained by Oliver Burn, Roman Ivanov, Richard Veach,
+and the Checkstyle contributors (https://checkstyle.org/team.html).
+
+.SH LICENSE
+Checkstyle is dual-licensed under the GNU Lesser General Public License (LGPL-2.1+)
+(https://github.com/checkstyle/checkstyle/blob/master/LICENSE) and the Apache License,
+Version 2.0 (https://github.com/checkstyle/checkstyle/blob/master/LICENSE.apache20).
+
+.SH BUGS
+Report bugs and feature requests to the upstream issue tracker:
+https://github.com/checkstyle/checkstyle/issues

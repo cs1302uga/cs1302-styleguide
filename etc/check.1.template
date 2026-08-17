@@ -1,0 +1,111 @@
+.TH CHECK@COURSE_NUM@ 1
+
+.SH NAME
+check@COURSE_NUM@ \- check Java source code style
+
+.SH SYNOPSIS
+.B check@COURSE_NUM@ [\fIOPTION\fP...] \fIFILE\fP...
+
+.SH DESCRIPTION
+The \fBcheck@COURSE_NUM@\fP script verifies that the specified source code FILEs adhere
+to the guidelines in the \fBCSCI @COURSE_NUM@ Code Style Guide\fP (@GUIDE_URL@).
+The script uses Checkstyle (https://checkstyle.org/) to automate
+the process of checking the Java code in each FILE. Each FILE may be a path to
+a \fI.java\fP file or a path to a directory.
+
+The script runs Checkstyle configured with the CSCI @COURSE_NUM@ rules,
+filters verbose package namespace prefixes from violation reports, and automatically
+opens the style guide in a web browser if violations are detected and the
+\fBBROWSER\fP environment variable is defined.
+
+.SH EXAMPLES
+To check a single Java source code file, say
+\fIsrc/cs@COURSE_NUM@/util/Example.java\fP, use:
+.PP
+.nf
+.RS
+$ \fBcheck@COURSE_NUM@\fP src/cs@COURSE_NUM@/util/Example.java
+.RE
+.fi
+.PP
+To check all Java source code files under a directory, say
+\fIsrc\fP, use:
+.PP
+.nf
+.RS
+$ \fBcheck@COURSE_NUM@\fP src
+.RE
+.fi
+.PP
+When a guideline violation is found, the output may contain one or more lines
+that look like this:
+.PP
+.nf
+.RS
+[ERROR] src/cs@COURSE_NUM@/util/Example.java:2: Missing a Javadoc comment. [MissingJavadocType]
+.RE
+.fi
+.PP
+In the last example, MissingJavadocType is the name of the specific guideline in the
+\fBCSCI @COURSE_NUM@ Code Style Guide\fP (@GUIDE_URL@) that was violated on line 2
+of \fIsrc/cs@COURSE_NUM@/util/Example.java\fP.
+
+.SH OPTIONS
+Any standard \fBcheckstyle\fP(1) options may be passed to \fBcheck@COURSE_NUM@\fP,
+with the exception of \fB-c\fP (which is reserved and disallows overriding the
+course style checks configuration).
+.PP
+Common options include:
+
+.TP
+\fB-h\fP, \fB--help\fP
+Show the Checkstyle help message and exit.
+
+.TP
+\fB-V\fP, \fB--version\fP
+Print Checkstyle version information and exit.
+
+.TP
+\fB-f\fP=\fIformat\fP
+Specifies the output format (\fBplain\fP, \fBxml\fP, or \fBsarif\fP). Defaults to \fBplain\fP.
+
+.TP
+\fB-o\fP=\fIoutputPath\fP
+Sets the output file for violation reports (defaults to standard output).
+
+.SH ENVIRONMENT
+.TP
+\fBCS@COURSE_NUM@_CHECKS\fP
+Path to the style checks XML configuration file. Defaults to
+\fI@CHECKS_FILE_PATH@\fP.
+
+.TP
+\fBBROWSER\fP
+The path or name of the web browser executable used to open the style guide
+at \fI@GUIDE_URL@\fP when violations are encountered.
+
+.SH FILES
+.TP
+\fI@CHECKS_FILE_PATH@\fP
+The Checkstyle XML rules configuration file for CSCI @COURSE_NUM@.
+
+.SH EXIT STATUS
+.TP
+\fB0\fP
+All specified Java source code files comply with the style guide.
+.TP
+\fB>0\fP
+Style guide violations were detected or an error occurred during execution.
+
+.SH SEE ALSO
+\fBcheckstyle\fP(1)
+
+.SH AUTHOR
+\fBcheck@COURSE_NUM@\fP by Michael E. Cotterell (mepcott@uga.edu)
+.br
+\fBcheckstyle\fP by Roman Ivanov, Richard Veach, et al. (https://checkstyle.org/team.html)
+
+.SH DISCLAIMER
+The content and opinions expressed on this page do not necessarily reflect the
+views of nor are they endorsed by the University of Georgia or the University
+System of Georgia.
