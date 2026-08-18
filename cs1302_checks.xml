@@ -55,7 +55,7 @@
     <module name="OneTopLevelClass"/>
 
     <module name="PackageName">
-      <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
+      <property name="format" value="^[a-z][a-z0-9]*(\.[a-z][a-z0-9]*)*$"/>
       <message key="name.invalidPattern"
                value="Package name ''{0}'' must be lowercase letters separated by dots."/>
     </module>

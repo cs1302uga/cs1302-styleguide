@@ -1403,9 +1403,10 @@ the time your outer type will be declared as `public`.
 
 ### PackageName
 
-Package names must be written in all lowercase letters, with subpackages separated by a single period (`.`). Package names must not contain uppercase letters, underscores, or other special characters.
+Package names must be written in lowercase letters and digits, with subpackages separated by a single period (`.`). Each package identifier must begin with a lowercase letter and cannot start with a digit. Package names must not contain uppercase letters, underscores, or other special characters.
 
 ```java
+package cs1302;         // valid style
 package cs1302.example; // valid style
 ```
 
