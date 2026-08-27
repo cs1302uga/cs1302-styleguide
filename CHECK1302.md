@@ -18,7 +18,7 @@ This document describes how to install, configure, upgrade, and maintain the **C
 The installation and upgrade scripts adhere to **POSIX.1-2017** shell standards and require minimal system dependencies:
 
 * **POSIX-compatible shell**: `bash` (v4.0+ recommended)
-* **Java Runtime Environment**: Java 17+ (Java 21+ recommended) with `java` available on `PATH`
+* **Java Runtime Environment**: Java 21+ (Java 25+ recommended) with `java` available on `PATH`
 * **Download tool**: `curl` or `wget` (with fallback to `gh` CLI if available)
 * **Core utilities**: `sed`, `grep`, `mkdir`, `chmod`, `ln`, `tar`
 

@@ -1,30 +1,42 @@
 ### ArrayTypeStyle
 
-You must use the Java style for array type declarations and not the C style.
-The Java style places the square brackets (i.e., the `[]`) to the left of the
-variable name, next to the array's element type.
+Array brackets (`[]`) must be attached to the **type** identifier (Java style), never to the variable name (C style).
+
+#### Valid Examples
 
 ```java
-public static void main(String[] args) { // Java style; valid style
+// Valid: Java style - brackets attached to type
+String[] names = new String[10];
+int[] scores = new int[] {1, 2, 3};
+
+public static void main(String[] args) {
+} // main
+
+public int[] getScores() {
+    return this.scores;
+} // getScores
 ```
 
-```java
-public static void main(String args[]) { // C style; invalid style
-```
+#### Common Pitfalls & Invalid Examples
 
 ```java
-String[] someVar; // Java style; valid style
+// Invalid: C style - brackets attached to variable name
+String names[] = new String[10];
+int scores[] = new int[] {1, 2, 3};
+
+public static void main(String args[]) {
+    ...
+} // main
 ```
 
-```java
-String someVar[]; // C style; invalid style
-```
+#### How to Fix
+
+- Move square brackets `[]` from after the variable name to directly after the element type name (e.g. `String[] args`, not `String args[]`).
+
+#### Rationale & Instructor Notes
 
 **Rationale:**
-An array is a type of object in Java. While the C style presented above is
-syntactically correct in Java (i.e., it will compile), Oracle advises that,
-"convention discourages this form; the brackets identify the array type and
-should appear with the type designation." When declaring a variable
-that refers to an array object, the Java style results in a declaration that
-is consistent with how variables for other, non-array types of objects are
-declared.
+In Java, an array is a distinct reference type. Attaching the brackets to the type name (`int[]`) clearly specifies what *type* the variable holds, consistent with how all other reference type variables are declared.
+
+**Instructor Note:**
+C-style array syntax exists in Java solely for backward compatibility with C/C++. Always write `String[] args` in modern Java.

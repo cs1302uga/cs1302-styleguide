@@ -10,9 +10,10 @@
  -->
 
 <!--
-    2026-08-16 Fully modernized configuration for modern Java (JDK 21+) and Checkstyle 10+:
-               Added modern naming checks (RecordComponentName, PatternVariableName, LambdaParameterName),
-               Javadoc tag validation & ordering, and spacing conventions.
+    2026-08-23 Modernized configuration for modern Java (JDK 21+ and JDK 25+) and Checkstyle 10+:
+               Configured modern naming checks (RecordComponentName, PatternVariableName, LambdaParameterName)
+               to support Java 22+/25 unnamed variables and patterns ('_'), Javadoc tag validation & ordering,
+               and spacing conventions.
     2026-08-16 Fixed EmptyBlock/EmptyCatchBlock conflict, WhitespaceAround error message,
                removed obsolete JavadocMethod property, added missing naming & structural checks.
     2022-12-09 Added more comments to this configuration file.
@@ -150,13 +151,15 @@
     </module>
 
     <module name="LambdaParameterName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]*$|^_$"/>
       <message key="name.invalidPattern"
-               value="Lambda parameter name ''{0}'' must be in ''lowerCamelCase''."/>
+               value="Lambda parameter name ''{0}'' must be in ''lowerCamelCase'' or ''_''."/>
     </module>
 
     <module name="PatternVariableName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]*$|^_$"/>
       <message key="name.invalidPattern"
-               value="Pattern variable name ''{0}'' must be in ''lowerCamelCase''."/>
+               value="Pattern variable name ''{0}'' must be in ''lowerCamelCase'' or ''_''."/>
     </module>
 
     <module name="RecordComponentName">

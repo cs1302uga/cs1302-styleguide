@@ -120,21 +120,22 @@ def generate_table_of_contents(guideline_names: List[str]) -> str:
         "* [Compliance](#compliance)",
         "* [Motivation](#motivation)",
         "* [When and How to Check](#when-and-how-to-check)",
-        "   * [When to Check](#when-to-check)",
-        "   * [Run Checkstyle](#run-checkstyle)",
-        "   * [Multiple Files](#multiple-files)",
-        "   * [Output Examples](#output-examples)",
+        "  * [When to Check](#when-to-check)",
+        "  * [Checkstyle vs. Compiler Errors](#checkstyle-vs-compiler-errors)",
+        "  * [Run Checkstyle](#run-checkstyle)",
+        "  * [How to Read and Debug Checkstyle Errors](#how-to-read-and-debug-checkstyle-errors)",
+        "  * [Incremental Debugging Workflow](#incremental-debugging-workflow)",
+        "  * [Multiple Files](#multiple-files)",
+        "  * [Output Examples](#output-examples)",
         "* [Recommended Emacs Configurations](#recommended-emacs-configurations)",
-        "   * [Additional Emacs Configurations](#additional-emacs-configurations)",
-        "      * [Automatically Update Emacs Packages](#automatically-update-emacs-packages)",
-        "      * [Show Style Guide Violations in the Editor](#show-style-guide-violations-in-the-editor)",
+        "  * [Show Style Guide Violations in the Editor](#show-style-guide-violations-in-the-editor)",
         "* [Recommended Vi Configurations](#recommended-vi-configurations)",
         "* [Specific Guidelines](#specific-guidelines)",
     ]
 
     for name in sorted(guideline_names):
         anchor = name.lower()
-        toc_lines.append(f"   * [{name}](#{anchor})")
+        toc_lines.append(f"  * [{name}](#{anchor})")
 
     toc_lines.extend(
         [

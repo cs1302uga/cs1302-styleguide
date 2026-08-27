@@ -8,7 +8,6 @@ describes how to use the `check1302` program on `Odin` to check your code as wel
 as Emacs and Vi configurations that, if used, will reduce the number of style issues
 you have in your code moving forward.**
 
-
 <!-- TOC_PLACEHOLDER -->
 
 ## Compliance
@@ -50,7 +49,7 @@ good style makes things easier for everybody, and while you may not
 believe it just yet, it does, in fact, make things easier for you
 too.
 
-In the preface to *The Practice of Programming* [[TPOP](#ref-tpop)] by
+In the preface to _The Practice of Programming_ [[TPOP](#ref-tpop)] by
 [Kernighan](https://en.wikipedia.org/wiki/Brian_Kernighan)
 and [Pike](https://en.wikipedia.org/wiki/Rob_Pike), the authors ask the
 reader to consider some questions related to several difficult, tedious,
@@ -66,7 +65,7 @@ The authors end their interrogation with the following comments:
 > These things happen to programmers all the time. But dealing with such
 > problems is often harder than it should be because topics like testing,
 > debugging, portability, performance, design alternatives, and
-> style--the *practice* of programming--are not usually the focus of
+> style--the _practice_ of programming--are not usually the focus of
 > computer science or programming courses. Most programmers learn them
 > haphazardly as their experience grows, and a few never learn them
 > at all.
@@ -96,8 +95,8 @@ established style guide, then:
 The list could go on. The important thing to remember is that **quality not only
 refers to the output of a program but also its effect on the people who interact
 with the code**. Rarely, in practice, are you the only one who will read and use
-your code. If you're a software engineer, then it is very likely that *many*
-people will interact with your code over time and that you will interact with *lots*
+your code. If you're a software engineer, then it is very likely that _many_
+people will interact with your code over time and that you will interact with _lots_
 of code written by others as well.
 
 ## When and How to Check
@@ -108,11 +107,11 @@ you significantly increase the overall amount of time you need
 to complete an assignment. You won't have a good time. Much of that extra
 time will be from:
 
- * fixing many code style violations;
- * fixing bugs introduced by fixing code style violations;
- * fixing bugs earlier that would have been easier to spot had your code
+* fixing many code style violations;
+* fixing bugs introduced by fixing code style violations;
+* fixing bugs earlier that would have been easier to spot had your code
    been in compliance; and
- * rewriting code you wrote earlier because you no longer understand
+* rewriting code you wrote earlier because you no longer understand
    how it works.
 
 Why would you subject yourself to that? Is there a better way? Remember,
@@ -136,53 +135,81 @@ If you don't check your code for compliance early and often, then not only
 are you dooming yourself to the miserable time sink of "not fun" activities
 described earlier, you are actively avoiding learning.
 
+### Checkstyle vs. Compiler Errors
+
+It is essential to understand the distinction between compiler errors and style check violations:
+
+* **Compiler (`javac`)**: The Java compiler validates syntax, grammar, and type safety, converting your source code into executable bytecode (`.class` files). If your code contains a syntax error (e.g., missing semicolon, undefined symbol, type mismatch), the compiler halts and will not produce executable bytecode.
+* **Style Checker (`check1302` / Checkstyle)**: Checkstyle performs _static analysis_ on your Java source code. It parses the code into an **Abstract Syntax Tree (AST)** and evaluates whether your code conforms to readability, indentation, naming, and documentation standards.
+
+> **CRITICAL:** **Checkstyle is only guaranteed to work if your code compiles.** Because Checkstyle relies on parsing a syntactically valid Java AST, feeding uncompilable code to `check1302` can produce misleading parser exceptions or crash the audit tool. **Always run `javac` before running `check1302`!**
+
 ### Run Checkstyle
 
 To check your Java source code for compliance, you can use a custom version
-of the Checkstyle program on `Odin` called `check1302`. **This program is
-only guaranteed to work if your code compiles**, so if you encounter a
-crash, then check to make sure your code compiles before proclaiming
-defeat.
+of the Checkstyle program on `Odin` called `check1302`.
 
 To run the `check1302` program on an individual file, say `src/cs1302/Test.java`,
 you can execute the command below:
 
-```
-$ check1302 src/cs1302/Test.java
-```
-
-In the program output, any warnings that appear relate directly
-to style guidelines presented elsewhere in this document. For example:
-
-```
-[ERROR] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
+```bash
+check1302 src/cs1302/Test.java
 ```
 
-Here, we see that the [`MissingJavadocType`](#missingjavadoctype) guideline was
-not met on line `2` in `src/cs1302/Test.java`. The output even gives a short
-description of what it thinks is wrong. If the short description is not sufficient
-to determine what the issue is, then you should consult the section for that
-guideline [here](#specific-guidelines) for more information.
+### How to Read and Debug Checkstyle Errors
 
-To avoid needless
-scrolling, we recommend using the table of contents near the beginning of this
-style guide or your browser's "find text" feature whenever you want to find
-the section for a specific guideline.
+When `check1302` detects style violations, it outputs diagnostic lines formatted as follows:
+
+```plaintext
+[ERROR] src/cs1302/Test.java:7:9: '{' at column 9 should be on the previous line. [LeftCurly]
+```
+
+Each component of this message provides specific diagnostic information:
+
+1. **Severity Level (`[ERROR]`)**: Indicates that the check failed. All Checkstyle errors must be resolved to achieve full style compliance.
+2. **File Path (`src/cs1302/Test.java`)**: The relative path to the Java source file where the violation occurred.
+3. **Line and Column (`7:9`)**: The exact location of the issue. In this example, the violation is on line `7`, starting at column `9`.
+4. **Diagnostic Description (`'{' at column 9 should be on the previous line.`)**: A concise summary describing what Checkstyle found and what it expected.
+5. **Guideline Identifier (`[LeftCurly]`)**: The name of the specific style guide rule enclosed in square brackets. This corresponds directly to the guideline anchor in this document (e.g., [`LeftCurly`](#leftcurly)).
+
+### Incremental Debugging Workflow
+
+To resolve style errors quickly without feeling overwhelmed, follow this recommended 4-step workflow:
+
+1. **Step 1: Verify Clean Compilation First**
+
+   ```bash
+   javac -d bin -cp bin src/cs1302/Test.java
+   ```
+
+   Confirm that `javac` succeeds with zero errors.
+
+2. **Step 2: Run `check1302`**
+
+   ```bash
+   check1302 src/cs1302/Test.java
+   ```
+
+3. **Step 3: Fix Errors from Top to Bottom**
+   Always fix errors starting from the top of the output. Structural issues (such as missing curly braces, unclosed Javadoc comments, or mismatched delimiters) can cause Checkstyle's parser to misinterpret subsequent lines, creating "cascade" false-positive errors further down the file.
+
+4. **Step 4: Re-Audit Frequently**
+   Run `check1302` after fixing one or two issues to verify that the error count decreases and no new formatting violations were introduced.
 
 ### Multiple Files
 
 You might want to check all the files in some `src` directory. To do this, you can
 pass the entire directory to `check1302` as in the following command:
 
-```
-$ check1302 src
+```bash
+check1302 src
 ```
 
 ### Output Examples
 
 Here is some example output for an **invalid file**:
 
-```
+```plaintext
 Starting audit...
 [ERROR] src/cs1302/Test.java:2: Missing a Javadoc comment. [MissingJavadocType]
 [ERROR] src/cs1302/Test.java:7:9: '{' at column 9 should be on the previous line. [LeftCurly]
@@ -200,7 +227,7 @@ the example above.
 
 Here is some example output for a **valid file**:
 
-```
+```plaintext
 Starting audit...
 Audit done.
 ```
@@ -226,7 +253,7 @@ you need to add some text to the end of a configuration file. In most
 cases, this file is stored in your home directory and named `.emacs` -- this
 is a text file that is literally named `.emacs` (instead of something like
 `.emacs.txt`). From your home directory on Odin, execute the `ls -a` command.
-This will list files that start with a `.`. If you do not have a `~/.emacs` file, 
+This will list files that start with a `.`. If you do not have a `~/.emacs` file,
 then check to see
 if either `~/.emacs.el` or `~/.emacs.d/init.el` exists; if so, then use one
 of those files in the steps below. If none of these files exist, then we recommend that
@@ -234,15 +261,15 @@ you create `~/.emacs` and store your configuration settings there.
 
 **If you do not understand what file you need to create or edit,
 then please ask your instructor or a TA! The following instructions
-assume that your Emacs configuration file is `~/.emacs`, which is the 
+assume that your Emacs configuration file is `~/.emacs`, which is the
 default for most students.**
 
 You can open the `~/.emacs` file in Emacs using the following command, regardless
 of whether the `~/.emacs` file already exists -- if the file does not yet exist, then
 it will be created once you save the file using Emacs:
 
-```
-$ emacs ~/.emacs
+```bash
+emacs ~/.emacs
 ```
 
 Once your `~/.emacs` file is open in Emacs, take a quick look at it. It may be
@@ -250,8 +277,8 @@ empty or it may have some existing lines in it -- either situation is okay. If
 there are existing lines, then you are NOT required to understand what they do
 for this course.
 
-Now, select and copy the configuration text below -- we recommend that you select 
-it with your mouse and copy it using a right click (and selecting "Copy") instead 
+Now, select and copy the configuration text below -- we recommend that you select
+it with your mouse and copy it using a right click (and selecting "Copy") instead
 of using a keyboard shortcut:
 
 ```emacs
@@ -261,18 +288,18 @@ of using a keyboard shortcut:
 
 Now, return to Emacs where your `~/.emacs` file should still be open, and navigate to
 the bottom/end of the file by pressing `M->` (i.e., `M-Shift-.` where `.` is the period) -- if
-the file is empty, then you won't go very far (that's okay). Once your cursor is at the 
-bottom/end of the file, press the Return key once or twice to create some blank lines, then 
+the file is empty, then you won't go very far (that's okay). Once your cursor is at the
+bottom/end of the file, press the Return key once or twice to create some blank lines, then
 paste what you copied above by right-clicking on the terminal screen -- if right-clicking does
 not paste the text automatically, then right-click and select the "Paste" option to paste
 the text.
 
-Once the text is pasted in the file, press `C-x C-s` to save the file, then `C-x C-c` to 
-close/exit Emacs. 
+Once the text is pasted in the file, press `C-x C-s` to save the file, then `C-x C-c` to
+close/exit Emacs.
 
 The configuration changes should take effect the next time you start Emacs. If you get an
 error related to your "Init file" the next time you start Emacs, see an instructor
-during office hours for assistance. If you do not encounter an error, then you should be 
+during office hours for assistance. If you do not encounter an error, then you should be
 good to go!
 
 <!--
@@ -365,7 +392,7 @@ near the bottom of the screen.
 ```
 -->
 
-#### Show Style Guide Violations in the Editor (Optional)
+### Show Style Guide Violations in the Editor (Optional)
 
 Add the lines below to your Emacs configuration file to install and
 configure the [`flycheck`](https://www.flycheck.org/) package via
@@ -426,7 +453,7 @@ then please ask your instructor or a TA!**
 Here are the lines that you should add to your Vi configuration
 file:
 
-```
+```vim
 " enable line numbers
 set number
 
@@ -446,4 +473,3 @@ The name for each of these guidelines corresponds to a Checkstyle module
 configured in [`cs1302_checks.xml`](cs1302_checks.xml) for use by the
 `check1302` program. This was done so that it's easier for users to relate
 `check1302` program output to the actual guidelines.
-

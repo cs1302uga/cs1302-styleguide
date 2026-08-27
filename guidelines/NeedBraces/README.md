@@ -1,19 +1,49 @@
 ### NeedBraces
 
-Curly braces are always used where technically optional. Braces should be used with
-`if`, `else`, `for`, `do`, and `while` statements, even when the body is empty
-or contains only a single statement.
+Curly braces are required for all control flow statements (`if`, `else`, `for`, `do`, `while`, and `switch`), even when the body contains only a single statement or is empty.
+
+#### Valid Examples
+
+```java
+// Valid: Single-statement 'if' with curly braces and closing comment
+if (score >= 90) {
+    grade = "A";
+} // if
+
+// Valid: 'for' loop with braces
+for (int i = 0; i < items.length; i++) {
+    System.out.println(items[i]);
+} // for
+
+// Valid: 'while' loop with braces
+while (scanner.hasNextLine()) {
+    processLine(scanner.nextLine());
+} // while
+```
+
+#### Common Pitfalls & Invalid Examples
+
+```java
+// Invalid: Missing curly braces around single-line 'if' body
+if (score >= 90)
+    grade = "A";
+```
+
+```java
+// Invalid: Missing braces on 'while' loop
+while (hasMoreTokens())
+    nextToken();
+```
+
+#### How to Fix
+
+- Always wrap the body of `if`, `else`, `for`, `do`, and `while` statements in curly braces `{ ... }`, placing the opening brace on the same line as the conditional header.
+- Add an end-of-block trailing comment after the closing curly brace indicating the control construct (e.g., `} // if`, `} // for`, `} // while`).
+
+#### Rationale & Instructor Notes
 
 **Rationale:**
-Consider `if` statements without curly braces. In Java, only the first statement
-following such `if` statements is executed when the conditional's expression
-evaluates to `true`. Potential bugs can be avoided by using curly braces to
-clearly indicate what statement or statements are to execute when the
-conditional's expression evaluates to `true`.
+In Java, omitting curly braces causes only the immediately following single statement to be bound to the conditional. Adding a second statement later without adding braces creates a notorious logic bug ("dangling else" or unconditioned execution) that is often invisible at a glance.
 
 **Instructor Note:**
-One common bug that we've seen over the years is students adding statements
-to a brace-less `if` statement with the intent that those statements only
-execute when the conditional's expression evaluates to `true`. That is,
-they forgot to add the curly braces. This guideline helps protect you
-against that scenario and improves readability.
+One of the most frequent bugs in introductory and intermediate programming occurs when a student adds a `System.out.println(...)` or cleanup step under an unbraced `if` statement, expecting it to run conditionally. Always using curly braces prevents this entire class of bugs.

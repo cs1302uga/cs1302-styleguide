@@ -2,19 +2,34 @@
 
 There must be no whitespace immediately following an opening parenthesis (`(`) or immediately preceding a closing parenthesis (`)`) in method calls, constructor calls, control flow expressions (`if`, `for`, `while`, `switch`), and type casts.
 
+#### Valid Examples
+
 ```java
-if (x > 0) {                 // valid style
-    String str = (String) o; // valid style
-    foo(a, b);               // valid style
+// Valid: No internal padding inside parentheses
+if (score > 0) {
+    String formatted = (String) rawObject;
+    printReport(formatted, count);
 } // if
 ```
 
+#### Common Pitfalls & Invalid Examples
+
 ```java
-if ( x > 0 ) {               // invalid style; spaces inside parens
-    String str = ( String ) o; // invalid style; spaces inside parens
-    foo( a, b );             // invalid style; spaces inside parens
+// Invalid: Space immediately following '(' and preceding ')'
+if ( score > 0 ) {
+    String formatted = ( String ) rawObject;
+    printReport( formatted, count );
 } // if
 ```
+
+#### How to Fix
+
+- Remove spaces directly adjacent to the inside of parentheses: write `(x)` instead of `( x )`.
+
+#### Rationale & Instructor Notes
 
 **Rationale:**
-Padding inside parentheses adds unnecessary horizontal spacing and impairs readability.
+Internal padding inside parentheses adds unnecessary horizontal spacing and disrupts the visual grouping of expressions.
+
+**Instructor Note:**
+Keep spaces *outside* parentheses after keywords (e.g. `if (...)`), but keep the inside snug (`(condition)`).

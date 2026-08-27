@@ -1,47 +1,62 @@
 ### WhitespaceAround
 
-You need to ensure that code tokens are surrounded by whitespace.
+Operators, control keywords, and braces must be surrounded by appropriate whitespace.
+
+Specifically:
+
+* Binary and ternary operators (`+`, `-`, `*`, `/`, `=`, `==`, `!=`, `<`, `>`, `<=`, `>=`, `&&`, `||`, `?`, `:`) must have a space on both sides.
+* Control keywords (`if`, `for`, `while`, `switch`, `catch`, `synchronized`) must be followed by a space before the opening parenthesis `(`.
+* Left curly braces `{` must be preceded by a space.
+* Right curly braces `}` must be followed by a space when followed by keywords like `else`, `catch`, `finally`, or `while`.
+
+Empty compact blocks (such as empty method, constructor, or interface declarations: `{}`) are exempt from requiring internal spaces.
+
+#### Valid Examples
 
 ```java
-if (n==0) { // invalid
+// Valid: Spaces around operators, after keywords, and before braces
+if (n == 0) {
+    total = count + 1;
+} else {
+    total = count - 1;
+} // if
+
+while (n > 0) {
+    n--;
+} // while
+```
+
+#### Common Pitfalls & Invalid Examples
+
+```java
+// Invalid: Missing space around equality operator '=='
+if (n==0) {
+    ...
+} // if
+
+// Invalid: Missing space between 'while' and '('
+while(n > 0) {
+    ...
+} // while
+
+// Invalid: Missing space before opening brace '{'
+if (n == 0){
     ...
 } // if
 ```
 
-```java
-if (n == 0) { // valid
-    ...
-} // if
-```
+#### How to Fix
 
-```java
-while(n == 0) { // invalid
-    ...
-} // while
-```
+* Insert a single space on each side of binary operators (e.g. `a + b`, `x = y`, `score >= 90`).
 
-```java
-while (n == 0) { // valid
-    ...
-} // while
-```
+* Insert a single space between control flow keywords and parentheses (e.g. `if (...)`, `for (...)`).
 
-Empty constructor, method, class, enum, interface, and loop bodies (blocks),
-as well as lambdas of the forms presented below, are exempt:
-
-```java
-public MyClass() {} // empty constructor
-public void func() {} // empty method
-public interface Foo {} // empty interface
-public class Foo {} // empty class
-public enum Foo {} // empty enum
-MyClass c = new MyClass() {}; // empty anonymous class
-while (i == 1) {} // empty while loop
-for (int i = 1; i > 1; i++) {} // empty for loop
-do {} while (i == 1); // empty do-while loop
-Runnable noop = () -> {}; // empty lambda
-public @interface Beta {} // empty annotation type
-```
+#### Rationale & Instructor Notes
 
 **Rationale:**
-This convention improves readability.
+Adequate whitespace around tokens prevents visual crowding, making expressions,
+assignments, and control structures much easier to read and parse.
+
+**Instructor Note:**
+A common mistake in beginner code is jamming expressions together (e.g.,
+`for(int i=0;i<10;i++)`). Use proper spacing: `for (int i = 0; i < 10; i++)`.

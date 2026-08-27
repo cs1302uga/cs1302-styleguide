@@ -1,34 +1,42 @@
 ### RecordTypeParameterName
 
-Generic type parameter names for generic records must either be:
+Generic type parameter names for generic records must conform to one of two formats:
 
-1. a single uppercase letter optionally followed by a single digit (e.g., `T`, `E`, `K`, `V`, `T1`); or
+1. A single uppercase letter optionally followed by a single digit (e.g., `T`, `E`, `K`, `V`, `T1`); or
+2. An `UpperCamelCase` name ending with `T` or `Type` (e.g., `ItemT`, `KeyType`, `ValueType`).
 
-2. an `UpperCamelCase` name ending with `T` or `Type` (e.g., `ItemT`, `KeyType`, `ValueType`).
+#### Valid Examples
 
 ```java
-// valid style
-public record Pair<K, V>(K key, V value) { 
+// Valid: Single uppercase generic type parameters
+public record Pair<K, V>(K key, V value) {
     ...
 } // Pair
 
-// valid style
-public record Entry<KeyType, ValueType>(KeyType key, ValueType val) { 
+// Valid: Descriptive names ending with T or Type
+public record ResultHolder<DataT, ErrorType>(DataT data, ErrorType error) {
     ...
-} // Entry
+} // ResultHolder
 ```
+
+#### Common Pitfalls & Invalid Examples
 
 ```java
-// invalid style; lowercase
-public record Pair<key, value>(key k, value v) { 
-    ...
-} // Pair
+// Invalid: Lowercase type parameter names
+public record Pair<key, value>(key k, value v) { }
 
-// invalid style; does not end with T or Type
-public record Entry<Key, Value>(Key k, Value v) { 
-    ...
-} // Entry
+// Invalid: Multi-character names without trailing T or Type
+public record Entry<Key, Value>(Key k, Value v) { }
 ```
+
+#### How to Fix
+
+- Rename generic parameters declared on the record header to single uppercase letters (e.g., `<K, V>`) or suffix multi-character names with `T` or `Type` (e.g., `<KeyType, ValueType>`).
+
+#### Rationale & Instructor Notes
 
 **Rationale:**
-Record type parameters serve a role similar to type parameters in generic classes and interfaces, and should follow the same established conventions. Using single uppercase letters or `T`-suffixed names ensures they remain visually distinct from concrete record names and component field names.
+Generic records serve as lightweight data carriers. Adhering to the type parameter naming convention keeps record headers clean and prevents type parameters from shadowing or resembling concrete classes.
+
+**Instructor Note:**
+When creating generic records (like key-value pairs or tuples), use `<K, V>` or `<T, U>`.

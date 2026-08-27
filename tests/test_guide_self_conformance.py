@@ -305,18 +305,16 @@ class TestGuideSelfConformance(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
-        """Locates or renders a check1302 / checkstyle runner and loads cache."""
+        """Locates a check1302 / checkstyle runner and loads cache."""
         cls.cache = ConformanceCache()
         cls.cache.load()
 
-        checkstyle_bin = shutil.which("checkstyle")
-        if checkstyle_bin:
-            cls.runner_path = checkstyle_bin
-        elif os.path.isfile(TEMPLATE_PATH) and os.path.isfile(CHECKS_XML):
-            cls.runner_dir = tempfile.TemporaryDirectory()
-            rendered = os.path.join(cls.runner_dir.name, "check1302")
-            render_check_runner(TEMPLATE_PATH, CHECKS_XML, rendered)
-            cls.runner_path = rendered
+        prefix_bin = os.path.expanduser("~/.local/check1302/bin")
+        search_path = f"{prefix_bin}:{os.environ.get('PATH', '')}" if os.path.isdir(prefix_bin) else os.environ.get("PATH", "")
+        cls.runner_path = (
+            shutil.which("check1302", path=search_path)
+            or shutil.which("checkstyle", path=search_path)
+        )
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -364,34 +362,36 @@ class TestGuideSelfConformance(unittest.TestCase):
             cache.record_result("Mod", "valid", java_path, 0, "Audit done.", True)
             cache.save()
 
-            # Cache hit
-            self.assertTrue(cache.is_valid("Mod", "valid", java_path))
+            # Cache hit (isolated from outer environment NO_CACHE setting)
+            with unittest.mock.patch.dict(os.environ, {"NO_CACHE": "0", "CS1302_NO_CACHE": "0"}):
+                self.assertTrue(cache.is_valid("Mod", "valid", java_path))
 
-            # Expectation mismatch
-            self.assertFalse(cache.is_valid("Mod", "invalid", java_path))
+                # Expectation mismatch
+                self.assertFalse(cache.is_valid("Mod", "invalid", java_path))
 
             # NO_CACHE bypass
             with unittest.mock.patch.dict(os.environ, {"NO_CACHE": "1"}):
                 self.assertFalse(cache.is_valid("Mod", "valid", java_path))
 
-            # Java file modification
-            with open(java_path, "w") as f:
-                f.write("class ExModified {}")
-            self.assertFalse(cache.is_valid("Mod", "valid", java_path))
+            with unittest.mock.patch.dict(os.environ, {"NO_CACHE": "0", "CS1302_NO_CACHE": "0"}):
+                # Java file modification
+                with open(java_path, "w") as f:
+                    f.write("class ExModified {}")
+                self.assertFalse(cache.is_valid("Mod", "valid", java_path))
 
-            # Restore java file, modify README.md
-            with open(java_path, "w") as f:
-                f.write("class Ex {}")
-            with open(readme_path, "w") as f:
-                f.write("updated readme")
-            self.assertFalse(cache.is_valid("Mod", "valid", java_path))
+                # Restore java file, modify README.md
+                with open(java_path, "w") as f:
+                    f.write("class Ex {}")
+                with open(readme_path, "w") as f:
+                    f.write("updated readme")
+                self.assertFalse(cache.is_valid("Mod", "valid", java_path))
 
-            # Checks XML modification
-            with open(readme_path, "w") as f:
-                f.write("readme")
-            with open(xml_path, "w") as f:
-                f.write("<module name='TreeWalker'/>")
-            self.assertFalse(cache.is_valid("Mod", "valid", java_path))
+                # Checks XML modification
+                with open(readme_path, "w") as f:
+                    f.write("readme")
+                with open(xml_path, "w") as f:
+                    f.write("<module name='TreeWalker'/>")
+                self.assertFalse(cache.is_valid("Mod", "valid", java_path))
 
     def test_discover_guideline_test_cases_not_found(self) -> None:
         """Tests that FileNotFoundError is raised for non-existent directory."""
@@ -456,7 +456,7 @@ def _generate_test_method(
             exit_code, output = self.cache.get_cached_result(file_path)
         else:
             if not self.runner_path:
-                self.skipTest("Neither 'checkstyle' nor template available.")
+                self.skipTest("Checkstyle executable ('checkstyle' or 'check1302') not found in PATH.")
 
             exit_code, output = run_style_check(
                 self.runner_path,

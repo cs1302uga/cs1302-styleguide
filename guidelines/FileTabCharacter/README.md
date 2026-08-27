@@ -107,17 +107,15 @@ If you use the [recommended Emacs configurations](#recommended-emacs-configurati
 or [recommended Vi configurations](#recommended-vi-configurations), then
 you will be able to avoid _future_ non-conformance with this policy.
 
-**Fix using Emacs:**
-If you are an Emacs user who has set up the
-[recommended Emacs configurations](#recommended-emacs-configurations), then you
-can fix individual lines that violate `FileTabCharacter` by moving to the start
-of an offending line and using the following command: `M-x untabify RET`
-(i.e., type `M-x`, the entire word `untabify`, then the
-return key). To fix an entire file, move to the beginning of the file and use the
-following command: `C-u M-x untabify`.
+#### How to Fix
+
+* **Fix in Emacs**: Move to the beginning of the file and run `C-u M-x untabify RET`.
+* **Fix in Vim**: Run `:set expandtab` followed by `:retab`.
+
+#### Rationale & Instructor Notes
 
 **Rationale:**
-The use of tabs instead of spaces may result in different text editors displaying
-the same file in different ways, depending on the tab width configured for the
-given editor. Developers should not need to configure the tab width of their
-text editors in order to be able to read source code.
+The use of tabs instead of spaces results in different text editors and terminal environments displaying the same file with distorted indentation, depending on the tab width configured for the viewer. Using spaces guarantees identical visual indentation everywhere.
+
+**Instructor Note:**
+Tab width defaults vary widely across editors and emulators. On Odin, a tab character will show up as 1 tab, which is 4 spaces. Thus, converting tabs to 4 spaces ensures your code looks the same on Odin as it did on your screen.
